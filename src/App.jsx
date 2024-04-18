@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetchAllProductsData, fetchCategoryData } from "./Components/API";
-import NavBar from "./Components/Home/NavBar";
 import Home from "./Components/Home/Home";
 
 function App() {
