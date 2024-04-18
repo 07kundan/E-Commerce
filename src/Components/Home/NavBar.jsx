@@ -19,10 +19,8 @@ function NavBar() {
 
   return (
     <>
-      <div className="w-screen p-3 px-6 text-[#6D67E4] flex justify-between items-center text-2xl bg-[#453C67] relative z-10 lg:px-10 lg:h-[68px]">
-        <span className="text-3xl font-bold lg:w-1/4 lg:text-center ">
-          ZED-kart
-        </span>
+      <div className="w-screen  p-3 px-8 text-[#6D67E4] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:px-10 lg:h-[68px] lg:rounded-2xl lg:my-2 lg:w-[83vw] ">
+        <span className="text-3xl font-bold lg:w-[20%] lg:pl-7 ">ZED-kart</span>
 
         {/* Hamburger for smaller screen */}
         <>
@@ -70,7 +68,7 @@ function NavBar() {
         {/* ---------------------------- */}
 
         {window.innerWidth > 1024 && (
-          <div className="text-lg flex justify-around gap-10 p-1 px-3 pr-16">
+          <div className="text-lg flex justify-around gap-10 p-1 px-3 pr-12">
             {/* search icon and search input if searchIsActive is true */}
             <div className="flex gap-3 items-center">
               {searchIsActive && (
@@ -78,7 +76,7 @@ function NavBar() {
                   <input
                     type="text"
                     placeholder="Search for the products"
-                    className="w-[30vw] text-lg p-1 px-3 rounded-lg bg-white bg-opacity-60 "
+                    className="w-[27vw] text-lg p-1 px-3 rounded-lg bg-white bg-opacity-60 "
                   />
                 </>
               )}

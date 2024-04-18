@@ -23,10 +23,11 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#453C67] h-screen">
+    <>
+      <div className="bg-[#393E46] h-screen absolute top-0 w-full -z-50"></div>
       <NavBar />
       <Outlet />
-    </div>
+    </>
   );
 }
 
