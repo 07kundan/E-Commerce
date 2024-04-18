@@ -7,9 +7,9 @@ import { CgLogIn } from "react-icons/cg";
 import { IoSearchSharp } from "react-icons/io5";
 
 const NavItems = [
-  { name: "Home", icon: <SiHomeassistantcommunitystore /> },
-  { name: "Login", icon: <CgLogIn /> },
-  { name: "Cart", icon: <IoMdCart /> },
+  { path: "", name: "Home", icon: <SiHomeassistantcommunitystore /> },
+  { path: "Login", name: "Login", icon: <CgLogIn /> },
+  { path: "cart", name: "Cart", icon: <IoMdCart /> },
 ];
 
 // Navbar
@@ -45,24 +45,23 @@ function NavBar() {
                 >
                   <IoIosCloseCircle />
                 </button>
+                {/* routes */}
                 <div className="h-full p-12 flex flex-col gap-4  ">
-                  <div>
-                    {NavItems.map((item) => (
-                      <NavLink
-                        onClick={() => setHambuegeIsActive(false)}
-                        to={`/${item.name}`}
-                        key={item.name}
-                        className={({ isActive }) =>
-                          `flex items-center gap-2 ${
-                            isActive ? "text-[#c79e3d]" : "text-[#FFD369]"
-                          }`
-                        }
-                      >
-                        <span className="text-2xl ">{item.icon}</span>
-                        <span>{item.name}</span>
-                      </NavLink>
-                    ))}
-                  </div>
+                  {NavItems.map((item) => (
+                    <NavLink
+                      onClick={() => setHambuegeIsActive(false)}
+                      to={`/${item.path}`}
+                      key={item.name}
+                      className={({ isActive }) =>
+                        `flex items-center gap-2 ${
+                          isActive ? "text-[#c79e3d]" : "text-[#FFD369]"
+                        }`
+                      }
+                    >
+                      <span className="text-2xl ">{item.icon}</span>
+                      <span>{item.name}</span>
+                    </NavLink>
+                  ))}
                 </div>
               </div>
             </>
@@ -70,7 +69,6 @@ function NavBar() {
         </>
         {/* ---------------------------- */}
 
-        {/* Routes */}
         {window.innerWidth > 1024 && (
           <div className="text-lg flex justify-around gap-10 p-1 px-3 pr-16">
             {/* search icon and search input if searchIsActive is true */}
@@ -93,9 +91,10 @@ function NavBar() {
             </div>
             {/* ------------------------------------------------------- */}
 
+            {/* Routes */}
             {NavItems.map((item) => (
               <NavLink
-                to={`/${item.name}`}
+                to={`/${item.path}`}
                 key={item.name}
                 className={({ isActive }) =>
                   `flex items-center gap-2 ${
