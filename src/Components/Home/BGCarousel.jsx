@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination, Navigation } from "swiper/modules";
+import BG1 from "../Home/Pictures/heroBG1.jpg";
 
 function BGCarousel() {
   return (
@@ -14,13 +15,43 @@ function BGCarousel() {
         }}
         navigation={true}
         modules={[Navigation, Pagination]}
-        className="h-[80vh] w-screen bg-cyan-800 "
+        className="h-[90vh] w-[90%] "
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>
+          <img
+            className="bg-cover rounded-2xl"
+            src="\src\Components\Home\Pictures\heroBG1.jpg"
+            alt="not found"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            className="bg-cover rounded-2xl"
+            src="\src\Components\Home\Pictures\heroBG1.jpg"
+            alt="not found"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            className="bg-cover rounded-2xl"
+            src="\src\Components\Home\Pictures\heroBG1.jpg"
+            alt="not found"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            className="bg-cover rounded-2xl"
+            src="\src\Components\Home\Pictures\heroBG1.jpg"
+            alt="not found"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            className="bg-cover rounded-2xl"
+            src="\src\Components\Home\Pictures\heroBG1.jpg"
+            alt="not found"
+          />
+        </SwiperSlide>
       </Swiper>
     </>
   );

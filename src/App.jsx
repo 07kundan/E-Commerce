@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-[#393E46] h-screen absolute top-0 w-full -z-50"></div>
+      <div className="bg-indigo-950 h-screen fixed top-0 w-full -z-50"></div>
       <NavBar />
       <Outlet />
     </>
