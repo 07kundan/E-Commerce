@@ -7,45 +7,50 @@ import Card from "./Components/Mohit/Card.jsx";
 
 const routes = createBrowserRouter([
   {
-    path: "",
-    element: <Home />,
-    children: [],
-  },
-  {
-    path: "about",
-    element: (
-      <div>
-        <h1>about</h1>
-      </div>
-    ),
-  },
-  {
-    path: "contact",
-    element: (
-      <div>
-        <h1>contact</h1>
-      </div>
-    ),
-  },
-  {
-    path: "login",
-    element: (
-      <div>
-        <h1>login</h1>
-      </div>
-    ),
-  },
-  {
-    path: "cart",
-    element: (
-      <div>
-        <h1>cart</h1>
-      </div>
-    ),
-  },
-  {
-    path: "card",
-    element: <Card />,
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "about",
+        element: (
+          <div>
+            <h1>about</h1>
+          </div>
+        ),
+      },
+      {
+        path: "contact",
+        element: (
+          <div>
+            <h1>contact</h1>
+          </div>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <div>
+            <h1>login</h1>
+          </div>
+        ),
+      },
+      {
+        path: "cart",
+        element: (
+          <div>
+            <h1>cart</h1>
+          </div>
+        ),
+      },
+      {
+        path: "card",
+        element: <Card />,
+      },
+    ],
   },
 ]);
 
