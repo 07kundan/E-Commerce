@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllProductsData, fetchCategoryData } from "./Components/API";
-import Home from "./Components/Home/Home";
 import { Outlet } from "react-router-dom";
+import NavBar from "./Components/Home/NavBar";
 
 function App() {
   const [category, setCategory] = useState("smartphones");
@@ -24,9 +24,8 @@ function App() {
 
   return (
     <>
-      <div className="bg-[#453C67] h-screen w-screen m-0 p-0 box-border">
-        <Outlet />
-      </div>
+      <NavBar />
+      <Outlet />
     </>
   );
 }

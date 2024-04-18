@@ -1,14 +1,14 @@
 import React from "react";
-import NavBar from "./NavBar";
 import HeroSection from "./HeroSection";
 import BGCarousel from "./BGCarousel";
 import ProductsRow from "./HomeProductRows/ProductsRow";
 import ProductColum from "./HomeProductRows/ProductColum";
 
+// HOME page
+
 function Home() {
   return (
     <>
-      <NavBar />
       <HeroSection />
       <BGCarousel />
       <ProductsRow />
