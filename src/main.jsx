@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Components/Home/Home.jsx";
 import Card from "./Components/Mohit/Card.jsx";
+import LoginPage from "./Components/Mohit/LoginPage.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -32,11 +33,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "login",
-        element: (
-          <div>
-            <h1>login</h1>
-          </div>
-        ),
+        element: <LoginPage />,
       },
       {
         path: "cart",
