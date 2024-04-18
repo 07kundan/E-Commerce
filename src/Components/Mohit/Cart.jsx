@@ -67,21 +67,17 @@ function Cart() {
                 <table className="w-full">
                     <thead className="bg-gray-100 border-b">
                         <tr>
-                            <th className="py-3 px-4 text-left font-medium">
-                                Product
-                            </th>
-                            <th className="py-3 px-4 text-left font-medium">
-                                Price
-                            </th>
-                            <th className="py-3 px-4 text-left font-medium">
-                                Rating
-                            </th>
-                            <th className="py-3 px-4 text-left font-medium">
-                                Quantity
-                            </th>
-                            <th className="py-3 px-4 text-left font-medium">
-                                Remove
-                            </th>
+                            {[
+                                "Product",
+                                "Price",
+                                "Rating",
+                                "Quantity",
+                                "Remove",
+                            ].map((item) => (
+                                <th className="py-3 px-4 text-left font-medium">
+                                    {item}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>
