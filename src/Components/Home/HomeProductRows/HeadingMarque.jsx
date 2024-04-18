@@ -19,7 +19,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 //   );
 // }
 
-export default function MyComponent() {
+export default function HeadingMarque() {
   const x = useMotionValue(0);
   const background = useTransform(
     x,
@@ -28,7 +28,7 @@ export default function MyComponent() {
   );
 
   return (
-    <div className="bg-slate-700 h-[20%]">
+    <div className="bg-slate-700 text-2xl">
       {/* <div className="bg-[#ff008c]"></div> */}
       <motion.div style={{ background }}>
         <motion.div
