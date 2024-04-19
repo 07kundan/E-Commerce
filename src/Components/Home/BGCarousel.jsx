@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination, Navigation } from "swiper/modules";
-import BG1 from "../Home/Pictures/heroBG1.jpg";
 
 function BGCarousel() {
   return (
@@ -15,7 +14,7 @@ function BGCarousel() {
         }}
         navigation={true}
         modules={[Navigation, Pagination]}
-        className="h-[90vh] w-[90%] "
+        className="h-[80vh] w-[78%] "
       >
         <SwiperSlide>
           <img

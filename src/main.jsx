@@ -6,6 +6,7 @@ import Home from "./Components/Home/Home.jsx";
 import Card from "./Components/Mohit/Card.jsx";
 import LoginPage from "./Components/Mohit/LoginPage.jsx";
 import Cart from "./Components/Mohit/Cart.jsx";
+import SignupPage from "./Components/Mohit/SignupPage.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const routes = createBrowserRouter([
       {
         path: "card",
         element: <Card />,
+      },
+      {
+        path: "signup",
+        element: <SignupPage />,
       },
     ],
   },

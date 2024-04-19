@@ -19,8 +19,9 @@ function NavBar() {
 
   return (
     <>
-      <div className="w-screen  p-3 px-8 text-[#6D67E4] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:px-10 lg:h-[68px] lg:rounded-2xl lg:my-2 lg:w-[83vw] ">
-        <span className="text-3xl font-bold lg:w-[20%] lg:pl-7 ">ZED-kart</span>
+      <div className="w-screen p-3 px-8 text-[#6D67E4] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:px-10 lg:rounded-2xl lg:my-2 lg:w-[83vw] ">
+        {/* Name */}
+        <span className="text-2xl font-bold lg:w-[20%] lg:pl-7 ">ZED-kart</span>
 
         {/* Hamburger for smaller screen */}
         <>
@@ -66,7 +67,9 @@ function NavBar() {
           )}
         </>
         {/* ---------------------------- */}
+        {/* ---------------------------- */}
 
+        {/*  For Big Screen */}
         {window.innerWidth > 1024 && (
           <div className="text-lg flex justify-around gap-10 p-1 px-3 pr-12">
             {/* search icon and search input if searchIsActive is true */}
@@ -100,12 +103,13 @@ function NavBar() {
                   }`
                 }
               >
-                <span className="text-2xl ">{item.icon}</span>
-                <span>{item.name}</span>
+                <span className="text-xl ">{item.icon}</span>
+                <span className="text-xl">{item.name}</span>
               </NavLink>
             ))}
           </div>
         )}
+        {/* --------------- */}
       </div>
     </>
   );

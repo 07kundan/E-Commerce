@@ -9,14 +9,15 @@ function App() {
   useEffect(() => {
     try {
       const responseData = fetchAllProductsData();
-      console.log(responseData);
+
+      // console.log(responseData);
     } catch (error) {
       console.log(error);
     }
 
     try {
       const responseData = fetchCategoryData(category);
-      console.log(responseData);
+      // console.log(responseData);
     } catch (error) {
       console.log(error);
     }
