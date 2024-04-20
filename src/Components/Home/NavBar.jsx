@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import { IoIosCloseCircle, IoMdCart } from "react-icons/io";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
-import { CgLogIn, CgMenuBoxed } from "react-icons/cg";
+import { CgLogIn, CgMenuBoxed, CgProfile } from "react-icons/cg";
 import { IoSearchSharp } from "react-icons/io5";
+import { FaGift, FaHeart } from "react-icons/fa";
+import { FiPackage } from "react-icons/fi";
+
 import { motion } from "framer-motion";
 
 const NavItems = [
@@ -13,6 +16,24 @@ const NavItems = [
   { path: "cart", name: "Cart", icon: <IoMdCart /> },
 ];
 
+const MenuList = [
+  {
+    icon: <CgProfile />,
+    name: "Profile",
+  },
+  {
+    icon: <FaHeart />,
+    name: "Wishlist",
+  },
+  {
+    icon: <FiPackage />,
+    name: "Order",
+  },
+  {
+    icon: <FaGift />,
+    name: "Rewards",
+  },
+];
 // Navbar
 function NavBar() {
   const [HamburgerIsActive, setHambuegeIsActive] = useState(false);
@@ -25,12 +46,12 @@ function NavBar() {
         {/* Name */}
         <motion.span
           variants={{
-            initial: { x: -90, opacity: 0 },
+            initial: { x: -90, opacity: 0.5 },
             end: { x: 0, opacity: 1 },
           }}
           initial="initial"
           animate="end"
-          transition={{ duration: 1, ease: "backInOut" }}
+          transition={{ delay: 0.5, duration: 1, ease: "backInOut" }}
           className="text-2xl font-bold lg:w-[20%] lg:pl-7 text-indigo-950"
         >
           ZED-kart
@@ -98,13 +119,13 @@ function NavBar() {
               )}
               <motion.button
                 variants={{
-                  initial: { y: 50, opacity: 0.2 },
+                  initial: { y: 80, opacity: 0.2 },
                   end: { y: 0, opacity: 1 },
                 }}
                 initial="initial"
                 animate="end"
-                transition={{ duration: 1, ease: "easeInOut" }}
-                className="text-2xl text-[#FFD369]"
+                transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
+                className="text-2xl text-[#46C2CB]"
                 onClick={() => setSearchIsActive(!searchIsActive)}
               >
                 <IoSearchSharp />
@@ -119,30 +140,32 @@ function NavBar() {
                 key={item.name}
                 className={({ isActive }) =>
                   `flex items-center gap-2 ${
-                    isActive ? "text-[#c79e3d]" : "text-[#FFD369]"
+                    isActive
+                      ? "text-[#37a6ae] underline underline-offset-2"
+                      : "text-[#46C2CB]"
                   }`
                 }
               >
                 <motion.span
                   variants={{
-                    initial: { y: 50, opacity: 0.2 },
+                    initial: { y: 60, opacity: 0.2 },
                     end: { y: 0, opacity: 1 },
                   }}
                   initial="initial"
                   animate="end"
-                  transition={{ duration: 1, ease: "easeInOut" }}
+                  transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
                   className="text-xl "
                 >
                   {item.icon}
                 </motion.span>
                 <motion.span
                   variants={{
-                    initial: { y: 50, opacity: 0.2 },
+                    initial: { y: 80, opacity: 0.2 },
                     end: { y: 0, opacity: 1 },
                   }}
                   initial="initial"
                   animate="end"
-                  transition={{ duration: 1, ease: "easeOut" }}
+                  transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
                   className="text-xl"
                 >
                   {item.name}
@@ -153,13 +176,13 @@ function NavBar() {
             {/* dots */}
             <motion.button
               variants={{
-                initial: { y: 50, opacity: 0.2 },
+                initial: { y: 80, opacity: 0.2 },
                 end: { y: 0, opacity: 1 },
               }}
               initial="initial"
               animate="end"
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="text-2xl text-[#FFD369]"
+              transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
+              className="text-2xl text-[#46C2CB]"
               onClick={() => setMenuIsActive(!menuIsActive)}
             >
               <CgMenuBoxed />
@@ -170,17 +193,33 @@ function NavBar() {
 
         {/* If menuIsActive */}
         {menuIsActive && (
-          <div className=" absolute right-2 top-[115%] bg-[#453C97] p-4 rounded-xl">
+          <motion.div
+            variants={{
+              initial: { height: 0, width: 0 },
+              final: {
+                height: "fit-content",
+                width: "fit-content",
+                overflow: "hidden",
+                padding: 13,
+              },
+            }}
+            initial="initial"
+            animate="final"
+            transition={{ ease: "backIn", duration: 1 }}
+            className=" absolute right-2 top-[115%] bg-[#453C97] rounded-xl"
+          >
             <ul>
-              <li>Lorem, ipsum.</li>
-              <li>Lorem, ipsum.</li>
-              <li>Lorem, ipsum.</li>
-              <li>Lorem, ipsum.</li>
-              <li>Lorem, ipsum.</li>
-              <li>Lorem, ipsum.</li>
-              <li>Lorem, ipsum.</li>
+              {MenuList.map((item) => (
+                <a
+                  href="#"
+                  className="flex gap-2 items-center py-4 px-4 hover:underline text-xl text-[#46C2CB]"
+                >
+                  <li>{item.icon}</li>
+                  <li>{item.name}</li>
+                </a>
+              ))}
             </ul>
-          </div>
+          </motion.div>
         )}
 
         {/* --------------- */}
