@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 function LoginPage() {
     const [isHidePassword, setIsHidePassword] = useState(false);
 
     return (
         <div className="flex justify-center items-center h-screen w-screen">
             <div className="flex flex-col border-2 bg-slate-300 border-black p-5 pt-0 rounded-xl h-max w-[500px]">
-                <h2 className="text-4xl font-bold text-center m-6">Login</h2>
+                <h2 className="text-4xl font-bold text-center m-6">Welcome</h2>
                 <div>
                     <form
                         className="flex flex-col justify-around"
@@ -79,7 +80,7 @@ function LoginPage() {
                             <p className="text-center">
                                 Don't have an account?{" "}
                                 <span className="font-semibold text-[#2e2ef6]">
-                                    Sign Up
+                                    <NavLink to={"../signup"}>Sign Up</NavLink>
                                 </span>
                             </p>
                         </div>

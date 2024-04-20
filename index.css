@@ -9,7 +9,8 @@ form>div {
 
 form input[type="text"],
 form input[type="password"],
-form input[type="number"] {
+form input[type="number"],
+form input[type="email"] {
     border-bottom: 1px solid black;
     background-color: transparent;
     padding: 5px;
