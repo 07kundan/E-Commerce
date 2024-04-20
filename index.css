@@ -2,17 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-form input {
-    border: 1px solid black;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 18px;
-    outline: none;
+form>div {
+    position: relative;
+    height: 50px;
 }
 
-form input:focus {
-    border-color: #185ed7;
-    box-shadow: 0 0 5px #185ed7;
+form input[type="text"],
+form input[type="password"],
+form input[type="number"] {
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    padding: 5px;
+    font-size: 18px;
+    outline: none;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.input-label {
+    position: absolute;
+    bottom: 7px;
+    left: 6px;
+    color: grey;
+    pointer-events: none;
+    transition: all linear 0.2s;
+}
+
+input:focus+.input-label,
+input:not(:placeholder-shown)+.input-label {
+    bottom: 40px;
 }
 
 input::-webkit-outer-spin-button,
