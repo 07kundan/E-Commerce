@@ -23,6 +23,7 @@ function LoginPage() {
                                 id="usename"
                                 placeholder=""
                                 autoComplete="off"
+                                required
                             />
                             <label htmlFor="username" className="input-label">
                                 UserName
@@ -38,6 +39,7 @@ function LoginPage() {
                                     placeholder=""
                                     className="w-full"
                                     autoComplete="off"
+                                    required
                                 />
                                 <label
                                     htmlFor="password"
