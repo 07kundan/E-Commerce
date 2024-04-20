@@ -1,11 +1,11 @@
 import React from "react";
 
-function CategoryBox() {
+function CategoryBox({ category }) {
   return (
     <>
       <div className="w-[90%] h-[90vh] bg-purple-900 m-auto mb-10">
         <h3 className="h-fit text-3xl font-semibold text-center underline">
-          Mobiles
+          {category}
         </h3>
         <div className="flex gap-3 h-[92%] w-full bg-lime-600">
           {/* descroption */}

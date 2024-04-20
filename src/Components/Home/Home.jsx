@@ -1,10 +1,11 @@
 import React from "react";
-import HeroSection from "./HeroSection";
-import BGCarousel from "./BGCarousel";
-import ProductsRow from "./HomeProductRows/ProductsRow";
-import Emojis from "./Emojis";
-import CategoryBox from "./HomeProductRows/CategoryBox";
-import AllCategoriesList from "./HomeProductRows/AllCategoriesList";
+import HeroSection from "./HomeComponents/HeroSection";
+import BGCarousel from "./HomeComponents/BGCarousel";
+import ProductsRow from "./HomeComponents/ProductsRow";
+import Emojis from "./HomeComponents/Emojis";
+import CategoryBox from "./HomeComponents/CategoryBox";
+import AllCategoriesList from "./HomeComponents/AllCategoriesList";
+import Footer from "./Footer";
 
 // HOME page
 
@@ -17,8 +18,11 @@ function Home() {
       </div>
       <BGCarousel />
       <ProductsRow />
-      <CategoryBox />
+      <CategoryBox category={"SmartPhones"} />
+      <CategoryBox category={`Women's wear`} />
+      <CategoryBox category={"Men's wear"} />
       <AllCategoriesList />
+      <Footer />
     </div>
   );
 }

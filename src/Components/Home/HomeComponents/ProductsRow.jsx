@@ -9,7 +9,7 @@ function ProductsRow() {
         <h2 className="bg-slate-600">Top Deals 🔥</h2>
 
         <img
-          className="h-1/2 w-1/5 rounded-3xl bg-purple-600 absolute left-0 top-0"
+          className="h-1/2 w-1/5 rounded-3xl bg-[https://cdn.dummyjson.com/product-images/1/1.jpg] absolute left-0 top-0"
           src=""
           alt=""
         />

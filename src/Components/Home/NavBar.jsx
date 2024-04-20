@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import { IoIosCloseCircle, IoMdCart } from "react-icons/io";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
-import { CgLogIn } from "react-icons/cg";
+import { CgLogIn, CgMenuBoxed } from "react-icons/cg";
 import { IoSearchSharp } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 const NavItems = [
   { path: "", name: "Home", icon: <SiHomeassistantcommunitystore /> },
@@ -16,12 +17,24 @@ const NavItems = [
 function NavBar() {
   const [HamburgerIsActive, setHambuegeIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
+  const [menuIsActive, setMenuIsActive] = useState(false);
 
   return (
     <>
-      <div className="w-screen p-3 px-8 text-[#6D67E4] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:px-10 lg:rounded-2xl lg:my-2 lg:w-[83vw] ">
+      <div className="w-screen p-3 px-8 text-[#655ee6] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] ">
         {/* Name */}
-        <span className="text-2xl font-bold lg:w-[20%] lg:pl-7 ">ZED-kart</span>
+        <motion.span
+          variants={{
+            initial: { x: -90, opacity: 0 },
+            end: { x: 0, opacity: 1 },
+          }}
+          initial="initial"
+          animate="end"
+          transition={{ duration: 1, ease: "backInOut" }}
+          className="text-2xl font-bold lg:w-[20%] lg:pl-7 text-indigo-950"
+        >
+          ZED-kart
+        </motion.span>
 
         {/* Hamburger for smaller screen */}
         <>
@@ -79,16 +92,23 @@ function NavBar() {
                   <input
                     type="text"
                     placeholder="Search for the products"
-                    className="w-[27vw] text-lg p-1 px-3 rounded-lg bg-white bg-opacity-60 "
+                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-white bg-opacity-60 "
                   />
                 </>
               )}
-              <button
+              <motion.button
+                variants={{
+                  initial: { y: 50, opacity: 0.2 },
+                  end: { y: 0, opacity: 1 },
+                }}
+                initial="initial"
+                animate="end"
+                transition={{ duration: 1, ease: "easeInOut" }}
                 className="text-2xl text-[#FFD369]"
                 onClick={() => setSearchIsActive(!searchIsActive)}
               >
                 <IoSearchSharp />
-              </button>
+              </motion.button>
             </div>
             {/* ------------------------------------------------------- */}
 
@@ -103,13 +123,68 @@ function NavBar() {
                   }`
                 }
               >
-                <span className="text-xl ">{item.icon}</span>
-                <span className="text-xl">{item.name}</span>
+                <motion.span
+                  variants={{
+                    initial: { y: 50, opacity: 0.2 },
+                    end: { y: 0, opacity: 1 },
+                  }}
+                  initial="initial"
+                  animate="end"
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="text-xl "
+                >
+                  {item.icon}
+                </motion.span>
+                <motion.span
+                  variants={{
+                    initial: { y: 50, opacity: 0.2 },
+                    end: { y: 0, opacity: 1 },
+                  }}
+                  initial="initial"
+                  animate="end"
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className="text-xl"
+                >
+                  {item.name}
+                </motion.span>
               </NavLink>
             ))}
+            {/* -------------- */}
+            {/* dots */}
+            <motion.button
+              variants={{
+                initial: { y: 50, opacity: 0.2 },
+                end: { y: 0, opacity: 1 },
+              }}
+              initial="initial"
+              animate="end"
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="text-2xl text-[#FFD369]"
+              onClick={() => setMenuIsActive(!menuIsActive)}
+            >
+              <CgMenuBoxed />
+            </motion.button>
+            {/* ------- */}
           </div>
         )}
+
+        {/* If menuIsActive */}
+        {menuIsActive && (
+          <div className=" absolute right-2 top-[115%] bg-[#453C97] p-4 rounded-xl">
+            <ul>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+            </ul>
+          </div>
+        )}
+
         {/* --------------- */}
+        {/* --------------- END --------------- */}
       </div>
     </>
   );
