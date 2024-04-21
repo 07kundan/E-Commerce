@@ -13,9 +13,11 @@ export function UserProvider(props) {
   const [user, setUser] = useState(null);
 
   // Login function
-  async function Login() {
+  async function Login(email, password) {
+    const loggedIn = await account.createEmailSession(email, password);
+    setUser(loggedIn);
     navigate("/");
-    console.log("login");
+    // console.log(user);
   }
 
   // Logout function
@@ -26,8 +28,7 @@ export function UserProvider(props) {
   // SignUp
   async function Signup(email, password, name) {
     await account.create(ID.unique(), email, password, name);
-    await Login(email, password);
-    console.log("signup");
+    navigate("/login");
   }
 
   return (

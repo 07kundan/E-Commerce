@@ -99,7 +99,7 @@ function LoginPage() {
               className="bg-blue-600 text-white font-bold mt-3 p-3 text-lg rounded-md active:bg-cyan-600 hover:bg-blue-700"
               onClick={() => {
                 console.log("button Clicked");
-                userFromContext.Login();
+                userFromContext.Login(user.email, user.password);
               }}
             >
               Login
