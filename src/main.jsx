@@ -9,6 +9,7 @@ import Cart from "./Components/Mohit/Cart.jsx";
 import SignupPage from "./Components/Mohit/SignupPage.jsx";
 import Wishlist from "./Components/Mohit/Wishlist.jsx";
 import Profile from "./Components/Mohit/Profile.jsx";
+import Rewards from "./Components/Mohit/Rewards.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const routes = createBrowserRouter([
             {
                 path: "profile",
                 element: <Profile />,
+            },
+            {
+                path: "rewards",
+                element: <Rewards />,
             },
             {
                 path: "card",

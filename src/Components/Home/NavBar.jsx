@@ -35,7 +35,7 @@ const MenuList = [
     {
         icon: <FaGift />,
         name: "Rewards",
-        path: "",
+        path: "rewards",
     },
 ];
 // Navbar
