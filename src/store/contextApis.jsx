@@ -1,5 +1,7 @@
 import { createContext, useContext, useState } from "react";
-
+import { ID } from "appwrite";
+import { account } from "./AppWriteConfig";
+import { useNavigate } from "react-router-dom";
 const userContext = createContext();
 
 export function useUser() {
@@ -7,10 +9,12 @@ export function useUser() {
 }
 
 export function UserProvider(props) {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
   // Login function
   async function Login() {
+    navigate("/");
     console.log("login");
   }
 
@@ -20,7 +24,9 @@ export function UserProvider(props) {
   }
 
   // SignUp
-  async function Signup() {
+  async function Signup(email, password, name) {
+    await account.create(ID.unique(), email, password, name);
+    await Login(email, password);
     console.log("signup");
   }
 
