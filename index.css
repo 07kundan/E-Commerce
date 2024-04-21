@@ -8,6 +8,7 @@ form>div {
 }
 
 form input[type="text"],
+form input[type="email"],
 form input[type="password"],
 form input[type="number"] {
     border-bottom: 1px solid black;

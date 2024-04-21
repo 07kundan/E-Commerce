@@ -38,16 +38,20 @@ const routes = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: "signup",
+        element: <SignupPage />,
+      },
+      {
+        path: "forgot",
+        element: <div>hello</div>,
+      },
+      {
         path: "cart",
         element: <Cart />,
       },
       {
         path: "card",
         element: <Card />,
-      },
-      {
-        path: "signup",
-        element: <SignupPage />,
       },
     ],
   },

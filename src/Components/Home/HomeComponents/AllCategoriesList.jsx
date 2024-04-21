@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchAllProductsCategories } from "../../API";
+import { fetchAllProductsCategories } from "../../../store/API";
 
 function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
@@ -18,7 +18,7 @@ function AllCategoriesList() {
     }
   }, []);
 
-  console.log(CategoryList);
+  // console.log(CategoryList);
   return (
     <div className="w-[90%] h-fit bg-purple-900 m-auto mb-10 p-2">
       <h3 className="text-center text-4xl font-semibold underline">
