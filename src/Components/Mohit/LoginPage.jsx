@@ -62,7 +62,7 @@ function LoginPage() {
                                 )}
                             </button>
                         </div>
-                        {/* forgot password and sign up section  */}
+                        {/* forgot password and sign up section   */}
                         <div className="flex flex-col gap-4 h-max py-4">
                             <div className="h-max flex justify-between p-1">
                                 <div className="flex gap-2">

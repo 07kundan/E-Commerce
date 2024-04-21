@@ -18,7 +18,7 @@ function SignupPage() {
                             e.preventDefault();
                         }}
                     >
-                        {/* Username  */}
+                        {/* Username   */}
                         <div className="w-full relative">
                             <input
                                 type="text"
