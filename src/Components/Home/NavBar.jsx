@@ -46,12 +46,12 @@ function NavBar() {
         {/* Name */}
         <motion.span
           variants={{
-            initial: { x: -90, opacity: 0.5 },
+            initial: { x: -120, opacity: 0 },
             end: { x: 0, opacity: 1 },
           }}
           initial="initial"
           animate="end"
-          transition={{ delay: 0.5, duration: 1, ease: "backInOut" }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "backInOut" }}
           className="text-2xl font-bold lg:w-[20%] lg:pl-7 text-indigo-950"
         >
           ZED-kart
@@ -110,21 +110,31 @@ function NavBar() {
             <div className="flex gap-3 items-center">
               {searchIsActive && (
                 <>
-                  <input
+                  <motion.input
+                    variants={{
+                      initial: { width: "0" },
+                      final: { width: "27vw" },
+                    }}
+                    initial="initial"
+                    animate="final"
+                    transition={{ duration: 0.5, ease: "linear" }}
                     type="text"
                     placeholder="Search for the products"
-                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-white bg-opacity-60 "
+                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-slate-800 bg-opacity-40 "
                   />
                 </>
               )}
               <motion.button
                 variants={{
-                  initial: { y: 80, opacity: 0.2 },
+                  initial: { y: 40, opacity: 0.2 },
                   end: { y: 0, opacity: 1 },
                 }}
                 initial="initial"
                 animate="end"
-                transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
+                transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
+                whileTap={{ color: "cyan" }}
+                whileFocus={{ color: "red" }}
+                whileHover={{ color: "#2e8c93" }}
                 className="text-2xl text-[#46C2CB]"
                 onClick={() => setSearchIsActive(!searchIsActive)}
               >
@@ -139,50 +149,64 @@ function NavBar() {
                 to={`/${item.path}`}
                 key={item.name}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 ${
+                  ` ${
                     isActive
-                      ? "text-[#37a6ae] underline underline-offset-2"
+                      ? "text-[#46C2CB] underline underline-offset-4 "
                       : "text-[#46C2CB]"
                   }`
                 }
               >
-                <motion.span
-                  variants={{
-                    initial: { y: 60, opacity: 0.2 },
-                    end: { y: 0, opacity: 1 },
-                  }}
-                  initial="initial"
-                  animate="end"
-                  transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
-                  className="text-xl "
+                <motion.div
+                  whileFocus={{ color: "red" }}
+                  whileTap={{ color: "cyan" }}
+                  whileHover={{ color: "#2e8c93" }}
+                  className="flex items-center gap-2"
                 >
-                  {item.icon}
-                </motion.span>
-                <motion.span
-                  variants={{
-                    initial: { y: 80, opacity: 0.2 },
-                    end: { y: 0, opacity: 1 },
-                  }}
-                  initial="initial"
-                  animate="end"
-                  transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
-                  className="text-xl"
-                >
-                  {item.name}
-                </motion.span>
+                  <motion.span
+                    variants={{
+                      initial: { y: 40, opacity: 0 },
+                      end: { y: 0, opacity: 1 },
+                    }}
+                    initial="initial"
+                    animate="end"
+                    transition={{
+                      delay: 0.2,
+                      duration: 0.6,
+                      ease: "easeInOut",
+                    }}
+                    className="text-xl "
+                  >
+                    {item.icon}
+                  </motion.span>
+                  <motion.span
+                    variants={{
+                      initial: { y: 40, opacity: 0 },
+                      end: { y: 0, opacity: 1 },
+                    }}
+                    initial="initial"
+                    animate="end"
+                    transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+                    className="text-xl"
+                  >
+                    {item.name}
+                  </motion.span>
+                </motion.div>
               </NavLink>
             ))}
             {/* -------------- */}
             {/* dots */}
             <motion.button
               variants={{
-                initial: { y: 80, opacity: 0.2 },
+                initial: { y: 40, opacity: 0.2 },
                 end: { y: 0, opacity: 1 },
               }}
               initial="initial"
               animate="end"
-              transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
-              className="text-2xl text-[#46C2CB]"
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
+              whileHover={{ color: "#2e8c93" }}
+              whileTap={{ color: "cyan" }}
+              whileFocus={{ color: "red" }}
+              className="text-2xl text-[#46C2CB] "
               onClick={() => setMenuIsActive(!menuIsActive)}
             >
               <CgMenuBoxed />
@@ -205,7 +229,7 @@ function NavBar() {
             }}
             initial="initial"
             animate="final"
-            transition={{ ease: "backIn", duration: 1 }}
+            transition={{ ease: "backIn", duration: 0.6 }}
             className=" absolute right-2 top-[115%] bg-[#453C97] rounded-xl"
           >
             <ul>

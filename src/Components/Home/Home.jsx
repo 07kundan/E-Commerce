@@ -1,23 +1,41 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HeroSection from "./HomeComponents/HeroSection";
 import BGCarousel from "./HomeComponents/BGCarousel";
-import ProductsRow from "./HomeComponents/ProductsRow";
 import Emojis from "./HomeComponents/Emojis";
+import DealsPage from "./HomeComponents/DealsPage";
 import CategoryBox from "./HomeComponents/CategoryBox";
 import AllCategoriesList from "./HomeComponents/AllCategoriesList";
 import Footer from "./Footer";
+import { useInView, useScroll } from "framer-motion";
 
 // HOME page
+const emojis = [
+  { emoji: "😍", Id: "top" },
+  { emoji: "🔥", Id: "hot" },
+  { emoji: "😎", Id: "smart" },
+  { emoji: "🥶", Id: "cool" },
+];
 
 function Home() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-30%" });
+
   return (
     <div className="">
       <HeroSection />
-      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 lg:top-20 z-50 ">
-        <Emojis />
-      </div>
+
+      {isInView ? (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 lg:top-20 z-50 ">
+          <Emojis emojis={emojis} />
+        </div>
+      ) : null}
+
       <BGCarousel />
-      <ProductsRow />
+      <div ref={ref} className="">
+        {emojis.map((item) => (
+          <DealsPage Id={item.Id} emoji={item.emoji} />
+        ))}
+      </div>
       <CategoryBox category={"SmartPhones"} />
       <CategoryBox category={`Women's wear`} />
       <CategoryBox category={"Men's wear"} />
