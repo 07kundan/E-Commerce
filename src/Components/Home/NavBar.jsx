@@ -241,6 +241,7 @@ function NavBar() {
                 <NavLink
                   to={item.path}
                   className="flex gap-2 items-center py-4 px-4 hover:underline text-xl text-[#46C2CB]"
+                  onClick={() => menuIsActive(false)}
                 >
                   <li>{item.icon}</li>
                   <li>{item.name}</li>

@@ -14,7 +14,7 @@ function BGCarousel() {
         }}
         navigation={true}
         modules={[Navigation, Pagination]}
-        className="h-[80vh] w-[78%] "
+        className="w-[90%] lg:h-[80vh] lg:w-[78%] bg-lime-800"
       >
         <SwiperSlide>
           <img

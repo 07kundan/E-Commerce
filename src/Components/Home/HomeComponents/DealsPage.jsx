@@ -4,7 +4,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 function DealsPage({ Id, emoji }) {
   const ref = useRef(null);
   const control = useAnimation();
-  const isInView = useInView(ref, { amount: 0.7 });
+  const isInView = useInView(ref, { amount: 0.6 });
 
   useEffect(() => {
     if (isInView) {
@@ -20,7 +20,7 @@ function DealsPage({ Id, emoji }) {
       <div
         id={Id}
         ref={ref}
-        className="bg-lime-900 h-screen w-screen m-auto my-16 flex justify-center items-center relative"
+        className="bg-lime-900 h-screen w-screen m-auto flex justify-center items-center relative"
       >
         <h2 className="text-[#46C2CB] text-4xl font-bold ">
           {Id.toUpperCase()} {"DEALS"} {emoji}

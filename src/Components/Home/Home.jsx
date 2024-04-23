@@ -33,7 +33,7 @@ function Home() {
       <BGCarousel />
       <div ref={ref} className="">
         {emojis.map((item) => (
-          <DealsPage Id={item.Id} emoji={item.emoji} />
+          <DealsPage key={item.Id} Id={item.Id} emoji={item.emoji} />
         ))}
       </div>
       <CategoryBox category={"SmartPhones"} />

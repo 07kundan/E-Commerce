@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 // It includes brand Name and some animations
 function HeroSection() {
   return (
-    <div className=" h-[84vh] w-screen flex justify-center items-center text-2xl relative">
+    <div className="  h-[70vh] lg:h-[84vh] w-screen lg:flex justify-center items-center text-2xl relative">
       {/* company name */}
-      <div className=" w-1/2 h-full flex items-center justify-center text-5xl font-bold text-[#564fd7]">
+      <div className="w-full h-1/2 lg:w-1/2 lg:h-full flex items-center justify-center text-5xl font-bold text-[#564fd7]">
         {/* logo */}
         <motion.span
           className="mr-3 text-8xl"
@@ -38,7 +38,7 @@ function HeroSection() {
 
       {/* company animations */}
 
-      <div className=" w-1/2 h-full flex flex-col items-center justify-end pb-10 ">
+      <div className="w-full h-1/2 lg:w-1/2 lg:h-full flex flex-col items-center justify-end pb-10 ">
         <div className=" w-[80%] h-fit text-center p-3 px-10 flex flex-col gap-3 ">
           <h3 className="underline font-semibold text-3xl text-[#46C2CB] mb-4">
             Top Brands
