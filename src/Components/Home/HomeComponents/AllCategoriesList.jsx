@@ -11,6 +11,8 @@ const ImagesCollections = [
 
 function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
+  const [animateValue, setAnimateValue] = useState("smartphones");
+  const [pageFound, setPageFound] = useState(false);
   useEffect(() => {
     try {
       fetchAllProductsCategories()
@@ -25,8 +27,6 @@ function AllCategoriesList() {
       console.log(error);
     }
   }, []);
-
-  const [animateValue, setAnimateValue] = useState("smartphones");
 
   //
 
@@ -75,30 +75,32 @@ function AllCategoriesList() {
         {/* Category Images */}
         <div className="w12"></div>
         {window.innerWidth > 1024 && (
-          <div className="bg-blue-700 w-1/2 h-full">
-            {ImagesCollections.map(
-              (item) =>
-                animateValue === item.id && (
-                  <motion.div
-                    className="flex justify-center"
-                    key={item.id}
-                    variants={{
-                      initial: { x: 500, opacity: 0 },
-                      final: { x: 0, opacity: 1 },
-                    }}
-                    initial="initial"
-                    animate="final"
-                    transition={{
-                      delay: 0.2,
-                      duration: 1,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    {item.text}
-                  </motion.div>
-                )
-            )}
-          </div>
+          <>
+            <div className="bg-blue-700 w-1/2 ">
+              {ImagesCollections.map(
+                (item) =>
+                  animateValue === item.id && (
+                    <motion.div
+                      className="flex justify-center bg-lime-500"
+                      key={item.id}
+                      variants={{
+                        initial: { x: 500, opacity: 0 },
+                        final: { x: 0, opacity: 1 },
+                      }}
+                      initial="initial"
+                      animate="final"
+                      transition={{
+                        delay: 0.2,
+                        duration: 1,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {item.text}
+                    </motion.div>
+                  )
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>

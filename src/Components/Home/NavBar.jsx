@@ -64,42 +64,78 @@ function NavBar() {
         {/* Hamburger for smaller screen */}
         <>
           {window.innerWidth < 1024 && (
-            <button
-              className="text-4xl"
-              onClick={() => setHambuegeIsActive(true)}
-            >
-              <MdMenu />
-            </button>
+            <div className=" flex items-center gap-3">
+              {/* dots */}
+              <motion.button
+                variants={{
+                  initial: { y: 40, opacity: 0 },
+                  end: { y: 0, opacity: 1 },
+                }}
+                initial="initial"
+                animate="end"
+                transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
+                whileHover={{ color: "#2e8c93" }}
+                whileTap={{ color: "cyan" }}
+                whileFocus={{ color: "red" }}
+                className="text-4xl text-[#46C2CB] "
+                onClick={() => setMenuIsActive(!menuIsActive)}
+              >
+                <CgMenuBoxed />
+              </motion.button>
+
+              <motion.button
+                variants={{
+                  initial: { y: 40, opacity: 0 },
+                  end: { y: 0, opacity: 1 },
+                }}
+                initial="initial"
+                animate="end"
+                transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
+                whileHover={{ color: "#2e8c93" }}
+                whileTap={{ color: "cyan" }}
+                whileFocus={{ color: "red" }}
+                className="text-4xl text-[#46C2CB] "
+                onClick={() => setHambuegeIsActive(!HamburgerIsActive)}
+              >
+                <MdMenu />
+              </motion.button>
+            </div>
           )}
 
-          {/* Navlist if HamburgerIsActive */}
+          {/* Navlist if HamburgerIsActive for mobile*/}
           {HamburgerIsActive && (
             <>
-              <div className="w-full h-[100vh] p-4 absolute top-0 right-0 text-2xl z-20 bg-white">
-                <button
-                  className="text-3xl float-end p-4 "
-                  onClick={() => setHambuegeIsActive(false)}
-                >
-                  <IoIosCloseCircle />
-                </button>
+              <div className="w-fit absolute right-4 lg:right-2 top-[115%] bg-[#453C97] rounded-xl">
                 {/* routes */}
-                <div className="h-full p-12 flex flex-col gap-4  ">
+                <motion.div
+                  variants={{
+                    initial: { height: 0, width: 0 },
+                    final: {
+                      height: "fit-content",
+                      width: "fit-content",
+                      overflow: "hidden",
+                      padding: 10,
+                    },
+                  }}
+                  initial="initial"
+                  animate="final"
+                  transition={{ ease: "backIn", duration: 0.6 }}
+                  className=" absolute right-4 lg:right-2 top-[115%] bg-[#453C97] rounded-xl"
+                >
                   {NavItems.map((item) => (
                     <NavLink
                       onClick={() => setHambuegeIsActive(false)}
                       to={`/${item.path}`}
                       key={item.name}
-                      className={({ isActive }) =>
-                        `flex items-center gap-2 ${
-                          isActive ? "text-[#c79e3d]" : "text-[#FFD369]"
-                        }`
+                      className={
+                        "flex gap-2 items-center py-4 px-4 hover:underline text-xl text-[#46C2CB]"
                       }
                     >
                       <span className="text-2xl ">{item.icon}</span>
                       <span>{item.name}</span>
                     </NavLink>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </>
           )}
@@ -234,14 +270,14 @@ function NavBar() {
             initial="initial"
             animate="final"
             transition={{ ease: "backIn", duration: 0.6 }}
-            className=" absolute right-2 top-[115%] bg-[#453C97] rounded-xl"
+            className=" absolute right-4 lg:right-2 top-[115%] bg-[#453C97] rounded-xl"
           >
             <ul>
               {MenuList.map((item) => (
                 <NavLink
                   to={item.path}
-                  className="flex gap-2 items-center py-4 px-4 hover:underline text-xl text-[#46C2CB]"
-                  onClick={() => menuIsActive(false)}
+                  className="flex gap-2 items-center p-4 hover:underline text-xl text-[#46C2CB]"
+                  onClick={() => setMenuIsActive(false)}
                 >
                   <li>{item.icon}</li>
                   <li>{item.name}</li>
