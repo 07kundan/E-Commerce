@@ -11,6 +11,8 @@ export function useUser() {
 export function UserProvider(props) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [category, setCategory] = useState("smartphones");
+
   // Login function
   async function Login(email, password) {
     const loggedIn = await account.createEmailSession(email, password);
@@ -31,7 +33,9 @@ export function UserProvider(props) {
   }
 
   return (
-    <userContext.Provider value={{ current: user, Login, Logout, Signup }}>
+    <userContext.Provider
+      value={{ current: user, Login, Logout, Signup, category, setCategory }}
+    >
       {props.children}
     </userContext.Provider>
   );

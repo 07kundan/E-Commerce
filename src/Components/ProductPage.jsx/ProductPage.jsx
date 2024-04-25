@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { fetchCategoryData } from "../../store/API";
 import Card from "../Mohit/Card";
+import { useUser } from "../../store/contextApis";
 
-function ProductPage({ category }) {
+function ProductPage() {
   const [categoryData, setCategoryData] = useState({});
+  const { category } = useUser();
 
   useEffect(() => {
     try {
-      fetchCategoryData("smartphones")
+      fetchCategoryData(`${category}`)
         .then((response) => {
           setCategoryData(response);
         })
@@ -15,7 +17,7 @@ function ProductPage({ category }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [category]);
 
   return (
     <div>
@@ -36,7 +38,6 @@ function ProductPage({ category }) {
             ))}
           </div>
         )}
-      {console.log(categoryData)}
     </div>
   );
 }

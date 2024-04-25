@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useAnimate, useAnimation } from "framer-motion";
 import { fetchAllProductsCategories } from "../../../store/API";
+import { useUser } from "../../../store/contextApis";
 
 const ImagesCollections = [
   { id: "smartphones", text: "smartphones" },
@@ -13,8 +14,9 @@ function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
   const [animateValue, setAnimateValue] = useState("smartphones");
   const [pageFound, setPageFound] = useState(false);
+  const { setCategory } = useUser();
 
-  const setCategory = useEffect(() => {
+  useEffect(() => {
     try {
       fetchAllProductsCategories()
         .then((response) => {
@@ -66,8 +68,12 @@ function AllCategoriesList() {
                   >
                     {item.toUpperCase()}
                   </motion.button>
-                  <button onClick={setca}>
-                    <Link to="/Login" className="underline">
+                  <button
+                    onClick={() => {
+                      setCategory(item);
+                    }}
+                  >
+                    <Link to="/category" className="underline">
                       view all
                     </Link>
                   </button>

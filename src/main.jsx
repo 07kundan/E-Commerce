@@ -11,6 +11,7 @@ import Wishlist from "./Components/Mohit/Wishlist.jsx";
 import Profile from "./Components/Mohit/Profile.jsx";
 import Rewards from "./Components/Mohit/Rewards.jsx";
 import ProductPage from "./Components/ProductPage.jsx/ProductPage.jsx";
+import { useUser } from "./store/contextApis.jsx";
 
 const routes = createBrowserRouter([
   {
