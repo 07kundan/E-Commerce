@@ -46,7 +46,7 @@ function NavBar() {
 
   return (
     <>
-      <div className="w-screen p-3 px-8 text-[#655ee6] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] ">
+      <div className="w-screen p-3 px-8 text-[#655ee6] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2 lg:-translate-x-1/2">
         {/* Name */}
         <motion.span
           variants={{

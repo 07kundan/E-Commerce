@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import HeroSection from "./HomeComponents/HeroSection";
 import BGCarousel from "./HomeComponents/BGCarousel";
 import Emojis from "./HomeComponents/Emojis";
-import DealsPage from "./HomeComponents/DealsPage";
 import CategoryBox from "./HomeComponents/CategoryBox";
 import AllCategoriesList from "./HomeComponents/AllCategoriesList";
 import Footer from "./Footer";
 import { useInView, useScroll } from "framer-motion";
+import DealsPage from "./HomeComponents/DealsPages/DealsPage";
 
 // HOME page
 const emojis = [

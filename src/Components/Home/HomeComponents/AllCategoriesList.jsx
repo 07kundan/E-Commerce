@@ -13,7 +13,6 @@ const ImagesCollections = [
 function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
   const [animateValue, setAnimateValue] = useState("smartphones");
-  const [pageFound, setPageFound] = useState(false);
   const { setCategory } = useUser();
 
   useEffect(() => {
@@ -46,13 +45,19 @@ function AllCategoriesList() {
             <div key={item}>
               {/*  for mobile devices */}
               {window.innerWidth < 1024 && (
-                <Link
-                  to={"/Login"}
-                  className="bg-emerald-700 list-none p-1"
-                  key={item}
+                <button
+                  onClick={() => {
+                    setCategory(item);
+                  }}
                 >
-                  {item.toUpperCase()}
-                </Link>
+                  <Link
+                    to={"/category"}
+                    className="bg-emerald-700 list-none p-1"
+                    key={item}
+                  >
+                    {item.toUpperCase()}
+                  </Link>
+                </button>
               )}
               {/* ------------------------- */}
 
