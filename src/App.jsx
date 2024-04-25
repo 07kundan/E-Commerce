@@ -5,7 +5,7 @@ import NavBar from "./Components/Home/NavBar";
 import { UserProvider, useUser } from "./store/contextApis";
 
 function App() {
-  const [category, setCategory] = useState("smartphones");
+  const [category, setCategory] = useState("");
   useEffect(() => {
     try {
       const responseData = fetchAllProductsData();

@@ -13,7 +13,8 @@ function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
   const [animateValue, setAnimateValue] = useState("smartphones");
   const [pageFound, setPageFound] = useState(false);
-  useEffect(() => {
+
+  const setCategory = useEffect(() => {
     try {
       fetchAllProductsCategories()
         .then((response) => {
@@ -51,6 +52,8 @@ function AllCategoriesList() {
                   {item.toUpperCase()}
                 </Link>
               )}
+              {/* ------------------------- */}
+
               {/*  For bigger screen */}
               {window.innerWidth > 1024 && (
                 <div className="flex justify-between" key={item}>
@@ -63,9 +66,11 @@ function AllCategoriesList() {
                   >
                     {item.toUpperCase()}
                   </motion.button>
-                  <Link to="/Login" className="underline ">
-                    view all
-                  </Link>
+                  <button onClick={setca}>
+                    <Link to="/Login" className="underline">
+                      view all
+                    </Link>
+                  </button>
                 </div>
               )}
             </div>

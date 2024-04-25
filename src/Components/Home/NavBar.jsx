@@ -275,6 +275,7 @@ function NavBar() {
             <ul>
               {MenuList.map((item) => (
                 <NavLink
+                  key={item.name}
                   to={item.path}
                   className="flex gap-2 items-center p-4 hover:underline text-xl text-[#46C2CB]"
                   onClick={() => setMenuIsActive(false)}

@@ -11,7 +11,6 @@ export function useUser() {
 export function UserProvider(props) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-
   // Login function
   async function Login(email, password) {
     const loggedIn = await account.createEmailSession(email, password);
