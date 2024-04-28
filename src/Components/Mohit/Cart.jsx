@@ -10,9 +10,9 @@ function Cart() {
     0
   );
 
-  const increaseQuantity = (productId) => {
+  const increaseQuantity = (productName) => {
     const updatedcartProduct = cartProduct.map((product) => {
-      if (product.id === productId) {
+      if (product.name === productName) {
         return { ...product, quantity: product.quantity + 1 };
       }
       return product;
@@ -20,9 +20,9 @@ function Cart() {
     setCartProduct(updatedcartProduct);
   };
 
-  const decreaseQuantity = (productId) => {
+  const decreaseQuantity = (productName) => {
     const updatedcartProduct = cartProduct.map((product) => {
-      if (product.id === productId && product.quantity > 1) {
+      if (product.name === productName && product.quantity > 1) {
         return { ...product, quantity: product.quantity - 1 };
       }
       return product;
@@ -30,16 +30,16 @@ function Cart() {
     setCartProduct(updatedcartProduct);
   };
 
-  const removeItem = (productId) => {
+  const removeItem = (productName) => {
     const updatedcartProduct = cartProduct.filter(
-      (product) => product.id !== productId
+      (product) => product.name !== productName
     );
     setCartProduct(updatedcartProduct);
   };
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-semibold mb-8 text-white">Your Cart</h1>
+      <h1 className="text-4xl font-semibold mb-8 text-white"></h1>
       {cartProduct.length == 0 ? (
         <p className="text-white text-center text-3xl font-light flex items-center gap-6 justify-center">
           <IoMdCart /> Cart is empty
@@ -61,7 +61,7 @@ function Cart() {
               </thead>
               <tbody>
                 {cartProduct.map((product) => (
-                  <tr key={product.id} className="border-b">
+                  <tr key={product.name} className="border-b">
                     <td className="py-4 px-6">
                       <img
                         src={product.image}
@@ -70,19 +70,19 @@ function Cart() {
                       />
                       {product.name}
                     </td>
-                    <td className="py-4 px-6">Rs. {product.price}</td>
-                    <td className="py-4 px-6">{product.rating.toFixed(1)}</td>
+                    <td className="py-4 px-6">Price. {product.price}$</td>
+                    <td className="py-4 px-6">{product.rating}</td>
                     <td className="py-4 px-6">
                       <button
                         className="bg-blue-500 text-white px-2 py-1 rounded-md"
-                        onClick={() => increaseQuantity(product.id)}
+                        onClick={() => increaseQuantity(product.name)}
                       >
                         +
                       </button>
                       <span className="mx-2">{product.quantity}</span>
                       <button
                         className="bg-red-500 text-white px-2 py-1 rounded-md"
-                        onClick={() => decreaseQuantity(product.id)}
+                        onClick={() => decreaseQuantity(product.name)}
                       >
                         -
                       </button>
@@ -90,7 +90,7 @@ function Cart() {
                     <td className="py-4 px-6">
                       <button
                         className="bg-red-500 text-white px-2 py-1 rounded-md"
-                        onClick={() => removeItem(product.id)}
+                        onClick={() => removeItem(product.name)}
                       >
                         Remove
                       </button>
@@ -102,7 +102,7 @@ function Cart() {
                     Total
                   </td>
                   <td colSpan="2" className="py-4 px-6 font-semibold">
-                    Rs. {total}
+                    Price. {total}$
                   </td>
                 </tr>
               </tbody>

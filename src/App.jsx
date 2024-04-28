@@ -7,11 +7,13 @@ import { UserProvider, useUser } from "./store/contextApis";
 function App() {
   return (
     <>
-      <div className="bg-indigo-950 h-screen fixed top-0 w-full -z-50"></div>
-      <UserProvider>
-        <NavBar />
-        <Outlet />
-      </UserProvider>
+      <div className="bg-indigo-950 h-screen fixed top-0 w-full -z-50 "></div>
+      <div className="text-[#FFD369]">
+        <UserProvider>
+          <NavBar />
+          <Outlet />
+        </UserProvider>
+      </div>
     </>
   );
 }

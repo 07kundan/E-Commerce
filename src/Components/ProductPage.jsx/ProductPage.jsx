@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { fetchCategoryData } from "../../store/API";
 import Card from "../Mohit/Card";
 import { useUser } from "../../store/contextApis";
+import ProductCard from "./ProductCard";
+import { SwiperSlide, Swiper } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Pagination, Navigation } from "swiper/modules";
 
 function ProductPage() {
   const [categoryData, setCategoryData] = useState({});
@@ -20,23 +26,34 @@ function ProductPage() {
   }, [category]);
 
   return (
-    <div>
+    <div className="h-screen w-screen  flex items-center pt-8 ">
       {categoryData &&
         categoryData.products &&
         Array.isArray(categoryData.products) && (
-          <div className="flex flex-wrap w-screen h-fit justify-center">
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            navigation={true}
+            modules={[Navigation, Pagination]}
+            className="flex items-center justify-center w-[95%] h-4/5 "
+          >
             {categoryData.products.map((item) => (
-              <div key={item.id}>
-                <Card
+              <SwiperSlide key={item.id}>
+                <ProductCard
                   title={item.title}
                   description={item.description}
                   price={item.price}
                   rating={item.rating}
-                  imageUrl={item.images[0]}
+                  imageUrl1={item.images[0]}
+                  imageUrl2={item.images[1]}
+                  imageUrl3={item.images[2]}
+                  imageUrl4={item.images[3]}
+                  imageUrl5={item.images[4]}
                 />
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         )}
     </div>
   );

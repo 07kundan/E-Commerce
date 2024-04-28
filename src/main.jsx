@@ -12,6 +12,7 @@ import Profile from "./Components/Mohit/Profile.jsx";
 import Rewards from "./Components/Mohit/Rewards.jsx";
 import ProductPage from "./Components/ProductPage.jsx/ProductPage.jsx";
 import { useUser } from "./store/contextApis.jsx";
+import ProductCard from "./Components/ProductPage.jsx/ProductCard.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -63,7 +64,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "card",
-        element: <Card />,
+        element: <ProductCard />,
       },
       {
         path: "signup",
