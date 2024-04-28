@@ -9,6 +9,7 @@ import { FaGift, FaHeart } from "react-icons/fa";
 import { FiPackage } from "react-icons/fi";
 
 import { motion } from "framer-motion";
+import { useUser } from "../../store/contextApis";
 
 const NavItems = [
   { path: "", name: "Home", icon: <SiHomeassistantcommunitystore /> },
@@ -43,7 +44,7 @@ function NavBar() {
   const [HamburgerIsActive, setHambuegeIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
-
+  const { cartProduct } = useUser();
   return (
     <>
       <div className="w-screen p-3 px-8 text-[#655ee6] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2 lg:-translate-x-1/2">
@@ -200,7 +201,7 @@ function NavBar() {
                   whileFocus={{ color: "red" }}
                   whileTap={{ color: "cyan" }}
                   whileHover={{ color: "#2e8c93" }}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 "
                 >
                   <motion.span
                     variants={{
@@ -214,9 +215,19 @@ function NavBar() {
                       duration: 0.6,
                       ease: "easeInOut",
                     }}
-                    className="text-xl "
+                    className="text-xl relative"
                   >
-                    {item.icon}
+                    {item.path === "cart" && (
+                      <span className="absolute right-0.5 bottom-3 text-lg font-semibold text-red-700">
+                        {cartProduct.length}
+                      </span>
+                    )}
+                    {item.name !== "Home" && (
+                      <span className="text-2xl">{item.icon}</span>
+                    )}
+                    {item.name === "Home" && (
+                      <span className="text-2xl">{item.icon}</span>
+                    )}
                   </motion.span>
                   <motion.span
                     variants={{

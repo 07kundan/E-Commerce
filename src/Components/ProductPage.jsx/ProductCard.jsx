@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosStar } from "react-icons/io";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
-
 import {
   Autoplay,
   Pagination,
@@ -15,7 +13,7 @@ import {
   Thumbs,
   FreeMode,
 } from "swiper/modules";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useUser } from "../../store/contextApis";
 import { useNavigate } from "react-router-dom";
 
@@ -29,11 +27,13 @@ function ProductCard({
   imageUrl3,
   imageUrl4,
 }) {
-  const { cartProduct, setCartProduct } = useUser();
+  const { cartProduct, setCartProduct, wishlistItems, setWishlistItems } =
+    useUser();
   const [added, setAdded] = useState(false);
+  const [wishlistAdded, setWishlistAdded] = useState(false);
   const navigate = useNavigate();
-  // Add to Cart
 
+  // Add to Cart
   const addToCart = () => {
     let newArray = [];
     if (!added) {
@@ -54,6 +54,28 @@ function ProductCard({
     }
     setAdded(!added);
     console.log("clicked");
+  };
+  // ---------------
+
+  // Wishlist
+  const handleWishlist = () => {
+    let newArray = [];
+    if (!wishlistAdded) {
+      newArray = [
+        ...wishlistItems,
+        {
+          name: `${title}`,
+          price: `${price}`,
+          image: `${imageUrl1}`,
+          rating: `${rating}`,
+        },
+      ];
+    }
+    if (wishlistAdded) {
+      newArray = wishlistItems.filter((product) => product.name !== title);
+    }
+    setWishlistItems(newArray);
+    setWishlistAdded(!wishlistAdded);
   };
 
   return (
@@ -134,9 +156,9 @@ function ProductCard({
         </Swiper>
         {/* bottom */}
         <div className=" flex justify-center gap-6 items-center">
-          <span className="text-2xl">
-            <FaHeart />
-          </span>
+          <button className="text-2xl" onClick={handleWishlist}>
+            {wishlistAdded ? <FaHeart /> : <FaRegHeart />}
+          </button>
           <button
             className="py-1 px-2 bg-yellow-800 rounded-lg text-xl"
             onClick={addToCart}

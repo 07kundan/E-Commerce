@@ -13,6 +13,7 @@ export function UserProvider(props) {
   const [user, setUser] = useState(null);
   const [category, setCategory] = useState("smartphones");
   const [cartProduct, setCartProduct] = useState([]);
+  const [wishlistItems, setWishlistItems] = useState([]);
 
   // Login function
   async function Login(email, password) {
@@ -44,6 +45,8 @@ export function UserProvider(props) {
         setCategory,
         cartProduct,
         setCartProduct,
+        wishlistItems,
+        setWishlistItems,
       }}
     >
       {props.children}
