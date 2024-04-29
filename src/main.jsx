@@ -3,15 +3,13 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Components/Home/Home.jsx";
-import Card from "./Components/Mohit/Card.jsx";
-import LoginPage from "./Components/Mohit/LoginPage.jsx";
-import Cart from "./Components/Mohit/Cart.jsx";
-import SignupPage from "./Components/Mohit/SignupPage.jsx";
-import Wishlist from "./Components/Mohit/Wishlist.jsx";
-import Profile from "./Components/Mohit/Profile.jsx";
-import Rewards from "./Components/Mohit/Rewards.jsx";
+import LoginPage from "./Components/MenuListComponents/LoginPage.jsx";
+import Cart from "./Components/MenuListComponents/Cart.jsx";
+import SignupPage from "./Components/MenuListComponents/SignupPage.jsx";
+import Wishlist from "./Components/MenuListComponents/Wishlist.jsx";
+import Profile from "./Components/MenuListComponents/Profile.jsx";
+import Rewards from "./Components/MenuListComponents/Rewards.jsx";
 import ProductPage from "./Components/ProductPage.jsx/ProductPage.jsx";
-import { useUser } from "./store/contextApis.jsx";
 import ProductCard from "./Components/ProductPage.jsx/ProductCard.jsx";
 
 const routes = createBrowserRouter([

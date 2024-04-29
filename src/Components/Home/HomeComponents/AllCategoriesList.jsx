@@ -34,13 +34,13 @@ function AllCategoriesList() {
 
   // ----------------------------
   return (
-    <div className="w-[90%] h-fit bg-purple-900 m-auto mb-10 p-2">
+    <div className="w-[90%] h-fit m-auto mb-10 p-2">
       <h3 className="text-center text-4xl font-semibold underline">
         All categories
       </h3>
       <div className="h-fit w-full flex justify-center items-center">
         {/* Categories List */}
-        <div className="w-full lg:w-1/2 py-4 bg-slate-600 lg:p-6 lg:px-10 flex flex-wrap gap-4 justify-center lg:block">
+        <div className="w-full lg:w-1/2 py-4 lg:p-6 lg:px-10 flex flex-wrap gap-4 justify-center lg:block">
           {CategoryList.map((item) => (
             <div key={item}>
               {/*  for mobile devices */}
@@ -50,11 +50,7 @@ function AllCategoriesList() {
                     setCategory(item);
                   }}
                 >
-                  <Link
-                    to={"/category"}
-                    className="bg-emerald-700 list-none p-1"
-                    key={item}
-                  >
+                  <Link to={"/category"} className=" list-none p-1" key={item}>
                     {item.toUpperCase()}
                   </Link>
                 </button>
@@ -66,7 +62,7 @@ function AllCategoriesList() {
                 <div className="flex justify-between" key={item}>
                   <motion.button
                     // whileTap={{ color: "blue" }}
-                    className="bg-emerald-700 list-none p-1"
+                    className=" list-none p-1"
                     onClick={() => {
                       setAnimateValue(item);
                     }}
@@ -95,12 +91,12 @@ function AllCategoriesList() {
         <div className="w12"></div>
         {window.innerWidth > 1024 && (
           <>
-            <div className="bg-blue-700 w-1/2 ">
+            <div className=" w-1/2 ">
               {ImagesCollections.map(
                 (item) =>
                   animateValue === item.id && (
                     <motion.div
-                      className="flex justify-center bg-lime-500"
+                      className="flex justify-center"
                       key={item.id}
                       variants={{
                         initial: { x: 500, opacity: 0 },

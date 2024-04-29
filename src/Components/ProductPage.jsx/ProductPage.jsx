@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { fetchCategoryData } from "../../store/API";
-import Card from "../Mohit/Card";
 import { useUser } from "../../store/contextApis";
 import ProductCard from "./ProductCard";
 import { SwiperSlide, Swiper } from "swiper/react";

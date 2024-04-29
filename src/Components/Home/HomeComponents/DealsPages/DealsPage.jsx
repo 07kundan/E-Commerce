@@ -12,7 +12,7 @@ function DealsPage({ Id, emoji }) {
         ref={ref}
         className=" h-screen w-screen m-auto flex justify-center items-center relative"
       >
-        <h2 className="text-[#46C2CB] text-4xl font-bold ">
+        <h2 className=" text-4xl font-bold ">
           {Id.toUpperCase()} {"DEALS"} {emoji}
         </h2>
 

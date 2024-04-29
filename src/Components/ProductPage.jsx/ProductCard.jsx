@@ -53,7 +53,6 @@ function ProductCard({
       navigate("/cart");
     }
     setAdded(!added);
-    console.log("clicked");
   };
   // ---------------
 

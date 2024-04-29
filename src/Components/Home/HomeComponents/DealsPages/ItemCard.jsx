@@ -29,7 +29,7 @@ function ItemCard({ reference, top, left }) {
       }}
       animate={parentControl}
       transition={{ duration: 1, ease: "easeInOut" }}
-      className="ani w-1/5 rounded-3xl absolute bg-lime-400 p-2"
+      className="ani w-1/5 rounded-3xl absolute p-2"
     >
       <motion.span
         variants={{
@@ -39,7 +39,7 @@ function ItemCard({ reference, top, left }) {
         initial="initial"
         animate={innerControls[0]}
         transition={{ duration: 1, ease: "circInOut" }}
-        className="bg-green-500 absolute bottom-10 -left-10"
+        className=" absolute bottom-10 -left-10"
       >
         hello
       </motion.span>
@@ -52,7 +52,7 @@ function ItemCard({ reference, top, left }) {
         initial="initial"
         animate={innerControls[1]}
         transition={{ duration: 1, ease: "circInOut" }}
-        className="bg-green-500 absolute -bottom-8 left-10"
+        className=" absolute -bottom-8 left-10"
       >
         hello
       </motion.span>
@@ -64,7 +64,7 @@ function ItemCard({ reference, top, left }) {
         initial="initial"
         animate={innerControls[2]}
         transition={{ duration: 1, ease: "circInOut" }}
-        className="bg-green-500 absolute top-6 -right-10"
+        className=" absolute top-6 -right-10"
       >
         hello
       </motion.span>

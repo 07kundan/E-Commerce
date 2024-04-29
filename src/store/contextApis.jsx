@@ -20,7 +20,7 @@ export function UserProvider(props) {
     await account.createEmailSession(email, password);
     setUser(await account.get());
     navigate("/");
-    // console.log(user);
+    console.log(user);
   }
 
   // SignUp

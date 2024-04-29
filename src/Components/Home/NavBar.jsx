@@ -47,7 +47,7 @@ function NavBar() {
 
   return (
     <>
-      <div className="w-screen p-3 px-8 text-[#655ee6] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2 lg:-translate-x-1/2">
+      <div className="w-screen p-3 px-8 text-[#F97300] flex m-auto justify-between items-center text-2xl bg-[#E2DFD0] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2 lg:-translate-x-1/2">
         {/* Name */}
         <motion.span
           variants={{
@@ -78,7 +78,7 @@ function NavBar() {
                 whileHover={{ color: "#2e8c93" }}
                 whileTap={{ color: "cyan" }}
                 whileFocus={{ color: "red" }}
-                className="text-4xl text-[#46C2CB] "
+                className="text-4xl "
                 onClick={() => setMenuIsActive(!menuIsActive)}
               >
                 <CgMenuBoxed />
@@ -95,7 +95,7 @@ function NavBar() {
                 whileHover={{ color: "#2e8c93" }}
                 whileTap={{ color: "cyan" }}
                 whileFocus={{ color: "red" }}
-                className="text-4xl text-[#46C2CB] "
+                className="text-4xl "
                 onClick={() => setHambuegeIsActive(!HamburgerIsActive)}
               >
                 <MdMenu />
@@ -106,7 +106,7 @@ function NavBar() {
           {/* Navlist if HamburgerIsActive for mobile*/}
           {HamburgerIsActive && (
             <>
-              <div className="w-fit absolute right-4 lg:right-2 top-[115%] bg-[#453C97] rounded-xl">
+              <div className="w-fit absolute right-4 lg:right-2 top-[115%] rounded-xl">
                 {/* routes */}
                 <motion.div
                   variants={{
@@ -121,7 +121,7 @@ function NavBar() {
                   initial="initial"
                   animate="final"
                   transition={{ ease: "backIn", duration: 0.6 }}
-                  className=" absolute right-4 lg:right-2 top-[115%] bg-[#453C97] rounded-xl"
+                  className=" absolute right-4 lg:right-2 top-[115%] rounded-xl"
                 >
                   {NavItems.map((item) => (
                     <NavLink
@@ -129,7 +129,7 @@ function NavBar() {
                       to={`/${item.path}`}
                       key={item.name}
                       className={
-                        "flex gap-2 items-center py-4 px-4 hover:underline text-xl text-[#46C2CB]"
+                        "flex gap-2 items-center py-4 px-4 hover:underline text-xl"
                       }
                     >
                       <span className="text-2xl ">{item.icon}</span>
@@ -176,7 +176,7 @@ function NavBar() {
                 whileTap={{ color: "cyan" }}
                 whileFocus={{ color: "red" }}
                 whileHover={{ color: "#2e8c93" }}
-                className="text-2xl text-[#46C2CB]"
+                className="text-2xl "
                 onClick={() => setSearchIsActive(!searchIsActive)}
               >
                 <IoSearchSharp />
@@ -199,8 +199,8 @@ function NavBar() {
                 className={({ isActive }) =>
                   `flex items-center gap-2 ${
                     isActive
-                      ? "text-[#37a6ae] underline underline-offset-2"
-                      : "text-[#46C2CB]"
+                      ? "text-[#e46849] underline underline-offset-2"
+                      : "text-[#F97300]"
                   }`
                 }
               >
@@ -226,7 +226,7 @@ function NavBar() {
                     className="text-xl relative"
                   >
                     {item.path === "cart" && (
-                      <span className="absolute right-0.5 bottom-3 text-lg font-semibold text-red-700">
+                      <span className="absolute right-0.5 bottom-3 text-lg font-semibold">
                         {cartProduct.length}
                       </span>
                     )}
@@ -272,7 +272,7 @@ function NavBar() {
               whileHover={{ color: "#2e8c93" }}
               whileTap={{ color: "cyan" }}
               whileFocus={{ color: "red" }}
-              className="text-2xl text-[#46C2CB] "
+              className="text-2xl "
               onClick={() => setMenuIsActive(!menuIsActive)}
             >
               <CgMenuBoxed />
@@ -296,14 +296,14 @@ function NavBar() {
             initial="initial"
             animate="final"
             transition={{ ease: "backIn", duration: 0.6 }}
-            className=" absolute right-4 lg:right-2 top-[115%] bg-[#453C97] rounded-xl"
+            className=" absolute right-4 lg:right-2 top-[115%] rounded-xl"
           >
             <ul>
               {MenuList.map((item) => (
                 <NavLink
                   key={item.name}
                   to={current ? item.path : "/Login"}
-                  className="flex gap-2 items-center p-4 hover:underline text-xl text-[#46C2CB]"
+                  className="flex gap-2 items-center p-4 hover:underline text-xl"
                   onClick={() => setMenuIsActive(false)}
                 >
                   <li>{item.icon}</li>
