@@ -13,7 +13,7 @@ const ImagesCollections = [
 function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
   const [animateValue, setAnimateValue] = useState("smartphones");
-  const { setCategory } = useUser();
+  const { setCategory, current } = useUser();
 
   useEffect(() => {
     try {
@@ -78,7 +78,10 @@ function AllCategoriesList() {
                       setCategory(item);
                     }}
                   >
-                    <Link to="/category" className="underline">
+                    <Link
+                      to={current ? "/category" : "/Login"}
+                      className="underline"
+                    >
                       view all
                     </Link>
                   </button>

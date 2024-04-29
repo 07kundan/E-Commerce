@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { ID } from "appwrite";
 import { account } from "./AppWriteConfig";
 import { useNavigate } from "react-router-dom";
@@ -17,15 +17,10 @@ export function UserProvider(props) {
 
   // Login function
   async function Login(email, password) {
-    const loggedIn = await account.createEmailSession(email, password);
-    setUser(loggedIn);
+    await account.createEmailSession(email, password);
+    setUser(await account.get());
     navigate("/");
     // console.log(user);
-  }
-
-  // Logout function
-  async function Logout() {
-    console.log("logout");
   }
 
   // SignUp
@@ -33,6 +28,26 @@ export function UserProvider(props) {
     await account.create(ID.unique(), email, password, name);
     navigate("/login");
   }
+
+  // Logout function
+
+  async function Logout() {
+    await account.deleteSession("current");
+    setUser(null);
+  }
+
+  async function init() {
+    try {
+      const loggedIn = await account.get();
+      setUser(loggedIn);
+    } catch (err) {
+      setUser(null);
+    }
+  }
+
+  useEffect(() => {
+    init();
+  }, []);
 
   return (
     <userContext.Provider

@@ -7,7 +7,6 @@ import { CgLogIn, CgMenuBoxed, CgProfile } from "react-icons/cg";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaGift, FaHeart } from "react-icons/fa";
 import { FiPackage } from "react-icons/fi";
-
 import { motion } from "framer-motion";
 import { useUser } from "../../store/contextApis";
 
@@ -44,7 +43,8 @@ function NavBar() {
   const [HamburgerIsActive, setHambuegeIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
-  const { cartProduct } = useUser();
+  const { cartProduct, current, Logout } = useUser();
+
   return (
     <>
       <div className="w-screen p-3 px-8 text-[#655ee6] flex m-auto justify-between items-center text-2xl bg-[#453C97] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2 lg:-translate-x-1/2">
@@ -187,7 +187,14 @@ function NavBar() {
             {/* Routes */}
             {NavItems.map((item) => (
               <NavLink
-                to={`/${item.path}`}
+                onClick={() => {
+                  if (item.path === "Login" && current) {
+                    Logout();
+                  }
+
+                  setMenuIsActive(false);
+                }}
+                to={!current && item.path ? "/login" : `/${item.path}`}
                 key={item.name}
                 className={({ isActive }) =>
                   `flex items-center gap-2 ${
@@ -203,6 +210,7 @@ function NavBar() {
                   whileHover={{ color: "#2e8c93" }}
                   className="flex items-center gap-2 "
                 >
+                  {/* Navlink icon */}
                   <motion.span
                     variants={{
                       initial: { y: 40, opacity: 0 },
@@ -229,6 +237,8 @@ function NavBar() {
                       <span className="text-2xl">{item.icon}</span>
                     )}
                   </motion.span>
+
+                  {/* /Navlink Name */}
                   <motion.span
                     variants={{
                       initial: { y: 40, opacity: 0 },
@@ -239,12 +249,17 @@ function NavBar() {
                     transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
                     className="text-xl"
                   >
-                    {item.name}
+                    {item.name === "Login" && current ? (
+                      <span>Logout</span>
+                    ) : (
+                      <span>{item.name}</span>
+                    )}
                   </motion.span>
                 </motion.div>
               </NavLink>
             ))}
             {/* -------------- */}
+
             {/* dots */}
             <motion.button
               variants={{
@@ -287,7 +302,7 @@ function NavBar() {
               {MenuList.map((item) => (
                 <NavLink
                   key={item.name}
-                  to={item.path}
+                  to={current ? item.path : "/Login"}
                   className="flex gap-2 items-center p-4 hover:underline text-xl text-[#46C2CB]"
                   onClick={() => setMenuIsActive(false)}
                 >

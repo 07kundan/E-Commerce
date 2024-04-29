@@ -7,7 +7,6 @@ import AllCategoriesList from "./HomeComponents/AllCategoriesList";
 import Footer from "./Footer";
 import { useInView, useScroll } from "framer-motion";
 import DealsPage from "./HomeComponents/DealsPages/DealsPage";
-import { useUser } from "../../store/contextApis";
 
 // HOME page
 const emojis = [
@@ -17,9 +16,7 @@ const emojis = [
   { emoji: "🥶", Id: "cool" },
 ];
 
-function Home() {
-  const user = useUser();
-  console.log(user.current);
+function HomeToLogin() {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-30%" });
 
@@ -48,4 +45,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeToLogin;
