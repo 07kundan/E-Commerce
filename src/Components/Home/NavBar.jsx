@@ -39,7 +39,7 @@ const MenuList = [
   },
 ];
 // Navbar
-function NavBar() {
+function NavBar({ ishidden, setIsActive }) {
   const [HamburgerIsActive, setHambuegeIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -47,7 +47,12 @@ function NavBar() {
 
   return (
     <>
-      <div className="w-screen p-3 px-8 text-[#F97300] flex m-auto justify-between items-center text-2xl bg-[#E2DFD0] relative z-10 lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2 lg:-translate-x-1/2">
+      <motion.div
+        initial={{ translateX: "-50%" }}
+        animate={ishidden ? { rotateX: 90 } : { rotate: 0 }}
+        transition={{ duration: 0.3, ease: "easeIn" }}
+        className="w-screen p-3 px-8 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] relative z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
+      >
         {/* Name */}
         <motion.span
           variants={{
@@ -57,7 +62,7 @@ function NavBar() {
           initial="initial"
           animate="end"
           transition={{ delay: 0.3, duration: 0.8, ease: "backInOut" }}
-          className="text-2xl font-bold lg:w-[20%] lg:pl-7 text-indigo-950"
+          className="text-2xl font-bold lg:w-[20%] lg:pl-7 text-[#2e5dde]"
         >
           ZED-kart
         </motion.span>
@@ -161,7 +166,7 @@ function NavBar() {
                     transition={{ duration: 0.5, ease: "linear" }}
                     type="text"
                     placeholder="Search for the products"
-                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-slate-800 bg-opacity-40 "
+                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-transparent outline outline-2 outline-[#e1588c] "
                   />
                 </>
               )}
@@ -173,11 +178,14 @@ function NavBar() {
                 initial="initial"
                 animate="end"
                 transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
-                whileTap={{ color: "cyan" }}
+                whileTap={{ color: "#3665e5" }}
                 whileFocus={{ color: "red" }}
-                whileHover={{ color: "#2e8c93" }}
+                whileHover={{ color: "#5780f3" }}
                 className="text-2xl "
-                onClick={() => setSearchIsActive(!searchIsActive)}
+                onClick={() => {
+                  setSearchIsActive(!searchIsActive);
+                  setIsActive(true);
+                }}
               >
                 <IoSearchSharp />
               </motion.button>
@@ -197,18 +205,19 @@ function NavBar() {
                 to={!current && item.path ? "/login" : `/${item.path}`}
                 key={item.name}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 ${
+                  `${
                     isActive
-                      ? "text-[#e46849] underline underline-offset-2"
-                      : "text-[#F97300]"
+                      ? "text-[#275ef7] underline underline-offset-2"
+                      : "text-[#7297fd]"
                   }`
                 }
               >
-                <motion.div
+                <motion.button
+                  onClick={() => setIsActive(true)}
                   whileFocus={{ color: "red" }}
-                  whileTap={{ color: "cyan" }}
-                  whileHover={{ color: "#2e8c93" }}
-                  className="flex items-center gap-2 "
+                  whileTap={{ color: "#3665e5" }}
+                  whileHover={{ color: "#5780f3" }}
+                  className="flex items-center gap-2"
                 >
                   {/* Navlink icon */}
                   <motion.span
@@ -255,7 +264,7 @@ function NavBar() {
                       <span>{item.name}</span>
                     )}
                   </motion.span>
-                </motion.div>
+                </motion.button>
               </NavLink>
             ))}
             {/* -------------- */}
@@ -269,11 +278,14 @@ function NavBar() {
               initial="initial"
               animate="end"
               transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
-              whileHover={{ color: "#2e8c93" }}
-              whileTap={{ color: "cyan" }}
+              whileHover={{ color: "#5780f3" }}
+              whileTap={{ color: "#3665e5" }}
               whileFocus={{ color: "red" }}
               className="text-2xl "
-              onClick={() => setMenuIsActive(!menuIsActive)}
+              onClick={() => {
+                setMenuIsActive(!menuIsActive);
+                setIsActive(true);
+              }}
             >
               <CgMenuBoxed />
             </motion.button>
@@ -285,25 +297,26 @@ function NavBar() {
         {menuIsActive && (
           <motion.div
             variants={{
-              initial: { height: 0, width: 0 },
+              initial: { height: 0, width: 0, opacity: 0 },
               final: {
                 height: "fit-content",
                 width: "fit-content",
                 overflow: "hidden",
                 padding: 13,
+                opacity: 1,
               },
             }}
             initial="initial"
             animate="final"
             transition={{ ease: "backIn", duration: 0.6 }}
-            className=" absolute right-4 lg:right-2 top-[115%] rounded-xl"
+            className=" absolute bg-[#FFD1E3] outline outline-4 outline-[#ec4283] right-4 lg:right-2 top-[120%] rounded-xl"
           >
             <ul>
               {MenuList.map((item) => (
                 <NavLink
                   key={item.name}
                   to={current ? item.path : "/Login"}
-                  className="flex gap-2 items-center p-4 hover:underline text-xl"
+                  className="flex gap-2  items-center p-4 hover:underline text-xl"
                   onClick={() => setMenuIsActive(false)}
                 >
                   <li>{item.icon}</li>
@@ -316,7 +329,7 @@ function NavBar() {
 
         {/* --------------- */}
         {/* --------------- END --------------- */}
-      </div>
+      </motion.div>
     </>
   );
 }

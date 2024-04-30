@@ -19,13 +19,14 @@ const emojis = [
 
 function Home() {
   const user = useUser();
-  console.log(user.current);
+  // console.log(user.current);
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-30%" });
 
   return (
     <div className="">
       <HeroSection />
+      <BGCarousel />
 
       {isInView ? (
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 lg:top-20 z-50 ">
@@ -33,12 +34,12 @@ function Home() {
         </div>
       ) : null}
 
-      <BGCarousel />
       <div ref={ref} className="">
         {emojis.map((item) => (
           <DealsPage key={item.Id} Id={item.Id} emoji={item.emoji} />
         ))}
       </div>
+
       <CategoryBox category={"SmartPhones"} />
       <CategoryBox category={`Women's wear`} />
       <CategoryBox category={"Men's wear"} />

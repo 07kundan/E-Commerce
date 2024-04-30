@@ -43,7 +43,6 @@ function ItemCard({ reference, top, left }) {
       >
         hello
       </motion.span>
-
       <motion.span
         variants={{
           initial: { bottom: "100px", opacity: 0 },
@@ -68,6 +67,7 @@ function ItemCard({ reference, top, left }) {
       >
         hello
       </motion.span>
+
       <img
         className=""
         src="https://cdn.dummyjson.com/product-images/1/1.jpg"

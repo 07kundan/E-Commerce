@@ -24,6 +24,7 @@ function LoginPage() {
       <div className="flex flex-col border-2 bg-transparent border-black p-8 rounded-xl shadow-md max-w-md lg:mt-8">
         <h2 className="text-4xl font-bold text-center mb-6">Login</h2>
         <form
+          className="text-lg"
           onSubmit={(e) => {
             e.preventDefault();
           }}
@@ -38,7 +39,7 @@ function LoginPage() {
               autoComplete="on"
               required
               onChange={(e) => handleChange(e, "email")}
-              className="input-field"
+              className="input-field "
             />
             <label htmlFor="email" className="input-label">
               Email

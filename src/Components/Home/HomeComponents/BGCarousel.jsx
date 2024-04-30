@@ -3,56 +3,77 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Pagination, Navigation } from "swiper/modules";
+import "swiper/css/thumbs";
+import "swiper/css/free-mode";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 function BGCarousel() {
   return (
-    <>
+    <div className="bg--to-bl from-[#ebb0c7] to-[#bd215d] w-11/12 m-auto p-6 rounded-2xl">
       <Swiper
+        style={{
+          "--swiper-navigation-color": "#fff",
+          "--swiper-pagination-color": "#fff",
+        }}
+        spaceBetween={10}
         pagination={{
           dynamicBullets: true,
         }}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
         navigation={true}
-        modules={[Navigation, Pagination]}
-        className="w-[90%] lg:h-[80vh] lg:w-[78%]"
+        modules={[Autoplay, Navigation, Pagination]}
+        className="w-[90%] lg:h-[95vh] lg:w-full rounded-2xl"
       >
-        <SwiperSlide>
-          <img
-            className="bg-cover rounded-2xl"
-            src="\src\Components\Home\Pictures\heroBG1.jpg"
-            alt="not found"
-          />
+        <SwiperSlide className="">
+          <div className=" w-full h-full flex justify-center items-center ">
+            <img
+              className="object-contain h-[90%] rounded-2xl"
+              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              alt="not found"
+            />
+          </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="bg-cover rounded-2xl"
-            src="\src\Components\Home\Pictures\heroBG1.jpg"
-            alt="not found"
-          />
+        <SwiperSlide className="">
+          <div className=" w-full h-full flex justify-center items-center ">
+            <img
+              className="object-contain h-[90%] rounded-2xl"
+              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              alt="not found"
+            />
+          </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="bg-cover rounded-2xl"
-            src="\src\Components\Home\Pictures\heroBG1.jpg"
-            alt="not found"
-          />
+        <SwiperSlide className="">
+          <div className=" w-full h-full flex justify-center items-center ">
+            <img
+              className="object-contain h-[90%] rounded-2xl"
+              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              alt="not found"
+            />
+          </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="bg-cover rounded-2xl"
-            src="\src\Components\Home\Pictures\heroBG1.jpg"
-            alt="not found"
-          />
+        <SwiperSlide className="">
+          <div className=" w-full h-full flex justify-center items-center ">
+            <img
+              className="object-contain h-[90%] rounded-2xl"
+              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              alt="not found"
+            />
+          </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="bg-cover rounded-2xl"
-            src="\src\Components\Home\Pictures\heroBG1.jpg"
-            alt="not found"
-          />
+        <SwiperSlide className="">
+          <div className=" w-full h-full flex justify-center items-center ">
+            <img
+              className="object-contain h-[90%] rounded-2xl"
+              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              alt="not found"
+            />
+          </div>
         </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 }
 
