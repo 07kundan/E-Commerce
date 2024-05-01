@@ -7,9 +7,9 @@ function HeroSection() {
   return (
     <div className="  h-[70vh] lg:h-[90vh] w-screen lg:flex justify-center items-center text-2xl relative">
       {/* company name */}
-      <div className="w-full h-1/2 lg:w-1/2 lg:h-full flex items-center pt-16 text-5xl font-bold ">
+      <div className="w-full h-1/2 font-bold flex items-center text-4xl lg:h-full lg:pt-16 lg:text-5xl lg:w-1/2">
         {/* logo */}
-        <div className="w-fit h-fit bg-gradient-to-r from-[#efb4cb] to-[#e1588c] flex items-center justify-center px-20 pl-28 py-5 rounded-e-3xl text-[#edef51] outline outline-8">
+        <div className="w-fit h-fit bg-gradient-to-r from-[#efb4cb] to-[#e1588c] flex items-center justify-center rounded-e-3xl text-[#edef51] outline outline-8 pl-7 px-5 py-3 lg:px-20 lg:pl-28 lg:py-5">
           <motion.span
             className="mr-3 text-8xl "
             variants={{
@@ -40,14 +40,14 @@ function HeroSection() {
 
       {/* company animations */}
 
-      <div className="w-full h-1/2 lg:w-1/2 lg:h-full flex flex-col items-center justify-end pb-10 ">
-        <div className=" w-[80%] h-fit text-center p-3 px-10 flex flex-col gap-3 ">
+      <div className="w-full h-1/2 lg:w-1/2 lg:h-full flex flex-col items-center justify-end pb-10">
+        <div className=" w-[80%] h-fit text-center p-3 px-10 flex flex-col gap-3 rounded-2xl bg-gradient-to-br outline outline-4 from-[#efb4cb]/70 via-[#e876a2]/80 to-[#e1588c] drop-shadow-2xl">
           <h3 className="underline font-semibold text-3xl mb-4">Top Brands</h3>
 
           {/* --------Row 1 ---------- */}
           <marquee behavior="scroll" direction="left">
             <div className="h-[10vh] w-fit m-auto flex items-center gap-4 p-2">
-              <span className=" min-w-[6vw]  max-w-[6vw]">
+              <span className="min-w-[6vw]  max-w-[6vw]">
                 <img
                   src="\src\Components\Home\CompanyImages\adidas.png"
                   alt=""
