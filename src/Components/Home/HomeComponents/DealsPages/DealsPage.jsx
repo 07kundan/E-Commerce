@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
 import ItemCard from "./ItemCard";
+import ImageCollection from "./ImageCollections";
 
 function DealsPage({ Id, emoji }) {
   const ref = useRef(null);
@@ -16,14 +16,41 @@ function DealsPage({ Id, emoji }) {
           {Id.toUpperCase()} {"DEALS"} {emoji}
         </h2>
 
-        <ItemCard reference={ref} top={"10%"} />
-        <ItemCard reference={ref} top={"73%"} />
-        <ItemCard reference={ref} top={"25%"} left={"10%"} />
-        <ItemCard reference={ref} top={"65%"} left={"10%"} />
-        <ItemCard reference={ref} top={"25%"} left={"70%"} />
-        <ItemCard reference={ref} top={"65%"} left={"70%"} />
+        <ItemCard
+          reference={ref}
+          top={"4px"}
+          ImageUrl={ImageCollection[Id].arr[0]}
+        />
+        <ItemCard
+          reference={ref}
+          bottom={"4px"}
+          ImageUrl={ImageCollection[Id].arr[1]}
+        />
+        <ItemCard
+          reference={ref}
+          top={"65%"}
+          left={"70%"}
+          ImageUrl={ImageCollection[Id].arr[2]}
+        />
+        <ItemCard
+          reference={ref}
+          top={"25%"}
+          left={"10%"}
+          ImageUrl={ImageCollection[Id].arr[3]}
+        />
+        <ItemCard
+          reference={ref}
+          top={"65%"}
+          left={"10%"}
+          ImageUrl={ImageCollection[Id].arr[4]}
+        />
+        <ItemCard
+          reference={ref}
+          top={"25%"}
+          left={"70%"}
+          ImageUrl={ImageCollection[Id].arr[5]}
+        />
       </div>
-      <hr />
     </>
   );
 }

@@ -4,10 +4,9 @@ import BGCarousel from "./HomeComponents/BGCarousel";
 import Emojis from "./HomeComponents/Emojis";
 import CategoryBox from "./HomeComponents/CategoryBox";
 import AllCategoriesList from "./HomeComponents/AllCategoriesList";
-import Footer from "./Footer";
-import { useInView, useScroll } from "framer-motion";
+import Footer from "../Footer";
 import DealsPage from "./HomeComponents/DealsPages/DealsPage";
-import { useUser } from "../../store/contextApis";
+import { useInView } from "framer-motion";
 
 // HOME page
 const emojis = [
@@ -18,8 +17,6 @@ const emojis = [
 ];
 
 function Home() {
-  const user = useUser();
-  // console.log(user.current);
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-30%" });
 

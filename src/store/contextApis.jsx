@@ -11,28 +11,41 @@ export function useUser() {
 export function UserProvider(props) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [authenticationState, setAuthenticationState] = useState("");
   const [category, setCategory] = useState("smartphones");
   const [cartProduct, setCartProduct] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
-
   // Login function
   async function Login(email, password) {
-    await account.createEmailSession(email, password);
-    setUser(await account.get());
-    navigate("/");
-    console.log(user);
+    try {
+      await account.createEmailSession(email, password);
+      setUser(await account.get());
+      // console.log("Login");
+      setAuthenticationState("Login");
+      navigate("/");
+    } catch (error) {
+      setAuthenticationState("Please use correct Email and password");
+    }
   }
 
   // SignUp
   async function Signup(email, password, name) {
-    await account.create(ID.unique(), email, password, name);
-    navigate("/login");
+    try {
+      await account.create(ID.unique(), email, password, name);
+      // console.log("SignUp");
+      setAuthenticationState("SignUp");
+      navigate("/login");
+    } catch (error) {
+      setAuthenticationState("Failed to SignUp");
+    }
   }
 
   // Logout function
 
   async function Logout() {
     await account.deleteSession("current");
+    // console.log("Logout");
+    setAuthenticationState("Logout");
     setUser(null);
   }
 
@@ -40,6 +53,7 @@ export function UserProvider(props) {
     try {
       const loggedIn = await account.get();
       setUser(loggedIn);
+      setAuthenticationState("Login");
     } catch (err) {
       setUser(null);
     }
@@ -62,6 +76,7 @@ export function UserProvider(props) {
         setCartProduct,
         wishlistItems,
         setWishlistItems,
+        authenticationState,
       }}
     >
       {props.children}

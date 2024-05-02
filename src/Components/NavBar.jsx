@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
-import { IoIosCloseCircle, IoMdCart } from "react-icons/io";
+import { IoMdCart } from "react-icons/io";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { CgLogIn, CgMenuBoxed, CgProfile } from "react-icons/cg";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaGift, FaHeart } from "react-icons/fa";
 import { FiPackage } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { useUser } from "../../store/contextApis";
+import { useUser } from "../store/contextApis";
 
 const NavItems = [
   { path: "", name: "Home", icon: <SiHomeassistantcommunitystore /> },
@@ -40,7 +40,6 @@ const MenuList = [
 ];
 // Navbar
 function NavBar({ ishidden, setIsActive }) {
-  const [HamburgerIsActive, setHambuegeIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const { cartProduct, current, Logout } = useUser();
@@ -51,7 +50,7 @@ function NavBar({ ishidden, setIsActive }) {
         initial={{ translateX: "-50%" }}
         animate={ishidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
-        className="w-screen p-3 px-8 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] relative left-1/2 z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
+        className="w-screen p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] relative left-1/2 z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
       >
         {/* Name */}
         <motion.span
@@ -62,15 +61,59 @@ function NavBar({ ishidden, setIsActive }) {
           initial="initial"
           animate="end"
           transition={{ delay: 0.3, duration: 0.8, ease: "backInOut" }}
-          className="text-2xl font-bold lg:w-[20%] lg:pl-7 text-[#2e5dde]"
+          className="text-2xl w-fit font-bold lg:w-[20%] lg:pl-7 text-[#2e5dde]"
         >
           ZED-kart
         </motion.span>
 
-        {/* Hamburger for smaller screen */}
+        {/* for mobiles */}
         <>
           {window.innerWidth < 1024 && (
-            <div className=" flex items-center gap-3">
+            <div className=" flex items-center gap-3 text-3xl">
+              {NavItems.map((item) => (
+                <NavLink
+                  className={({ isActive }) =>
+                    ` ${isActive ? "text-[#275ef7]" : "text-[#7297fd]"}`
+                  }
+                  to={!current && item.path ? "/login" : `/${item.path}`}
+                  key={item.name}
+                >
+                  <motion.button
+                    className="relative"
+                    onClick={() => {
+                      if (item.path === "Login" && current) {
+                        Logout();
+                      }
+                      setIsActive(true);
+                    }}
+                    variants={{
+                      initial: { y: 40, opacity: 0 },
+                      end: { y: 0, opacity: 1 },
+                    }}
+                    initial="initial"
+                    animate="end"
+                    transition={{
+                      delay: 0.2,
+                      duration: 0.6,
+                      ease: "easeInOut",
+                    }}
+                    whileHover={{ color: "#2e8c93" }}
+                    whileTap={{ color: "#275ef7" }}
+                    whileFocus={{ color: "red" }}
+                  >
+                    {/* Navlink icon */}
+                    <motion.span>
+                      {item.path === "cart" && (
+                        <span className="absolute -top-4 text-lg font-semibold">
+                          {cartProduct.length}
+                        </span>
+                      )}
+                      {item.icon}
+                    </motion.span>
+                  </motion.button>
+                </NavLink>
+              ))}
+
               {/* dots */}
               <motion.button
                 variants={{
@@ -81,9 +124,8 @@ function NavBar({ ishidden, setIsActive }) {
                 animate="end"
                 transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
                 whileHover={{ color: "#2e8c93" }}
-                whileTap={{ color: "cyan" }}
+                whileTap={{ color: "#275ef7" }}
                 whileFocus={{ color: "red" }}
-                className="text-4xl "
                 onClick={() => {
                   setMenuIsActive(!menuIsActive);
                   setIsActive(true);
@@ -91,133 +133,9 @@ function NavBar({ ishidden, setIsActive }) {
               >
                 <CgMenuBoxed />
               </motion.button>
-
-              {/* Hamburger button */}
-              <motion.button
-                variants={{
-                  initial: { y: 40, opacity: 0 },
-                  end: { y: 0, opacity: 1 },
-                }}
-                initial="initial"
-                animate="end"
-                transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
-                whileHover={{ color: "#2e8c93" }}
-                whileTap={{ color: "#3665e5" }}
-                whileFocus={{ color: "red" }}
-                className="text-4xl "
-                onClick={() => {
-                  setHambuegeIsActive(!HamburgerIsActive);
-                  setIsActive(true);
-                }}
-              >
-                <MdMenu />
-              </motion.button>
             </div>
           )}
-
-          {/* Navlist if HamburgerIsActive for mobile*/}
-          {HamburgerIsActive && (
-            <>
-              {/* routes */}
-              <motion.div
-                variants={{
-                  initial: { height: 0, width: 0, opacity: 0 },
-                  final: {
-                    opacity: 1,
-                    height: "fit-content",
-                    width: "fit-content",
-                    overflow: "hidden",
-                    padding: 10,
-                  },
-                }}
-                initial="initial"
-                animate="final"
-                transition={{ ease: "backIn", duration: 0.6 }}
-                className="absolute bg-[#FFD1E3] outline outline-4 outline-[#ec4283] right-4 top-[120%] rounded-xl"
-              >
-                {NavItems.map((item) => (
-                  <NavLink
-                    onClick={() => {
-                      if (item.path === "Login" && current) {
-                        Logout();
-                      }
-
-                      setHambuegeIsActive(false);
-                    }}
-                    to={!current && item.path ? "/login" : `/${item.path}`}
-                    key={item.name}
-                    className={({ isActive }) =>
-                      `flex gap-2 items-center py-4 px-4 hover:underline text-xl ${
-                        isActive
-                          ? "text-[#275ef7] underline underline-offset-2"
-                          : "text-[#7297fd]"
-                      }`
-                    }
-                  >
-                    <motion.button
-                      onClick={() => setIsActive(true)}
-                      whileFocus={{ color: "red" }}
-                      whileTap={{ color: "#3665e5" }}
-                      whileHover={{ color: "#5780f3" }}
-                      className="flex items-center gap-2"
-                    >
-                      {/* Navlink icon */}
-                      <motion.span
-                        variants={{
-                          initial: { y: 40, opacity: 0 },
-                          end: { y: 0, opacity: 1 },
-                        }}
-                        initial="initial"
-                        animate="end"
-                        transition={{
-                          delay: 0.2,
-                          duration: 0.6,
-                          ease: "easeInOut",
-                        }}
-                        className="text-xl relative"
-                      >
-                        {item.path === "cart" && (
-                          <span className="absolute right-0.5 bottom-3 text-lg font-semibold">
-                            {cartProduct.length}
-                          </span>
-                        )}
-                        {item.name !== "Home" && (
-                          <span className="text-2xl">{item.icon}</span>
-                        )}
-                        {item.name === "Home" && (
-                          <span className="text-2xl">{item.icon}</span>
-                        )}
-                      </motion.span>
-
-                      {/* /Navlink Name */}
-                      <motion.span
-                        variants={{
-                          initial: { y: 40, opacity: 0 },
-                          end: { y: 0, opacity: 1 },
-                        }}
-                        initial="initial"
-                        animate="end"
-                        transition={{
-                          delay: 0.2,
-                          duration: 0.6,
-                          ease: "easeOut",
-                        }}
-                        className="text-xl"
-                      >
-                        {item.name === "Login" && current ? (
-                          <span>Logout</span>
-                        ) : (
-                          <span>{item.name}</span>
-                        )}
-                      </motion.span>
-                    </motion.button>
-                  </NavLink>
-                ))}
-              </motion.div>
-            </>
-          )}
         </>
-        {/* ---------------------------- */}
         {/* ---------------------------- */}
 
         {/*  For Big Screen */}

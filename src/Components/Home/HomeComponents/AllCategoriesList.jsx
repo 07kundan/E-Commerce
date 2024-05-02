@@ -50,7 +50,11 @@ function AllCategoriesList() {
                     setCategory(item);
                   }}
                 >
-                  <Link to={"/category"} className=" list-none p-1" key={item}>
+                  <Link
+                    to={current ? "/category" : "/login"}
+                    className=" list-none p-1"
+                    key={item}
+                  >
                     {item.toUpperCase()}
                   </Link>
                 </button>

@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "./Components/Home/NavBar";
+import NavBar from "./Components/NavBar";
 import { UserProvider, useUser } from "./store/contextApis";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import PopUp from "./Components/PopUp";
 
 function App() {
   const [isNavbarActive, setIsNavbarActive] = useState(false);
@@ -11,7 +12,7 @@ function App() {
   const handleScroll = () => {
     setIsNavbarActive(false);
     const currentScrollPos = window.pageYOffset;
-    console.log(currentScrollPos);
+    // console.log(currentScrollPos);
     if (currentScrollPos >= scrollValue && !isNavbarActive) {
       setIsNavbarHidden(true);
     } else {
@@ -43,6 +44,7 @@ function App() {
         className="text-[#edef51] min-h-screen overflow-auto overflow-x-hidden scroll-smooth"
       >
         <UserProvider>
+          <PopUp />
           <NavBar ishidden={isNavbarHidden} setIsActive={setIsNavbarActive} />
           <Outlet />
         </UserProvider>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-function ItemCard({ reference, top, left }) {
+function ItemCard({ reference, top, bottom, left, rigth, ImageUrl }) {
   const parentControl = useAnimation();
   const innerControls = [useAnimation(), useAnimation(), useAnimation()];
   const isInView = useInView(reference, { amount: 0.6 });
@@ -25,11 +25,16 @@ function ItemCard({ reference, top, left }) {
     <motion.span
       //   ref={scope}
       variants={{
-        visible: { top: `${top}`, left: `${left}` },
+        visible: {
+          top: `${top}`,
+          bottom: `${bottom}`,
+          left: `${left}`,
+          right: `${rigth}`,
+        },
       }}
       animate={parentControl}
       transition={{ duration: 1, ease: "easeInOut" }}
-      className="ani w-1/5 rounded-3xl absolute p-2"
+      className="h-fit min-w-[20vw] max-w-fit flex justify-center items-center border border-black rounded-xl absolute"
     >
       <motion.span
         variants={{
@@ -68,11 +73,7 @@ function ItemCard({ reference, top, left }) {
         hello
       </motion.span>
 
-      <img
-        className=""
-        src="https://cdn.dummyjson.com/product-images/1/1.jpg"
-        alt=""
-      />
+      <img className="h-48" src={ImageUrl} alt="" />
     </motion.span>
   );
 }
