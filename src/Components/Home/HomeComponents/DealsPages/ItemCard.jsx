@@ -34,7 +34,7 @@ function ItemCard({ reference, top, bottom, left, rigth, ImageUrl }) {
       }}
       animate={parentControl}
       transition={{ duration: 1, ease: "easeInOut" }}
-      className="h-fit min-w-[20vw] max-w-fit flex justify-center items-center border border-black rounded-xl absolute"
+      className="h-fit min-w-[20vw] max-w-fit flex justify-center items-center bg-gradient-to-br from-slate-600/60 to-white border border-black rounded-xl absolute"
     >
       <motion.span
         variants={{
@@ -73,7 +73,7 @@ function ItemCard({ reference, top, bottom, left, rigth, ImageUrl }) {
         hello
       </motion.span>
 
-      <img className="h-48" src={ImageUrl} alt="" />
+      <img className="h-48 " src={ImageUrl} alt="" />
     </motion.span>
   );
 }

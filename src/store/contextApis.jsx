@@ -15,6 +15,15 @@ export function UserProvider(props) {
   const [category, setCategory] = useState("smartphones");
   const [cartProduct, setCartProduct] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
+
+  // User details
+  const [userDetails, setUserDetails] = useState({
+    Name: "",
+    PhoneNo: null,
+    Email: "",
+    Password: "",
+  });
+
   // Login function
   async function Login(email, password) {
     try {
@@ -67,6 +76,8 @@ export function UserProvider(props) {
     <userContext.Provider
       value={{
         current: user,
+        userDetails,
+        setUserDetails,
         Login,
         Logout,
         Signup,

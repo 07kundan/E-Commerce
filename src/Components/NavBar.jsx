@@ -40,7 +40,9 @@ const MenuList = [
 ];
 // Navbar
 function NavBar({ ishidden, setIsActive }) {
+  // search bar
   const [searchIsActive, setSearchIsActive] = useState(false);
+  // menu list
   const [menuIsActive, setMenuIsActive] = useState(false);
   const { cartProduct, current, Logout } = useUser();
 
@@ -50,7 +52,7 @@ function NavBar({ ishidden, setIsActive }) {
         initial={{ translateX: "-50%" }}
         animate={ishidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
-        className="w-screen p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] relative left-1/2 z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
+        className="w-screen p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] absolute left-1/2 z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
       >
         {/* Name */}
         <motion.span
@@ -188,7 +190,7 @@ function NavBar({ ishidden, setIsActive }) {
                   if (item.path === "Login" && current) {
                     Logout();
                   }
-
+                  setIsActive(true);
                   setMenuIsActive(false);
                 }}
                 to={!current && item.path ? "/login" : `/${item.path}`}
@@ -202,7 +204,6 @@ function NavBar({ ishidden, setIsActive }) {
                 }
               >
                 <motion.button
-                  onClick={() => setIsActive(true)}
                   whileFocus={{ color: "red" }}
                   whileTap={{ color: "#3665e5" }}
                   whileHover={{ color: "#5780f3" }}
@@ -306,7 +307,10 @@ function NavBar({ ishidden, setIsActive }) {
                   key={item.name}
                   to={current ? item.path : "/Login"}
                   className="flex gap-2  items-center p-4 hover:underline text-xl"
-                  onClick={() => setMenuIsActive(false)}
+                  onClick={() => {
+                    setMenuIsActive(false);
+                    setIsActive(true);
+                  }}
                 >
                   <li>{item.icon}</li>
                   <li>{item.name}</li>

@@ -6,12 +6,7 @@ import { useUser } from "../../store/contextApis";
 
 function SignupPage() {
   const [isHidePassword, setIsHidePassword] = useState(false);
-  const [user, setUser] = useState({
-    Name: "",
-    PhoneNo: null,
-    Email: "",
-    Password: "",
-  });
+  const { userDetails: user, setUserDetails: setUser } = useUser();
   const userContext = useUser();
 
   // updating user details
