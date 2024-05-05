@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../../store/contextApis";
 import WishlistCard from "./WishlistCard";
 
-const Wishlist = ({ isNavbarActive, setIsNavbarActive }) => {
+const Wishlist = () => {
   const { wishlistItems, setWishlistItems } = useUser();
   const removeFromWishlist = (itemToRemove) => {
     const updatedWishlist = wishlistItems.filter(
@@ -12,9 +12,6 @@ const Wishlist = ({ isNavbarActive, setIsNavbarActive }) => {
   };
 
   if (wishlistItems.length === 0) {
-    () => {
-      // setIsNavbarActive(true);
-    };
     return (
       <div className="container mx-auto mt-8 text-center">
         <p className="text-xl">No items added to wishlist.</p>
@@ -30,10 +27,7 @@ const Wishlist = ({ isNavbarActive, setIsNavbarActive }) => {
         </center>
         <div className=" w-full flex justify-center gap-3 flex-wrap ">
           {wishlistItems.map((item) => (
-            <div
-              key={item.title}
-              className="min-h-[45vh] max-h-[45vh] w-[30%] "
-            >
+            <div key={item.name} className="min-h-[45vh] max-h-[45vh] w-[30%] ">
               <WishlistCard
                 title={item.name}
                 rating={item.rating}

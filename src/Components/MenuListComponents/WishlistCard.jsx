@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { MdOutlineClose } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../store/contextApis";
 
 function WishlistCard({ title, rating, price, image, remove }) {
+  const { cartProduct, setCartProduct } = useUser();
+  const [added, setAdded] = useState(false);
+  const navigate = useNavigate();
+
+  // Add to Cart
+  const addToCart = () => {
+    let newArray = [];
+    if (!added) {
+      newArray = [
+        ...cartProduct,
+        {
+          name: `${title}`,
+          price: `${price}`,
+          image: `${image}`,
+          rating: `${rating}`,
+          quantity: 1,
+        },
+      ];
+      setCartProduct(newArray);
+    }
+    if (added) {
+      navigate("/cart");
+    }
+    setAdded(!added);
+  };
+  // ---------------
+
   return (
     <div className="h-full flex flex-col justify-center p-4 bg-slate-800/60 rounded-xl relative overflow-hidden">
       {/* remove button */}
@@ -50,10 +79,9 @@ function WishlistCard({ title, rating, price, image, remove }) {
       <div className="flex justify-center gap-6">
         <button
           className="py-1 px-2 bg-yellow-800 rounded-lg text-xl"
-          onClick={() => {}}
+          onClick={addToCart}
         >
-          add to Cart
-          {/* {added ? "Go to Cart" : "Add to Cart"} */}
+          {added ? "Go to Cart" : "Add to Cart"}
         </button>
         <span className="py-1 px-2 bg-yellow-800 rounded-lg text-xl">
           Buy Now

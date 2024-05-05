@@ -52,7 +52,10 @@ function Cart() {
                 <tr>
                   {["Product", "Price", "Rating", "Quantity", "Remove"].map(
                     (item) => (
-                      <th className="py-3 px-4 text-left font-medium">
+                      <th
+                        key={item}
+                        className="py-3 px-4 text-left font-medium"
+                      >
                         {item}
                       </th>
                     )
