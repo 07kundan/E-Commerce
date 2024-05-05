@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useUser } from "../../store/contextApis";
+import WishlistCard from "./WishlistCard";
 
-const Wishlist = () => {
+const Wishlist = ({ isNavbarActive, setIsNavbarActive }) => {
   const { wishlistItems, setWishlistItems } = useUser();
-  const removeFromWishlist = (idToRemove) => {
+  const removeFromWishlist = (itemToRemove) => {
     const updatedWishlist = wishlistItems.filter(
-      (item) => item.id !== idToRemove
+      (item) => item.name !== itemToRemove
     );
     setWishlistItems(updatedWishlist);
   };
 
   if (wishlistItems.length === 0) {
+    () => {
+      // setIsNavbarActive(true);
+    };
     return (
       <div className="container mx-auto mt-8 text-center">
         <p className="text-xl">No items added to wishlist.</p>
@@ -19,46 +23,27 @@ const Wishlist = () => {
   }
 
   return (
-    <div className="container mx-auto mt-8">
-      <h2 className="text-5xl font-semibold mb-4 text-white">Wishlist</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {wishlistItems.map((item, index) => (
-          <div
-            key={item.id}
-            className={`bg-[ghostwhite] rounded-md shadow p-4 ${
-              wishlistItems.length === 1 ? "md:col-span-2" : ""
-            }`}
-          >
-            <div className="flex items-center mb-4">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-32 h-32 object-cover mr-4 rounded-xl border-2 border-[#a6a6a6]"
+    <div className=" w-screen flex justify-start px-16">
+      <div className="w-full  mt-20 p-4">
+        <center className="text-5xl font-semibold mb-4 text-white ">
+          Wishlist
+        </center>
+        <div className=" w-full flex justify-center gap-3 flex-wrap ">
+          {wishlistItems.map((item) => (
+            <div
+              key={item.title}
+              className="min-h-[45vh] max-h-[45vh] w-[30%] "
+            >
+              <WishlistCard
+                title={item.name}
+                rating={item.rating}
+                price={item.price}
+                image={item.image}
+                remove={removeFromWishlist}
               />
-              <div>
-                <h3 className="text-lg font-semibold">{item.name}</h3>
-                <p className="text-gray-600">Rating: {item.rating}</p>
-              </div>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Rs. {item.price}</span>
-              <div>
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 focus:outline-none"
-                  onClick={() => {} /* Handle buy functionality */}
-                >
-                  Buy
-                </button>
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none"
-                  onClick={() => removeFromWishlist(item.id)}
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

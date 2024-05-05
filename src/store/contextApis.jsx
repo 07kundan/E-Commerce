@@ -11,6 +11,11 @@ export function useUser() {
 export function UserProvider(props) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [isNavbarActive, setIsNavbarActive] = useState(false);
+  const [categoryPageActive, setCategoryPageActive] = useState(false);
+  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
+  const [scrollValue, setScrollValue] = useState(0);
+
   const [authenticationState, setAuthenticationState] = useState("");
   const [category, setCategory] = useState("smartphones");
   const [cartProduct, setCartProduct] = useState([]);
@@ -23,6 +28,43 @@ export function UserProvider(props) {
     Email: "",
     Password: "",
   });
+
+  // Navbar funcitonality
+
+  const handleScroll = () => {
+    // console.log("called");
+    setIsNavbarActive(false);
+    const currentScrollPos = window.pageYOffset;
+    if (currentScrollPos >= scrollValue && !isNavbarActive) {
+      setIsNavbarHidden(true);
+    } else {
+      setIsNavbarHidden(false);
+    }
+    setScrollValue(currentScrollPos);
+  };
+
+  // Add event listener for scrolling when component mounts
+  useEffect(() => {
+    window.location.pathname === "/login" ||
+    window.location.pathname === "/signup" ||
+    window.location.pathname === "/category"
+      ? setCategoryPageActive(true)
+      : setCategoryPageActive(false);
+    window.addEventListener("scroll", handleScroll);
+
+    if (categoryPageActive) {
+      setIsNavbarHidden(false);
+    }
+    if (!isNavbarActive && !categoryPageActive) {
+      const interval = setTimeout(() => {
+        setIsNavbarHidden(true);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollValue, isNavbarActive, categoryPageActive]);
+  // --------------------
 
   // Login function
   async function Login(email, password) {
@@ -88,6 +130,12 @@ export function UserProvider(props) {
         wishlistItems,
         setWishlistItems,
         authenticationState,
+        isNavbarActive,
+        setIsNavbarActive,
+        isNavbarHidden,
+        setIsNavbarHidden,
+        setCategoryPageActive,
+        handleScroll,
       }}
     >
       {props.children}

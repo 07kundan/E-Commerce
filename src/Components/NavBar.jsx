@@ -39,18 +39,19 @@ const MenuList = [
   },
 ];
 // Navbar
-function NavBar({ ishidden, setIsActive }) {
+function NavBar() {
   // search bar
   const [searchIsActive, setSearchIsActive] = useState(false);
   // menu list
   const [menuIsActive, setMenuIsActive] = useState(false);
-  const { cartProduct, current, Logout } = useUser();
+  const { cartProduct, current, Logout, isNavbarHidden, setIsNavbarActive } =
+    useUser();
 
   return (
     <>
       <motion.div
         initial={{ translateX: "-50%" }}
-        animate={ishidden ? { rotateX: 90 } : { rotate: 0 }}
+        animate={isNavbarHidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
         className="w-screen p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] absolute left-1/2 z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
       >
@@ -86,7 +87,7 @@ function NavBar({ ishidden, setIsActive }) {
                       if (item.path === "Login" && current) {
                         Logout();
                       }
-                      setIsActive(true);
+                      setIsNavbarActive(true);
                     }}
                     variants={{
                       initial: { y: 40, opacity: 0 },
@@ -130,7 +131,7 @@ function NavBar({ ishidden, setIsActive }) {
                 whileFocus={{ color: "red" }}
                 onClick={() => {
                   setMenuIsActive(!menuIsActive);
-                  setIsActive(true);
+                  setIsNavbarActive(true);
                 }}
               >
                 <CgMenuBoxed />
@@ -175,7 +176,7 @@ function NavBar({ ishidden, setIsActive }) {
                 className="text-2xl "
                 onClick={() => {
                   setSearchIsActive(!searchIsActive);
-                  setIsActive(true);
+                  setIsNavbarActive(true);
                 }}
               >
                 <IoSearchSharp />
@@ -190,7 +191,6 @@ function NavBar({ ishidden, setIsActive }) {
                   if (item.path === "Login" && current) {
                     Logout();
                   }
-                  setIsActive(true);
                   setMenuIsActive(false);
                 }}
                 to={!current && item.path ? "/login" : `/${item.path}`}
@@ -208,6 +208,9 @@ function NavBar({ ishidden, setIsActive }) {
                   whileTap={{ color: "#3665e5" }}
                   whileHover={{ color: "#5780f3" }}
                   className="flex items-center gap-2"
+                  onClick={() => {
+                    setIsNavbarActive(true);
+                  }}
                 >
                   {/* Navlink icon */}
                   <motion.span
@@ -274,7 +277,7 @@ function NavBar({ ishidden, setIsActive }) {
               className="text-2xl "
               onClick={() => {
                 setMenuIsActive(!menuIsActive);
-                setIsActive(true);
+                setIsNavbarActive(true);
               }}
             >
               <CgMenuBoxed />
@@ -309,7 +312,7 @@ function NavBar({ ishidden, setIsActive }) {
                   className="flex gap-2  items-center p-4 hover:underline text-xl"
                   onClick={() => {
                     setMenuIsActive(false);
-                    setIsActive(true);
+                    setIsNavbarActive(true);
                   }}
                 >
                   <li>{item.icon}</li>

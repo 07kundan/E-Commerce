@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -11,6 +11,7 @@ import Profile from "./Components/MenuListComponents/Profile.jsx";
 import Rewards from "./Components/MenuListComponents/Rewards.jsx";
 import ProductPage from "./Components/ProductPage.jsx/ProductPage.jsx";
 import ProductCard from "./Components/ProductPage.jsx/ProductCard.jsx";
+import WishlistCard from "./Components/MenuListComponents/WishlistCard.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -46,7 +47,6 @@ const routes = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
-
       {
         path: "wishlist",
         element: <Wishlist />,
@@ -71,6 +71,10 @@ const routes = createBrowserRouter([
       {
         path: "/category",
         element: <ProductPage />,
+      },
+      {
+        path: "/wish",
+        element: <WishlistCard />,
       },
     ],
   },

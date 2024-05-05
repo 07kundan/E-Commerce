@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useAnimate, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { fetchAllProductsCategories } from "../../../store/API";
 import { useUser } from "../../../store/contextApis";
 
