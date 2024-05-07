@@ -14,6 +14,7 @@ function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
   const [animateValue, setAnimateValue] = useState("smartphones");
   const { setCategory, current } = useUser();
+  // const [randomColor, setRandomColor] = useState(0);
 
   useEffect(() => {
     try {
@@ -34,18 +35,25 @@ function AllCategoriesList() {
 
   // ----------------------------
   return (
-    <div className="w-[90%] h-fit m-auto mb-10 p-2">
+    <div className="h-fit lg:w-[90%]  m-auto mb-10 lg:p-2">
       <h3 className="text-center text-4xl font-semibold underline">
         All categories
       </h3>
       <div className="h-fit w-full flex justify-center items-center">
         {/* Categories List */}
-        <div className="w-full lg:w-1/2 py-4 lg:p-6 lg:px-10 flex flex-wrap gap-4 justify-center lg:block">
+        <div className="w-full py-6 flex flex-wrap space-x-1 gap-y-3 justify-center lg:block lg:px-10 lg:w-1/2 lg:p-6 ">
           {CategoryList.map((item) => (
             <div key={item}>
               {/*  for mobile devices */}
               {window.innerWidth < 1024 && (
                 <button
+                  style={{
+                    backgroundColor: `rgb(
+                      ${Math.round(Math.random() * (150 - 0)) + 0},
+                      ${Math.round(Math.random() * (150 - 0)) + 0},
+                      ${Math.round(Math.random() * (150 - 0)) + 0})`,
+                  }}
+                  className={`px-3 py-2 text-base font-medium rounded-xl`}
                   onClick={() => {
                     setCategory(item);
                   }}
