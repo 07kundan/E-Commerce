@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 // It includes brand Name and some animations
 function HeroSection() {
   return (
-    <div className="  h-[70vh] lg:h-[90vh] w-screen lg:flex justify-center items-center text-2xl relative">
+    <div className="  h-[80vh] lg:h-[90vh] w-screen lg:flex justify-center items-center text-2xl relative">
       {/* company name */}
-      <div className="w-full h-1/2 font-bold flex items-center text-4xl lg:h-full lg:pt-16 lg:text-5xl lg:w-1/2">
+      <div className="w-full h-1/2 font-bold flex items-center text-4xl pt-14 lg:h-full lg:pt-16 lg:text-5xl lg:w-1/2 ">
         {/* logo */}
         <div className="w-fit h-fit bg-gradient-to-r from-[#efb4cb] to-[#e1588c] flex items-center justify-center rounded-e-3xl text-[#edef51] outline outline-8 pl-7 px-5 py-3 lg:px-20 lg:pl-28 lg:py-5">
           <motion.span

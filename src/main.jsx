@@ -8,7 +8,6 @@ import Cart from "./Components/MenuListComponents/Cart.jsx";
 import SignupPage from "./Components/MenuListComponents/SignupPage.jsx";
 import Wishlist from "./Components/MenuListComponents/Wishlist.jsx";
 import Profile from "./Components/MenuListComponents/Profile.jsx";
-import Rewards from "./Components/MenuListComponents/Rewards.jsx";
 import ProductPage from "./Components/ProductPage.jsx/ProductPage.jsx";
 import ProductCard from "./Components/ProductPage.jsx/ProductCard.jsx";
 import WishlistCard from "./Components/MenuListComponents/WishlistCard.jsx";
@@ -55,10 +54,6 @@ const routes = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
-      },
-      {
-        path: "rewards",
-        element: <Rewards />,
       },
       {
         path: "card",

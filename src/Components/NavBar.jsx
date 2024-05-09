@@ -32,11 +32,6 @@ const MenuList = [
     name: "Order",
     path: "",
   },
-  {
-    icon: <FaGift />,
-    name: "Rewards",
-    path: "rewards",
-  },
 ];
 // Navbar
 function NavBar() {
@@ -53,7 +48,7 @@ function NavBar() {
         initial={{ translateX: "-50%" }}
         animate={isNavbarHidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
-        className="w-screen p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] absolute left-1/2 z-10 outline outline-4 outline-[#ec4283] lg:p-2 lg:pl-10  lg:rounded-2xl lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
+        className="w-[95%] p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] absolute top-3 left-1/2 z-10 outline outline-3 outline-[#ec4283] rounded-2xl lg:outline-4 lg:p-2 lg:pl-10 lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
       >
         {/* Name */}
         <motion.span
@@ -76,13 +71,13 @@ function NavBar() {
               {NavItems.map((item) => (
                 <NavLink
                   className={({ isActive }) =>
-                    ` ${isActive ? "text-[#275ef7]" : "text-[#7297fd]"}`
+                    `flex ${isActive ? "text-[#275ef7]" : "text-[#7297fd]"}`
                   }
                   to={!current && item.path ? "/login" : `/${item.path}`}
                   key={item.name}
                 >
                   <motion.button
-                    className="relative"
+                    className={`relative ${item.name == "Home" && "text-2xl"}`}
                     onClick={() => {
                       if (item.path === "Login" && current) {
                         Logout();
