@@ -9,7 +9,7 @@ import AllCategoriesList from "./Components/Home/HomeComponents/AllCategoriesLis
 function App() {
   return (
     <>
-      <div className="bg-gradient-to-b from-[#a2b5e8] via-[#426ee8] via-70% to-[#3365f1] h-screen fixed top-0 w-full -z-50 "></div>
+      <div className="bg-gradient-to-b from-[#180318] via-[#460142] via-70% to-[#180318] h-screen fixed top-0 w-full -z-50 "></div>
 
       <UserProvider>
         <Wrapper>
@@ -27,7 +27,7 @@ function Wrapper({ children }) {
   return (
     <div
       onScroll={handleScroll}
-      className="text-[#edef51] min-h-screen overflow-auto overflow-x-hidden scroll-smooth"
+      className="text-[#2e5dde] min-h-screen overflow-auto overflow-x-hidden scroll-smooth"
     >
       {children}
     </div>

@@ -14,11 +14,11 @@ function CategoryBox({ category, description, Image1, Image2, Image3 }) {
     <div className="h-screen w-screen flex items-center">
       <div className="w-[90%] h-[90vh] m-auto bg-slate-600/60 flex flex-col py-8 rounded-3xl lg:py-4 px-8 lg:flex lg:flex-col ">
         <h3 className="h-[6vh] text-3xl font-semibold text-center underline">
-          {category}
+          {category.toUpperCase()}
         </h3>
-        <div className=" h-[80vh] flex flex-col-reverse w-full gap-6 lg:flex-row lg:gap-3">
+        <div className=" h-[80vh] flex flex-col-reverse w-full gap-6 lg:flex-row lg:gap-5">
           {/* Left section / description */}
-          <section className="w-full h-3/5 pt-8 text-center flex justify-center lg:pt-0 lg:w-3/5 lg:h-full lg:items-center lg:text-left">
+          <section className=" w-full h-3/5 pt-8 text-center flex justify-center lg:pt-0 lg:w-3/5 lg:h-full lg:items-center lg:text-left lg:px-5">
             {description}
           </section>
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import ItemCard from "./ItemCard";
 import ImageCollection from "./ImageCollections";
 
-function DealsPage({ Id, emoji }) {
+function DealsPage({ Id, emoji, toPage, icon }) {
   const ref = useRef(null);
 
   return (
@@ -22,45 +22,57 @@ function DealsPage({ Id, emoji }) {
           top={window.innerWidth > 1024 ? "5%" : "6%"}
           left={window.innerWidth > 1024 ? "" : "5%"}
           ImageUrl={ImageCollection[Id].arr[0]}
+          toPage={toPage}
           emoji={emoji}
+          icon={icon}
         />
 
         <ItemCard
           reference={ref}
-          top={window.innerWidth > 1024 ? "65%" : "6%"}
+          top={window.innerWidth > 1024 ? "61%" : "6%"}
           left={window.innerWidth > 1024 ? "" : "55%"}
           ImageUrl={ImageCollection[Id].arr[4]}
+          toPage={toPage}
           emoji={emoji}
+          icon={icon}
         />
 
         <ItemCard
           reference={ref}
-          top={window.innerWidth > 1024 ? "16%" : "34%"}
+          top={window.innerWidth > 1024 ? "11%" : "34%"}
           left={window.innerWidth > 1024 ? "70%" : "5%"}
           ImageUrl={ImageCollection[Id].arr[1]}
+          toPage={toPage}
           emoji={emoji}
+          icon={icon}
         />
         <ItemCard
           reference={ref}
-          top={window.innerWidth > 1024 ? "16%" : "34%"}
+          top={window.innerWidth > 1024 ? "11%" : "34%"}
           left={window.innerWidth > 1024 ? "10%" : "55%"}
           ImageUrl={ImageCollection[Id].arr[2]}
+          toPage={toPage}
           emoji={emoji}
+          icon={icon}
         />
         <ItemCard
           reference={ref}
-          top={window.innerWidth > 1024 ? "54%" : "61%"}
+          top={window.innerWidth > 1024 ? "55%" : "61%"}
           left={window.innerWidth > 1024 ? "70%" : "5%"}
           ImageUrl={ImageCollection[Id].arr[3]}
+          toPage={toPage}
           emoji={emoji}
+          icon={icon}
         />
 
         <ItemCard
           reference={ref}
-          top={window.innerWidth > 1024 ? "54%" : "61%"}
+          top={window.innerWidth > 1024 ? "55%" : "61%"}
           left={window.innerWidth > 1024 ? "10%" : "55%"}
           ImageUrl={ImageCollection[Id].arr[5]}
+          toPage={toPage}
           emoji={emoji}
+          icon={icon}
         />
       </div>
       <hr />

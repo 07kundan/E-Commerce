@@ -48,7 +48,7 @@ function NavBar() {
         initial={{ translateX: "-50%" }}
         animate={isNavbarHidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
-        className="w-[95%] p-3 px-6 text-[#7EA1FF] flex m-auto justify-between items-center text-2xl bg-[#FFD1E3] absolute top-3 left-1/2 z-10 outline outline-3 outline-[#ec4283] rounded-2xl lg:outline-4 lg:p-2 lg:pl-10 lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
+        className="w-[95%] p-3 px-6 text-[#2e5dde] flex m-auto justify-between items-center text-2xl bg-[#32012F] absolute top-3 left-1/2 z-10 outline outline-3 outline-[#2e5dde] rounded-2xl lg:outline-4 lg:p-2 lg:pl-10 lg:my-2 lg:w-[83vw] lg:fixed lg:top-2 lg:left-1/2"
       >
         {/* Name */}
         <motion.span
@@ -59,7 +59,7 @@ function NavBar() {
           initial="initial"
           animate="end"
           transition={{ delay: 0.3, duration: 0.8, ease: "backInOut" }}
-          className="text-2xl w-fit font-bold lg:w-[20%] lg:pl-7 text-[#2e5dde]"
+          className="text-2xl w-fit font-bold lg:w-[20%] lg:pl-7 "
         >
           ZED-kart
         </motion.span>
@@ -153,7 +153,7 @@ function NavBar() {
                     transition={{ duration: 0.5, ease: "linear" }}
                     type="text"
                     placeholder="Search for the products"
-                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-transparent outline outline-2 outline-[#e1588c] "
+                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-transparent outline outline-2 outline-[#0f000e] "
                   />
                 </>
               )}
@@ -191,11 +191,7 @@ function NavBar() {
                 to={!current && item.path ? "/login" : `/${item.path}`}
                 key={item.name}
                 className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-[#275ef7] underline underline-offset-2"
-                      : "text-[#7297fd]"
-                  }`
+                  `${isActive && "underline underline-offset-2"}`
                 }
               >
                 <motion.button
@@ -297,7 +293,7 @@ function NavBar() {
             initial="initial"
             animate="final"
             transition={{ ease: "backIn", duration: 0.6 }}
-            className=" absolute bg-[#FFD1E3] outline outline-2  outline-[#ec4283] right-4 lg:right-2 top-[120%] lg:outline-4 rounded-xl"
+            className=" absolute bg-[#32012F] outline outline-2  outline-[#0f000e] right-4 lg:right-2 top-[120%] lg:outline-4 rounded-xl"
           >
             <ul>
               {MenuList.map((item) => (

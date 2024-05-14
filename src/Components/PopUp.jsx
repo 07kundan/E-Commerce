@@ -16,7 +16,7 @@ function PopUp() {
   }, [authenticationState]);
 
   return (
-    <div className=" w-full absolute top-[4.3rem] flex justify-center">
+    <div className=" w-full absolute top-[5.5rem] flex justify-center">
       {popUp && (
         <motion.div
           initial={{

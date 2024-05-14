@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lobster: ["Lobster", "sans-serif"],
+        jersey: ["Jersey 25 Charted", "sans - serif"],
+        rubik: ["Rubik Scribble", "system-ui"]
+      }
+    },
   },
   plugins: [],
 }

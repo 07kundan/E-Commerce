@@ -6,10 +6,11 @@ import "swiper/css/pagination";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import imageURL1 from "../../../assets/carouselImage/BG2.webp";
 
 function BGCarousel() {
   return (
-    <div className="bg-gradient-to-bl from-[#ebb0c7] to-[#bd215d] w-11/12 m-auto p-6 rounded-2xl">
+    <div className="bg-gradient-to-bl from-[#290127] via-[#470c44] to-[#290127] w-11/12 m-auto p-6 rounded-2xl outline outline-4 outline-[#0f000e]">
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -28,10 +29,10 @@ function BGCarousel() {
         className="w-[90%] lg:h-[95vh] lg:w-full rounded-2xl "
       >
         <SwiperSlide className="">
-          <div className=" w-full h-full ">
+          <div className=" w-full h-full flex justify-center items-center">
             <img
-              className="object-contain rounded-2xl"
-              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              className="object-contain h-full rounded-2xl"
+              src={`${imageURL1}`}
               alt="not found"
             />
           </div>
@@ -39,8 +40,8 @@ function BGCarousel() {
         <SwiperSlide className="">
           <div className=" w-full h-full flex justify-center items-center ">
             <img
-              className="object-contain h-[90%] rounded-2xl"
-              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              className="object-contain h-full rounded-2xl"
+              src={`${imageURL1}`}
               alt="not found"
             />
           </div>
@@ -48,8 +49,8 @@ function BGCarousel() {
         <SwiperSlide className="">
           <div className=" w-full h-full flex justify-center items-center ">
             <img
-              className="object-contain h-[90%] rounded-2xl"
-              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              className="object-contain h-full rounded-2xl"
+              src={`${imageURL1}`}
               alt="not found"
             />
           </div>
@@ -57,8 +58,8 @@ function BGCarousel() {
         <SwiperSlide className="">
           <div className=" w-full h-full flex justify-center items-center ">
             <img
-              className="object-contain h-[90%] rounded-2xl"
-              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              className="object-contain h-full rounded-2xl"
+              src={`${imageURL1}`}
               alt="not found"
             />
           </div>
@@ -66,8 +67,8 @@ function BGCarousel() {
         <SwiperSlide className="">
           <div className=" w-full h-full flex justify-center items-center ">
             <img
-              className="object-contain h-[90%] rounded-2xl"
-              src="\src\Components\Home\Pictures\heroBG1.jpg"
+              className="object-contain h-full rounded-2xl"
+              src={`${imageURL1}`}
               alt="not found"
             />
           </div>
