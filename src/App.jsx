@@ -1,10 +1,7 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "./Components/NavBar";
 import { UserProvider, useUser } from "./store/contextApis";
-import { useEffect, useState } from "react";
-import PopUp from "./Components/PopUp";
-import Wishlist from "./Components/MenuListComponents/Wishlist";
-import AllCategoriesList from "./Components/Home/HomeComponents/AllCategoriesList";
+import NavBar from "./Components/Navbar/NavBar";
+import PopUp from "./Components/PopUp/PopUp";
 
 function App() {
   return (

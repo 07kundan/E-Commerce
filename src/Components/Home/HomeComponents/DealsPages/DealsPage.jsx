@@ -7,7 +7,6 @@ function DealsPage({ Id, emoji, toPage, icon }) {
 
   return (
     <>
-      <hr />
       <div
         id={Id}
         ref={ref}

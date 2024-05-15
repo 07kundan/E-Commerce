@@ -4,12 +4,21 @@ import BGCarousel from "./HomeComponents/BGCarousel";
 import Emojis from "./HomeComponents/Emojis";
 import CategoryBox from "./HomeComponents/CategoryBox";
 import AllCategoriesList from "./HomeComponents/AllCategoriesList";
-import Footer from "../Footer";
+import Footer from "../footer/Footer";
 import DealsPage from "./HomeComponents/DealsPages/DealsPage";
 import { useInView } from "framer-motion";
-import imgageUrl1 from "../../assets/Images/CategoryBoxImages/phone1.webp";
-import imgageUrl2 from "../../assets/Images/CategoryBoxImages/phone2.png";
-import imgageUrl3 from "../../assets/Images/CategoryBoxImages/phone3.webp";
+import phone1 from "../../assets/Images/CategoryBoxImages/phone1.jpg";
+import phone2 from "../../assets/Images/CategoryBoxImages/phone2.jpg";
+import phone3 from "../../assets/Images/CategoryBoxImages/phone3.jpg";
+import phone4 from "../../assets/Images/CategoryBoxImages/phone4.jpg";
+import watch1 from "../../assets/Images/CategoryBoxImages/watch1.jpg";
+import watch2 from "../../assets/Images/CategoryBoxImages/watch2.jpg";
+import watch3 from "../../assets/Images/CategoryBoxImages/watch3.jpg";
+import watch4 from "../../assets/Images/CategoryBoxImages/watch4.jpg";
+import fragnances1 from "../../assets/Images/CategoryBoxImages/fragnances1.jpg";
+import fragnances2 from "../../assets/Images/CategoryBoxImages/fragnances2.jpg";
+import fragnances3 from "../../assets/Images/CategoryBoxImages/fragnances3.jpg";
+import fragnances4 from "../../assets/Images/CategoryBoxImages/fragnances4.jpg";
 
 // ----------------- Icons -------------------------
 import { GiSonicShoes } from "react-icons/gi";
@@ -63,16 +72,17 @@ const CategoryBoxImages = {
           </p>
           <div className="text-5xl">{`/>`}</div>
         </div>
-        <p className="bg-purple-900/70 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-500 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
           " Stay connected, stay empowered, and stay ahead of the curve with the
           latest smartphones available on ZED-KART. Elevate your digital
           experience today! "
         </p>
       </div>
     ),
-    imgageUrl1,
-    imgageUrl2,
-    imgageUrl3,
+    phone1,
+    phone2,
+    phone3,
+    phone4,
   },
   watches: {
     descriptionM: (
@@ -103,17 +113,18 @@ const CategoryBoxImages = {
           </p>
           <div className="text-5xl">{`/>`}</div>
         </div>
-        <p className="bg-purple-900/70 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-500 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
           " Elevate your style with precision and elegance. Discover the perfect
           timepiece for every moment. "
         </p>
       </div>
     ),
-    imgageUrl1,
-    imgageUrl2,
-    imgageUrl3,
+    watch1,
+    watch2,
+    watch3,
+    watch4,
   },
-  shoes: {
+  fragnance: {
     descriptionM: (
       <>
         <div className="leading-snug text-lg font-medium">
@@ -132,23 +143,24 @@ const CategoryBoxImages = {
         <div className=" w-4/5 text-xl font-semibold">
           <div className="text-5xl">{`<`}</div>
           <p className="leading-snug pl-4">
-            Step into a world of style and comfort with our curated collection
-            of shoes, designed to complement every stride and elevate every
-            outfit. Explore an array of footwear options crafted with premium
-            materials and expert craftsmanship, ensuring both fashion and
-            functionality are seamlessly integrated into each step you take.
+            Immerse yourself in a world of captivating aromas with our exclusive
+            collection of fragrances, meticulously selected to cater to every
+            personality and occasion. Our E-commerce platform offers a diverse
+            array of perfumes and colognes, crafted by renowned brands and
+            expert perfumers who understand the art of scent.
           </p>
           <div className="text-5xl">{`/>`}</div>
         </div>
-        <p className="bg-yellow-900 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
-          " Find your perfect pair: Style meets comfort. Step up your shoe game
-          with our diverse collection "
+        <p className="bg-purple-950 text-amber-500 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+          " Discover your signature scent with our exquisite fragrances. Elevate
+          every moment with a touch of elegance. "
         </p>
       </div>
     ),
-    imgageUrl1,
-    imgageUrl2,
-    imgageUrl3,
+    fragnances1,
+    fragnances2,
+    fragnances3,
+    fragnances4,
   },
 };
 
@@ -186,9 +198,10 @@ function Home() {
             ? CategoryBoxImages.smartphones.descriptionM
             : CategoryBoxImages.smartphones.descriptionB
         }
-        Image1={CategoryBoxImages.smartphones.imgageUrl1}
-        Image2={CategoryBoxImages.smartphones.imgageUrl2}
-        Image3={CategoryBoxImages.smartphones.imgageUrl3}
+        Image1={CategoryBoxImages.smartphones.phone1}
+        Image2={CategoryBoxImages.smartphones.phone2}
+        Image3={CategoryBoxImages.smartphones.phone3}
+        Image4={CategoryBoxImages.smartphones.phone4}
       />
       <CategoryBox
         category={`mens-watches`}
@@ -197,20 +210,22 @@ function Home() {
             ? CategoryBoxImages.watches.descriptionM
             : CategoryBoxImages.watches.descriptionB
         }
-        Image1={CategoryBoxImages.smartphones.imgageUrl1}
-        Image2={CategoryBoxImages.smartphones.imgageUrl2}
-        Image3={CategoryBoxImages.smartphones.imgageUrl3}
+        Image1={CategoryBoxImages.watches.watch1}
+        Image2={CategoryBoxImages.watches.watch2}
+        Image3={CategoryBoxImages.watches.watch3}
+        Image4={CategoryBoxImages.watches.watch4}
       />
       <CategoryBox
         category={"fragrances"}
         description={
           window.innerWidth < 1024
-            ? CategoryBoxImages.shoes.descriptionM
-            : CategoryBoxImages.shoes.descriptionB
+            ? CategoryBoxImages.fragnance.descriptionM
+            : CategoryBoxImages.fragnance.descriptionB
         }
-        Image1={CategoryBoxImages.smartphones.imgageUrl1}
-        Image2={CategoryBoxImages.smartphones.imgageUrl2}
-        Image3={CategoryBoxImages.smartphones.imgageUrl3}
+        Image1={CategoryBoxImages.fragnance.fragnances1}
+        Image2={CategoryBoxImages.fragnance.fragnances2}
+        Image3={CategoryBoxImages.fragnance.fragnances3}
+        Image4={CategoryBoxImages.fragnance.fragnances4}
       />
       <AllCategoriesList />
       <Footer />

@@ -45,7 +45,7 @@ export function UserProvider(props) {
 
   // Add event listener for scrolling when component mounts
   useEffect(() => {
-    window.location.pathname === "/login" ||
+    window.location.pathname === "/Login" ||
     window.location.pathname === "/signup" ||
     window.location.pathname === "/category"
       ? setCategoryPageActive(true)

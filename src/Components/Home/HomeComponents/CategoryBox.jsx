@@ -8,24 +8,34 @@ import { Autoplay, Pagination, Navigation, FreeMode } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { useUser } from "../../../store/contextApis";
 
-function CategoryBox({ category, description, Image1, Image2, Image3 }) {
+function CategoryBox({
+  category,
+  description,
+  Image1,
+  Image2,
+  Image3,
+  Image4,
+}) {
   const { setCategory, current } = useUser();
   return (
     <div className="h-screen w-screen flex items-center">
-      <div className="w-[90%] h-[90vh] m-auto bg-slate-600/60 flex flex-col py-8 rounded-3xl lg:py-4 px-8 lg:flex lg:flex-col ">
+      <div className="w-[90%] h-[92vh] m-auto bg-purple-500/20 flex flex-col py-8 px-8 gap-2 rounded-3xl lg:py-4 lg:gap-0">
+        {/* heading */}
         <h3 className="h-[6vh] text-3xl font-semibold text-center underline">
           {category.toUpperCase()}
         </h3>
-        <div className=" h-[80vh] flex flex-col-reverse w-full gap-6 lg:flex-row lg:gap-5">
+
+        {/* middle content */}
+        <div className="min-h-[75vh] flex flex-col-reverse justify-end w-full lg:flex-row ">
           {/* Left section / description */}
-          <section className=" w-full h-3/5 pt-8 text-center flex justify-center lg:pt-0 lg:w-3/5 lg:h-full lg:items-center lg:text-left lg:px-5">
+          <section className=" w-full text-center flex justify-center lg:pt-0 lg:w-3/5 lg:h-full lg:items-center lg:text-left lg:px-5 ">
             {description}
           </section>
 
           {/*Right section / images */}
-          <section className=" w-full flex items-center justify-center lg:w-2/5 lg:h-full">
+          <section className=" w-full h-1/2 flex items-center justify-center lg:w-2/5 lg:h-full">
             <Swiper
-              className="w-full h-full"
+              className="w-4/5 h-[90%]"
               style={{
                 "--swiper-pagination-color": "#fff",
                 "--swiper-navigation-color": "#fff",
@@ -40,24 +50,24 @@ function CategoryBox({ category, description, Image1, Image2, Image3 }) {
               navigation={true}
               modules={[Autoplay, Navigation, Pagination, FreeMode]}
             >
-              <SwiperSlide className="w-full h-full ">
+              <SwiperSlide className="">
                 <div className="w-full h-full flex justify-center items-center">
                   <img src={`${Image1}`} alt="img" className="" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="w-full h-full flex justify-center items-center">
+                <div className="w-full h-full  flex justify-center items-center">
                   <img src={`${Image2}`} alt="img" className="" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="w-full h-full flex justify-center items-center">
+                <div className="w-full h-full flex justify-center pr10 items-center ">
                   <img src={`${Image3}`} alt="img" className="" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="w-full h-full flex justify-center items-center">
-                  <img src={`${Image3}`} alt="img" className="" />
+                  <img src={`${Image4}`} alt="img" className="" />
                 </div>
               </SwiperSlide>
             </Swiper>
@@ -68,7 +78,7 @@ function CategoryBox({ category, description, Image1, Image2, Image3 }) {
           onClick={() => {
             setCategory(category);
           }}
-          className="h-[4vh] font-semibold text-xl flex items-center justify-end pr-8"
+          className=" font-semibold text-purple-700 text-lg flex items-end justify-end pr-4 lg:pr-8"
         >
           <Link to={current ? "/category" : "/Login"}>See all</Link>
         </button>

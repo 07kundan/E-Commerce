@@ -1,13 +1,52 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { fetchAllProductsCategories } from "../../../store/API";
 import { useUser } from "../../../store/contextApis";
 
+//--------------------- Image URL ------------------------
+import smartphones from "../../../assets/Images/AllCategoriesImages/smartphone.jpg";
+import laptops from "../../../assets/Images/AllCategoriesImages/laptops.jpg";
+import fragrances from "../../../assets/Images/AllCategoriesImages/fragrances.jpg";
+import skincare from "../../../assets/Images/AllCategoriesImages/skincare.jpg";
+import groceries from "../../../assets/Images/AllCategoriesImages/groceries.jpg";
+import homedecoration from "../../../assets/Images/AllCategoriesImages/homedecoration.jpg";
+import furniture from "../../../assets/Images/AllCategoriesImages/furniture.jpg";
+import tops from "../../../assets/Images/AllCategoriesImages/tops.jpg";
+import womensdresses from "../../../assets/Images/AllCategoriesImages/womensdresses.jpg";
+import womensshoes from "../../../assets/Images/AllCategoriesImages/womensshoes.jpg";
+import mensshirts from "../../../assets/Images/AllCategoriesImages/mensshirts.jpg";
+import mensshoes from "../../../assets/Images/AllCategoriesImages/mensshoes.jpg";
+import menswatches from "../../../assets/Images/AllCategoriesImages/menswatches.jpg";
+import womenswatches from "../../../assets/Images/AllCategoriesImages/womenswatches.jpg";
+import womensbags from "../../../assets/Images/AllCategoriesImages/womensbags.jpg";
+import womensjewellery from "../../../assets/Images/AllCategoriesImages/womensjewellery.jpg";
+import sunglasses from "../../../assets/Images/AllCategoriesImages/sunglasses.jpg";
+import automotive from "../../../assets/Images/AllCategoriesImages/automotive.jpg";
+import motorcycle from "../../../assets/Images/AllCategoriesImages/motorcycle.jpg";
+import lighting from "../../../assets/Images/AllCategoriesImages/lighting.jpg";
+
 const ImagesCollections = [
-  { id: "smartphones", text: "smartphones" },
-  { id: "laptops", text: "laptops" },
-  { id: "fragrances", text: "fragrances" },
+  { id: "smartphones", Image: smartphones },
+  { id: "laptops", Image: laptops },
+  { id: "fragrances", Image: fragrances },
+  { id: "skincare", Image: skincare },
+  { id: "groceries", Image: groceries },
+  { id: "home-decoration", Image: homedecoration },
+  { id: "furniture", Image: furniture },
+  { id: "tops", Image: tops },
+  { id: "womens-dresses", Image: womensdresses },
+  { id: "womens-shoes", Image: womensshoes },
+  { id: "mens-shirts", Image: mensshirts },
+  { id: "mens-shoes", Image: mensshoes },
+  { id: "mens-watches", Image: menswatches },
+  { id: "womens-watches", Image: womenswatches },
+  { id: "womens-bags", Image: womensbags },
+  { id: "womens-jewellery", Image: womensjewellery },
+  { id: "sunglasses", Image: sunglasses },
+  { id: "automotive", Image: automotive },
+  { id: "motorcycle", Image: motorcycle },
+  { id: "lighting", Image: lighting },
 ];
 
 function AllCategoriesList() {
@@ -36,12 +75,15 @@ function AllCategoriesList() {
   // ----------------------------
   return (
     <div className="h-fit lg:w-[90%]  m-auto mb-10 lg:p-2">
-      <h3 className="text-center text-4xl font-semibold underline">
+      {/* -------- Heading ------------ */}
+      <h3 className="text-center text-4xl font-semibold underline ">
         All categories
       </h3>
-      <div className="h-fit w-full flex justify-center items-center">
+
+      {/* -------content--------- */}
+      <div className="h-fit w-full flex justify-between items-center">
         {/* Categories List */}
-        <div className="w-full py-6 flex flex-wrap space-x-1 gap-y-3 justify-center lg:block lg:px-10 lg:w-1/2 lg:p-6 ">
+        <div className="w-full py-6 flex flex-wrap space-x-1 gap-y-3 justify-center lg:block lg:px-10 lg:w-1/2 lg:space-x-0 lg:p-6 ">
           {CategoryList.map((item) => (
             <div key={item}>
               {/*  for mobile devices */}
@@ -49,9 +91,9 @@ function AllCategoriesList() {
                 <button
                   style={{
                     backgroundColor: `rgb(
-                      ${Math.round(Math.random() * (150 - 0)) + 0},
-                      ${Math.round(Math.random() * (150 - 0)) + 0},
-                      ${Math.round(Math.random() * (150 - 0)) + 0})`,
+                      ${Math.round(Math.random() * (255 - 0)) + 0},
+                      ${Math.round(Math.random() * (255 - 0)) + 0},
+                      ${Math.round(Math.random() * (255 - 0)) + 0})`,
                   }}
                   className={`px-3 py-2 text-base font-medium rounded-xl`}
                   onClick={() => {
@@ -71,26 +113,31 @@ function AllCategoriesList() {
 
               {/*  For bigger screen */}
               {window.innerWidth > 1024 && (
-                <div className="flex justify-between" key={item}>
+                <div className="flex justify-between mb-1" key={item}>
                   <motion.button
-                    // whileTap={{ color: "blue" }}
-                    className=" list-none p-1"
+                    whileTap={{ color: "blue" }}
+                    whileHover={{ color: "#722cff" }}
+                    className=" list-none px-2 py-1 font-bold bg-[#d23f34] rounded-lg"
                     onClick={() => {
                       setAnimateValue(item);
                     }}
                   >
                     {item.toUpperCase()}
                   </motion.button>
+
+                  {/* view all button */}
                   <button
                     onClick={() => {
                       setCategory(item);
                     }}
                   >
-                    <Link
-                      to={current ? "/category" : "/Login"}
-                      className="underline"
-                    >
-                      view all
+                    <Link to={current ? "/category" : "/Login"} className=" ">
+                      <motion.button
+                        whileTap={{ color: "blue" }}
+                        whileHover={{ color: "#722cff" }}
+                      >
+                        view all
+                      </motion.button>
                     </Link>
                   </button>
                 </div>
@@ -100,10 +147,9 @@ function AllCategoriesList() {
         </div>
 
         {/* Category Images */}
-        <div className="w12"></div>
         {window.innerWidth > 1024 && (
           <>
-            <div className=" w-1/2 ">
+            <div className=" w-2/5">
               {ImagesCollections.map(
                 (item) =>
                   animateValue === item.id && (
@@ -122,7 +168,11 @@ function AllCategoriesList() {
                         ease: "easeInOut",
                       }}
                     >
-                      {item.text}
+                      <img
+                        src={`${item.Image}`}
+                        alt=""
+                        className="h-[70vh] outline outline-4 outline-offset-2"
+                      />
                     </motion.div>
                   )
               )}

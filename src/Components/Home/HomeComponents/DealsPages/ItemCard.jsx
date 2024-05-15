@@ -15,7 +15,6 @@ function ItemCard({
   icon,
 }) {
   const { setCategory, current } = useUser();
-
   const parentControl = useAnimation();
   const innerControls = [useAnimation(), useAnimation(), useAnimation()];
   const isInView = useInView(reference, { amount: 0.6 });
@@ -61,7 +60,7 @@ function ItemCard({
         <motion.span
           variants={{
             initial: { top: "100px", opacity: 0 },
-            final: { top: "3px", opacity: 1, color: "red" },
+            final: { top: "-16px", opacity: 1, color: "red" },
           }}
           initial="initial"
           animate={innerControls[0]}
@@ -75,7 +74,7 @@ function ItemCard({
         <motion.span
           variants={{
             initial: { top: "115%", opacity: 0 },
-            final: { top: "85%", opacity: 1, color: "red" },
+            final: { top: "93%", opacity: 1, color: "red" },
           }}
           initial="initial"
           animate={innerControls[2]}
@@ -108,7 +107,11 @@ function ItemCard({
         >
           {emoji}
         </motion.span>
-        <img className="h-fit lg:h-[30vh]" src={ImageUrl} alt="" />
+        <img
+          className="h-[20vh]  max-w-[90%] lg:h-[30vh]"
+          src={ImageUrl}
+          alt=""
+        />
       </div>
     </motion.span>
   );
