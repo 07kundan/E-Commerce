@@ -25,7 +25,7 @@ function ProductPage() {
   }, [category]);
 
   return (
-    <div className="h-screen w-screen  flex items-center pt-8 ">
+    <div className="h-screen w-screen  flex items-center pt-10 ">
       {categoryData &&
         categoryData.products &&
         Array.isArray(categoryData.products) && (
@@ -35,10 +35,10 @@ function ProductPage() {
             }}
             navigation={true}
             modules={[Navigation, Pagination]}
-            className="flex items-center justify-center w-[95%] h-4/5 "
+            className="w-[95%] h-5/6 lg:h-[85%] lg:w-[87%]"
           >
             {categoryData.products.map((item) => (
-              <SwiperSlide key={item.id}>
+              <SwiperSlide key={item.id} className="">
                 <ProductCard
                   title={item.title}
                   description={item.description}

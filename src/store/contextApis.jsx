@@ -10,6 +10,7 @@ export function useUser() {
 
 export function UserProvider(props) {
   const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
   const [user, setUser] = useState(null);
   const [isNavbarActive, setIsNavbarActive] = useState(false);
   const [categoryPageActive, setCategoryPageActive] = useState(false);
@@ -69,6 +70,7 @@ export function UserProvider(props) {
   // Login function
   async function Login(email, password) {
     try {
+      setLoader(true);
       await account.createEmailSession(email, password);
       setUser(await account.get());
       // console.log("Login");
@@ -77,11 +79,13 @@ export function UserProvider(props) {
     } catch (error) {
       setAuthenticationState("Please use correct Email and password");
     }
+    setLoader(false);
   }
 
   // SignUp
   async function Signup(email, password, name) {
     try {
+      setLoader(true);
       await account.create(ID.unique(), email, password, name);
       // console.log("SignUp");
       setAuthenticationState("SignUp");
@@ -89,6 +93,7 @@ export function UserProvider(props) {
     } catch (error) {
       setAuthenticationState("Failed to SignUp");
     }
+    setLoader(false);
   }
 
   // Logout function
@@ -118,6 +123,8 @@ export function UserProvider(props) {
     <userContext.Provider
       value={{
         current: user,
+        loader,
+        setLoader,
         userDetails,
         setUserDetails,
         Login,

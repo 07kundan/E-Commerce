@@ -18,8 +18,8 @@ function SignupPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-200 via-blue-300 to-blue-400">
-      <div className="flex flex-col border-2 bg-transparent border-black p-8 rounded-xl shadow-md max-w-lg lg:w-3/4 lg:mt-8">
+    <div className="flex justify-center items-center min-h-screen text-[#2e5dde]">
+      <div className="flex flex-col   bg-gradient-to-br from-slate-300/30 via-slate-700/70 to-slate-900 border-2 border-black p-8 rounded-xl shadow-md max-w-lg lg:w-3/4 lg:mt-8">
         <h2 className="text-3xl  font-bold text-center underline underline-offset-2 ">
           Create an Account
         </h2>
@@ -106,9 +106,9 @@ function SignupPage() {
               }}
             >
               {isHidePassword ? (
-                <IoEye className="text-blue-500" />
+                <IoEye className="text-amber-400" />
               ) : (
-                <IoEyeOff className="text-slate-500" />
+                <IoEyeOff className="text-amber-600" />
               )}
             </button>
           </div>

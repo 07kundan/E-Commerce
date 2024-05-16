@@ -61,7 +61,7 @@ const CategoryBoxImages = {
     ),
     descriptionB: (
       <div className=" flex flex-col items-center gap-8">
-        <div className="font-lobster w-[85%] text-xl font-light">
+        <div className=" w-[85%] text-xl font-semibold">
           <div className="text-5xl">{`<`}</div>
           <p className="leading-snug pl-4">
             Discover the latest revolution in communication and connectivity
@@ -72,7 +72,7 @@ const CategoryBoxImages = {
           </p>
           <div className="text-5xl">{`/>`}</div>
         </div>
-        <p className="bg-purple-950 text-amber-500 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-400 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
           " Stay connected, stay empowered, and stay ahead of the curve with the
           latest smartphones available on ZED-KART. Elevate your digital
           experience today! "
@@ -113,7 +113,7 @@ const CategoryBoxImages = {
           </p>
           <div className="text-5xl">{`/>`}</div>
         </div>
-        <p className="bg-purple-950 text-amber-500 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-400 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
           " Elevate your style with precision and elegance. Discover the perfect
           timepiece for every moment. "
         </p>
@@ -129,11 +129,11 @@ const CategoryBoxImages = {
       <>
         <div className="leading-snug text-lg font-medium">
           <p>
-            Step into a world of style and comfort with our curated collection
-            of shoes, designed to complement every stride and elevate every
-            outfit. Explore an array of footwear options crafted with premium
-            materials and expert craftsmanship, ensuring both fashion and
-            functionality are seamlessly integrated into each step you take.
+            Immerse yourself in a world of captivating aromas with our exclusive
+            collection of fragrances, meticulously selected to cater to every
+            personality and occasion. Our E-commerce platform offers a diverse
+            array of perfumes and colognes, crafted by renowned brands and
+            expert perfumers who understand the art of scent.
           </p>
         </div>
       </>
@@ -151,7 +151,7 @@ const CategoryBoxImages = {
           </p>
           <div className="text-5xl">{`/>`}</div>
         </div>
-        <p className="bg-purple-950 text-amber-500 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-400 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
           " Discover your signature scent with our exquisite fragrances. Elevate
           every moment with a touch of elegance. "
         </p>

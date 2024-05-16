@@ -35,7 +35,7 @@ function CategoryBox({
           {/*Right section / images */}
           <section className=" w-full h-1/2 flex items-center justify-center lg:w-2/5 lg:h-full">
             <Swiper
-              className="w-4/5 h-[90%]"
+              className="w-4/5 h-[90%] rounded-2xl"
               style={{
                 "--swiper-pagination-color": "#fff",
                 "--swiper-navigation-color": "#fff",

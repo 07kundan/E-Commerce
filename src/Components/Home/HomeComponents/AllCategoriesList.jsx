@@ -117,7 +117,7 @@ function AllCategoriesList() {
                   <motion.button
                     whileTap={{ color: "blue" }}
                     whileHover={{ color: "#722cff" }}
-                    className=" list-none px-2 py-1 font-bold bg-[#d23f34] rounded-lg"
+                    className=" px-2 py-1 font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg"
                     onClick={() => {
                       setAnimateValue(item);
                     }}
@@ -171,7 +171,7 @@ function AllCategoriesList() {
                       <img
                         src={`${item.Image}`}
                         alt=""
-                        className="h-[70vh] outline outline-4 outline-offset-2"
+                        className="h-[70vh] outline outline-4 outline-offset-4"
                       />
                     </motion.div>
                   )

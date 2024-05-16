@@ -1,0 +1,84 @@
+import React from "react";
+import { IoIosStar } from "react-icons/io";
+import { MdOutlineClose } from "react-icons/md";
+
+function CartCard({
+  name,
+  price,
+  image,
+  rating,
+  quantity,
+  removeItem,
+  increaseQuantity,
+  decreaseQuantity,
+}) {
+  return (
+    <div className="h-[30%] w-full flex flex-col justify-center items-center p-4  border-2 border-[#c606b9] rounded-xl relative overflow-hidden lg:w-[30%] lg:h-[40vh]">
+      {/* remove button */}
+      <button
+        className="absolute right-0 top-0 bg-amber-600 p-2 rounded-es-xl text-xl"
+        onClick={() => {
+          removeItem(name);
+        }}
+      >
+        <MdOutlineClose />
+      </button>
+      {/* --------- */}
+
+      <div className="flex h-full ">
+        {/* Right section/Image */}
+        <div className="w-1/2  h-full flex justify-center items-center lg:w-[40%]">
+          {/* Images */}
+          <div className="w-4/5 max-h-[80%]">
+            <img src={`${image}`} alt="img" />
+          </div>
+        </div>
+
+        {/* description / Left section*/}
+        <div className=" w-full px-3 flex flex-col justify-center gap-1 lg:w-[70%] lg:h-full">
+          <div>
+            <span className="font-bold text-lg ">{name}</span>
+          </div>
+          <div className="text-sm font-semibold my-1">#OnlyOnZed-kart</div>
+          <div className="flex gap-2 items-center">
+            <span className="flex items-center gap-1 bg-amber-400 bg-opacity-60 px-2 my-1 rounded-lg">
+              <IoIosStar />
+              <span>{rating} </span>
+            </span>
+            <span className="text-sm">34,400 ratings</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex gap-6 items-center">
+        {/* price */}
+        <div className="font-bold mb-2 mt-2  lg:mb-00 text-xl">
+          Price-
+          <span className="text-xl"> {price}$ </span>
+        </div>
+        {/* button */}
+        <div className="flex justify-center items-center gap-3 font-semibold lg:gap-6 text-xl">
+          <button
+            className=" bg-amber-600 p-1 px-3 rounded-md lg:text-lg"
+            onClick={() => {
+              decreaseQuantity(name);
+            }}
+          >
+            -
+          </button>
+          <span>{quantity}</span>
+          <button
+            className=" bg-amber-600 p-1 px-3 rounded-md lg:text-lg"
+            onClick={() => {
+              increaseQuantity(name);
+            }}
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CartCard;

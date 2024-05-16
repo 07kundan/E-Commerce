@@ -46,8 +46,8 @@ function ItemCard({
         },
       }}
       animate={parentControl}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
-      className={`w-[40%] min-h-[22vh] max-h-[22vh]  outline bg-[#0b030a]/30 outline-2 outline-offset-4 absolute lg:min-h-[34vh] lg:max-h-[34vh] lg:min-w-[20vw] lg:max-w-fit `}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      className={`w-[40%] min-h-[22vh] max-h-[22vh]  outline bg-[#0b030a]/30 outline-2 outline-offset-4 outline-[#c606b9] absolute lg:min-h-[34vh] lg:max-h-[34vh] lg:min-w-[20vw] lg:max-w-fit `}
       style={{
         backgroundImage: `url(${ImageUrl})`,
         backgroundSize: "cover",
@@ -64,7 +64,7 @@ function ItemCard({
           }}
           initial="initial"
           animate={innerControls[0]}
-          transition={{ duration: 1, ease: "circInOut" }}
+          transition={{ duration: 0.8, ease: "circInOut" }}
           className=" absolute -left-4 text-xs font-semibold bg-black px-2 py-1 rounded-lg lg:-left-12"
         >
           Up to {Math.round(Math.random() * (60 - 20) + 20)}% OFF
@@ -78,7 +78,7 @@ function ItemCard({
           }}
           initial="initial"
           animate={innerControls[2]}
-          transition={{ duration: 1, ease: "circInOut" }}
+          transition={{ duration: 0.8, ease: "circInOut" }}
           className=" absolute -right-4 flex items-center gap-1 text-xs lg:-right-12"
         >
           <Link
@@ -102,7 +102,7 @@ function ItemCard({
           }}
           initial="initial"
           animate={innerControls[1]}
-          transition={{ duration: 1, ease: "circInOut" }}
+          transition={{ duration: 0.8, ease: "circInOut" }}
           className=" absolute -left-6 text-4xl lg:text-4xl"
         >
           {emoji}

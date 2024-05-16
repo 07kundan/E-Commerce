@@ -43,7 +43,7 @@ const Profile = () => {
 
   return (
     <div className="container h-screen w-screen flex justify-center items-center">
-      <div className="bg-slate-700/60 rounded-lg min-w-[80%] max-w-[80%] h-[85%] mt-8 mx-8 p-8 flex flex-col justify-around border-2 shadow-2xl border-yellow-400 lg:min-w-[70%] lg:max-w-[70%] lg:h-[75%] lg:max-h-[75%] lg:relative lg:mt-24">
+      <div className="bg-slate-700/60 rounded-lg min-w-[80%] max-w-[80%] h-[85%] mt-8 mx-8 p-8 flex flex-col justify-around border-2 shadow-2xl border-[#c606b9] lg:min-w-[70%] lg:max-w-[70%] lg:h-[75%] lg:max-h-[75%] lg:relative lg:mt-24">
         {/* profile picture */}
         <div className="flex justify-center items-center lg:absolute lg:-top-12 lg:left-1/2 lg:-translate-x-1/2">
           <img

@@ -1,0 +1,28 @@
+
+  .loader-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100px; /* Width of the loader area */
+  }
+  
+  .loader-circle {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    background-color: #ff00ee; /* Loader color */
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+  }
+  
+  @keyframes bounce {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-15px);
+      opacity: 0.5;
+    }
+  }
+  
