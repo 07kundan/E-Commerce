@@ -24,36 +24,27 @@ function SignupPage() {
   const handleDatabase = async (e) => {
     e.preventDefault();
     try {
-      const response = await userContext.Signup(
-        user.Email,
-        user.Password,
-        user.Name
-      );
+      await userContext.Signup(user.Email, user.Password, user.Name);
+      // If signup is successful, proceed with creating the document
       try {
-        await userContext.Signup(user.Email, user.Password, user.Name);
-        // If signup is successful, proceed with creating the document
-        try {
-          const response = await databases.createDocument(
-            "6624cfd4357d94effa79", // Replace with your database ID
-            "66470fb100112c5dd918", // Replace with your collection ID
-            ID.unique(),
-            {
-              userID: user.Email,
-              Name: user.Name,
-              PhoneNo: user.PhoneNo,
-              password: user.Password,
-              Email: user.Email,
-            }
-          );
-          // console.log(response);
-        } catch (error) {
-          console.log("Error creating document:", error);
-        }
+        const response = await databases.createDocument(
+          "6624cfd4357d94effa79", // Replace with your database ID
+          "66470fb100112c5dd918", // Replace with your collection ID
+          ID.unique(),
+          {
+            userID: user.Email,
+            Name: user.Name,
+            PhoneNo: user.PhoneNo,
+            password: user.Password,
+            Email: user.Email,
+          }
+        );
+        // console.log(response);
       } catch (error) {
-        console.error("Error during signup:", error);
+        console.log("Error creating document:", error);
       }
     } catch (error) {
-      console.error("Error creating document:", error);
+      console.error("Error during signup:", error);
     }
   };
 
