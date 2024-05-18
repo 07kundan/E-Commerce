@@ -133,8 +133,8 @@ export function UserProvider(props) {
       setAuthenticationState("SignUp Successfully");
       navigate("/login");
     } catch (error) {
-      console.log(error);
       setAuthenticationState("Failed to signup");
+      console.log(error);
     }
     setLoader(false);
   }
