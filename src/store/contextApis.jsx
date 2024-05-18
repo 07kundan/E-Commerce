@@ -23,12 +23,12 @@ export function UserProvider(props) {
   const [wishlistItems, setWishlistItems] = useState([]);
 
   // User details
-  // const [userDetails, setUserDetails] = useState({
-  //   Name: "",
-  //   PhoneNo: "",
-  //   Email: "",
-  //   Password: "",
-  // });
+  const [userDetails, setUserDetails] = useState({
+    Name: "",
+    PhoneNo: "",
+    Email: "",
+    Password: "",
+  });
   const [profile, setProfile] = useState({});
 
   // Navbar funcitonality
@@ -121,7 +121,7 @@ export function UserProvider(props) {
       setAuthenticationState("login failed");
     }
     setLoader(false);
-    console.log("login", user);
+    // console.log("login", user);
   }
 
   // SignUp
@@ -170,8 +170,8 @@ export function UserProvider(props) {
         current: user,
         loader,
         setLoader,
-        // userDetails,
-        // setUserDetails,
+        userDetails,
+        setUserDetails,
         Login,
         Logout,
         Signup,
