@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useUser } from "../../store/contextApis";
 
 const Profile = () => {
-  const { userDetails: user, setUserDetails: setUser } = useUser();
+  const { profile, setProfile } = useUser();
 
   const [profileData, setProfileData] = useState({
-    name: user.Name,
+    name: profile.Name.toUpperCase(),
     profilePicture:
       "https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg",
-    email: user.Email,
-    phone: user.PhoneNo,
+    email: profile.Email,
+    phone: profile.PhoneNo,
     address: "",
     city: "",
     state: "",
@@ -42,7 +42,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="container h-screen w-screen flex justify-center items-center">
+    <div className="container h-screen w-screen flex justify-center mt-4 items-center lg:mt-0">
       <div className="bg-slate-700/60 rounded-lg min-w-[80%] max-w-[80%] h-[85%] mt-8 mx-8 p-8 flex flex-col justify-around border-2 shadow-2xl border-[#c606b9] lg:min-w-[70%] lg:max-w-[70%] lg:h-[75%] lg:max-h-[75%] lg:relative lg:mt-24">
         {/* profile picture */}
         <div className="flex justify-center items-center lg:absolute lg:-top-12 lg:left-1/2 lg:-translate-x-1/2">
@@ -52,19 +52,19 @@ const Profile = () => {
             className="rounded-full w-32 h-32 object-cover border-4 border-white"
           />
         </div>
+
+        {/* Name */}
         <div className="text-center mt-4 lg:absolute lg:mt-0 lg:top-20 lg:left-1/2 lg:-translate-x-1/2">
           <h2 className="text-2xl font-semibold ">
-            {isEditing ? (
-              <input
-                type="text"
-                name="name"
-                value={editedData.name}
-                onChange={handleChange}
-                className="bg-transparent w-[70%] text-center focus:outline-none focus:border-blue-500 border-b border-gray-300"
-              />
-            ) : (
-              profileData.name
-            )}
+            <input
+              readOnly
+              type="text"
+              name="name"
+              value={editedData.name}
+              onChange={handleChange}
+              className="bg-transparent w-[70%] text-center focus:outline-none focus:border-blue-500 mt-2 border-b border-gray-300"
+            />
+            {/* profileData.name */}
           </h2>
         </div>
 
@@ -74,30 +74,27 @@ const Profile = () => {
             <h3 className="text-lg font-semibold mb-2 underline">
               Contact Information
             </h3>
-            <div className="flex flex-col gap-3 lg:flex-row lg:justify-start lg:gap-32 lg:items-center">
+            <div className="flex flex-col gap-3 lg:flex-row lg:justify-start lg:gap-24 lg:items-center">
               {/* email */}
-              <label htmlFor="Email">Email-: </label>
-              <p name="Email" className="">
-                {profileData.email}
-              </p>
+              <div className="flex items-center gap-2">
+                <label htmlFor="Email">Email-: </label>
+                <p name="Email" className="">
+                  {profileData.email}
+                </p>
+              </div>
 
               {/* Phone no */}
-              <p className="">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name="phone"
-                    value={editedData.phone}
-                    onChange={handleChange}
-                    placeholder="Phone no"
-                    className="bg-transparent w-full p-2 focus:outline-none focus:border-blue-500 border rounded-lg border-gray-300"
-                  />
-                ) : (
-                  <>
-                    <label htmlFor="phone">Phone no-: </label>
-                    {profileData.phone}
-                  </>
-                )}
+              <p className="flex items-center gap-2">
+                <label htmlFor="pnone">PhoneNo-:</label>
+                <input
+                  readOnly
+                  type="text"
+                  name="phone"
+                  value={editedData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone no"
+                  className="bg-transparent w-full p-2 focus:outline-none focus:border-blue-500 border rounded-lg border-none"
+                />
               </p>
             </div>
           </div>
@@ -145,8 +142,8 @@ const Profile = () => {
                 {isEditing ? (
                   <input
                     type="text"
-                    name="State"
-                    value={editedData.country}
+                    name="state"
+                    value={editedData.state}
                     onChange={handleChange}
                     placeholder="State"
                     className="bg-transparent p-2 w-full rounded-lg focus:outline-none focus:border-blue-500 border border-gray-300"

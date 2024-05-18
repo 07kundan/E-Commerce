@@ -24,6 +24,7 @@ function DealsPage({ Id, emoji, toPage, icon }) {
           toPage={toPage}
           emoji={emoji}
           icon={icon}
+          off={Math.round(Math.random() * (60 - 20) + 20)}
         />
 
         <ItemCard
@@ -34,6 +35,7 @@ function DealsPage({ Id, emoji, toPage, icon }) {
           toPage={toPage}
           emoji={emoji}
           icon={icon}
+          off={Math.round(Math.random() * (60 - 20) + 20)}
         />
 
         <ItemCard
@@ -44,6 +46,7 @@ function DealsPage({ Id, emoji, toPage, icon }) {
           toPage={toPage}
           emoji={emoji}
           icon={icon}
+          off={Math.round(Math.random() * (60 - 20) + 20)}
         />
         <ItemCard
           reference={ref}
@@ -53,6 +56,7 @@ function DealsPage({ Id, emoji, toPage, icon }) {
           toPage={toPage}
           emoji={emoji}
           icon={icon}
+          off={Math.round(Math.random() * (60 - 20) + 20)}
         />
         <ItemCard
           reference={ref}
@@ -62,6 +66,7 @@ function DealsPage({ Id, emoji, toPage, icon }) {
           toPage={toPage}
           emoji={emoji}
           icon={icon}
+          off={Math.round(Math.random() * (60 - 20) + 20)}
         />
 
         <ItemCard
@@ -72,6 +77,7 @@ function DealsPage({ Id, emoji, toPage, icon }) {
           toPage={toPage}
           emoji={emoji}
           icon={icon}
+          off={Math.round(Math.random() * (60 - 20) + 20)}
         />
       </div>
       <hr />

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ID } from "appwrite";
-import { account } from "./AppWriteConfig";
-import { useNavigate } from "react-router-dom";
+import { account, databases } from "./AppWriteConfig";
+import { redirect, useNavigate } from "react-router-dom";
 const userContext = createContext();
 
 export function useUser() {
@@ -11,7 +11,7 @@ export function useUser() {
 export function UserProvider(props) {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [isNavbarActive, setIsNavbarActive] = useState(false);
   const [categoryPageActive, setCategoryPageActive] = useState(false);
   const [isNavbarHidden, setIsNavbarHidden] = useState(false);
@@ -23,12 +23,13 @@ export function UserProvider(props) {
   const [wishlistItems, setWishlistItems] = useState([]);
 
   // User details
-  const [userDetails, setUserDetails] = useState({
-    Name: "",
-    PhoneNo: null,
-    Email: "",
-    Password: "",
-  });
+  // const [userDetails, setUserDetails] = useState({
+  //   Name: "",
+  //   PhoneNo: "",
+  //   Email: "",
+  //   Password: "",
+  // });
+  const [profile, setProfile] = useState({});
 
   // Navbar funcitonality
 
@@ -67,6 +68,45 @@ export function UserProvider(props) {
   }, [scrollValue, isNavbarActive, categoryPageActive]);
   // --------------------
 
+  // function to get document
+  const fetchUserDocuments = async (email) => {
+    try {
+      const response = await databases.listDocuments(
+        "6624cfd4357d94effa79",
+        "66470fb100112c5dd918"
+      );
+      // console.log(email);
+      const filtered = response.documents.filter(
+        (document) => document.Email === email
+      );
+
+      // console.log(filtered);
+      if (filtered.length > 0) {
+        setProfile(filtered[0]);
+      }
+      // response.documents.forEach((document) => {
+      //   if (email === document.Email) {
+      //     console.log(response.documents);
+      //   }
+
+      //   // console.log("email", document.Email);
+      //   // console.log(email === document.Email);
+      // });
+
+      // console.log("successful");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    if (user && user.email) {
+      // console.log("entered");
+      // console.log(user);
+      fetchUserDocuments(user.email);
+    }
+  }, [user]);
+
   // Login function
   async function Login(email, password) {
     try {
@@ -74,12 +114,14 @@ export function UserProvider(props) {
       await account.createEmailSession(email, password);
       setUser(await account.get());
       // console.log("Login");
-      setAuthenticationState("Login");
+      setAuthenticationState("Login Successfully");
       navigate("/");
     } catch (error) {
-      setAuthenticationState("Please use correct Email and password");
+      console.log(error);
+      setAuthenticationState("login failed");
     }
     setLoader(false);
+    console.log("login", user);
   }
 
   // SignUp
@@ -88,10 +130,11 @@ export function UserProvider(props) {
       setLoader(true);
       await account.create(ID.unique(), email, password, name);
       // console.log("SignUp");
-      setAuthenticationState("SignUp");
+      setAuthenticationState("SignUp Successfully");
       navigate("/login");
     } catch (error) {
-      setAuthenticationState("Failed to SignUp");
+      console.log(error);
+      setAuthenticationState("Failed to signup");
     }
     setLoader(false);
   }
@@ -101,7 +144,7 @@ export function UserProvider(props) {
   async function Logout() {
     await account.deleteSession("current");
     // console.log("Logout");
-    setAuthenticationState("Logout");
+    setAuthenticationState("Logout  Successfully");
     setUser(null);
   }
 
@@ -109,14 +152,16 @@ export function UserProvider(props) {
     try {
       const loggedIn = await account.get();
       setUser(loggedIn);
-      setAuthenticationState("Login");
+      setAuthenticationState("Login Successfully");
     } catch (err) {
       setUser(null);
     }
   }
 
   useEffect(() => {
+    setLoader(true);
     init();
+    setLoader(false);
   }, []);
 
   return (
@@ -125,8 +170,8 @@ export function UserProvider(props) {
         current: user,
         loader,
         setLoader,
-        userDetails,
-        setUserDetails,
+        // userDetails,
+        // setUserDetails,
         Login,
         Logout,
         Signup,
@@ -137,12 +182,15 @@ export function UserProvider(props) {
         wishlistItems,
         setWishlistItems,
         authenticationState,
+        setAuthenticationState,
         isNavbarActive,
         setIsNavbarActive,
         isNavbarHidden,
         setIsNavbarHidden,
         setCategoryPageActive,
         handleScroll,
+        profile,
+        setProfile,
       }}
     >
       {props.children}

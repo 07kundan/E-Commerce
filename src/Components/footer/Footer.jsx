@@ -54,26 +54,26 @@ function Footer() {
           <div className="inline-flex gap-5 outline outline-2 py-3 px-6 rounded-xl">
             <a
               href="https://www.instagram.com/kun_dan.kr"
-              className="hover:text-blue-700"
+              className="hover:text-[#b359e0]"
             >
               <FaInstagram />
             </a>
             <a
-              href="www.linkedin.com/in/kundan-kumar-ratu"
-              className="hover:text-blue-700"
+              href="https://www.linkedin.com/in/kundan-kumar-ratu"
+              className="hover:text-[#b359e0]"
             >
               <FaLinkedin />
             </a>
 
             <a
               href="https://github.com/07kundan/E-Commerce"
-              className="hover:text-blue-700"
+              className="hover:text-[#b359e0]"
             >
               <FaGithub />
             </a>
             <a
               href="https://twitter.com/kundan_X_07"
-              className="hover:text-blue-700"
+              className=" hover:text-[#b359e0]"
             >
               <FaXTwitter />
             </a>

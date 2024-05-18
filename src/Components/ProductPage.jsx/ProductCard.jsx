@@ -15,7 +15,7 @@ import {
 } from "swiper/modules";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useUser } from "../../store/contextApis";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function ProductCard({
   title,
@@ -166,9 +166,12 @@ function ProductCard({
           >
             {added ? "Go to Cart" : "Add to Cart"}
           </button>
-          <span className="py-1 px-3 bg-amber-600 rounded-lg text-xl font-semibold">
+          <Link
+            to={"./delivery"}
+            className="py-1 px-3 bg-amber-600 rounded-lg text-xl font-semibold"
+          >
             Buy Now
-          </span>
+          </Link>
         </div>
       </div>
     </div>

@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 function PopUp() {
   const [popUp, setPopUp] = useState(false);
-  const { authenticationState, current } = useUser();
+  const { authenticationState, setAuthenticationState, current } = useUser();
 
   // for popUp authentication State
   useEffect(() => {
     setPopUp(true);
     const interval = setTimeout(() => {
       setPopUp(false);
-    }, 1000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [authenticationState]);
 
@@ -24,10 +24,10 @@ function PopUp() {
             y: -100,
           }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex justify-center p-3 px-8  text-xl rounded-2xl border border-b-4 border-green-500 z-50 bg-slate-700/80 "
+          className="flex justify-center p-3 px-8  text-xl rounded-2xl border border-b-4 border-green-500 z-50 bg-slate-700 "
         >
           {authenticationState ? (
-            <span>{authenticationState} successfully</span>
+            <span>{authenticationState}</span>
           ) : (
             <span>Login to explore more</span>
           )}

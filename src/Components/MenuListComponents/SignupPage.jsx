@@ -3,6 +3,8 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../../store/contextApis";
+import { ID } from "appwrite";
+import { databases } from "../../store/AppWriteConfig";
 
 function SignupPage() {
   const [isHidePassword, setIsHidePassword] = useState(false);
@@ -15,6 +17,44 @@ function SignupPage() {
       ...user,
       [inputField]: e.target.value,
     });
+  };
+
+  // handleDatabase
+
+  const handleDatabase = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await userContext.Signup(
+        user.Email,
+        user.Password,
+        user.Name
+      );
+      try {
+        await userContext.Signup(user.Email, user.Password, user.Name);
+        // If signup is successful, proceed with creating the document
+        try {
+          const response = await databases.createDocument(
+            "6624cfd4357d94effa79", // Replace with your database ID
+            "66470fb100112c5dd918", // Replace with your collection ID
+            ID.unique(),
+            {
+              userID: user.Email,
+              Name: user.Name,
+              PhoneNo: user.PhoneNo,
+              password: user.Password,
+              Email: user.Email,
+            }
+          );
+          // console.log(response);
+        } catch (error) {
+          console.log("Error creating document:", error);
+        }
+      } catch (error) {
+        console.error("Error during signup:", error);
+      }
+    } catch (error) {
+      console.error("Error creating document:", error);
+    }
   };
 
   return (
@@ -122,8 +162,9 @@ function SignupPage() {
           </div>
           <button
             className="bg-blue-600 text-white font-bold py-3 rounded-md transition duration-300 hover:bg-blue-700"
-            onClick={() => {
-              userContext.Signup(user.Email, user.Password, user.Name);
+            onClick={(e) => {
+              handleDatabase(e);
+              // userContext.Signup(user.Email, user.Password, user.Name);
             }}
           >
             Sign up

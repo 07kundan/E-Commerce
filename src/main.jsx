@@ -11,6 +11,7 @@ import ProductPage from "./Components/ProductPage.jsx/ProductPage.jsx";
 import ProductCard from "./Components/ProductPage.jsx/ProductCard.jsx";
 import WishlistCard from "./Components/MenuListComponents/WishlistCard.jsx";
 import Cart from "./Components/MenuListComponents/Cart/Cart.jsx";
+import Delivery from "./Components/ProductPage.jsx/Delivery.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const routes = createBrowserRouter([
       {
         path: "/wish",
         element: <WishlistCard />,
+      },
+      {
+        path: "/delivery",
+        element: <Delivery />,
       },
     ],
   },

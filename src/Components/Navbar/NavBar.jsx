@@ -48,7 +48,7 @@ function NavBar() {
         initial={{ translateX: "-50%" }}
         animate={isNavbarHidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
-        className="w-[95%] p-3 px-6 flex m-auto justify-between items-center text-2xl bg-[#32012F] fixed top-4 left-1/2 z-10 outline outline-3  rounded-2xl lg:outline-4 lg:p-2 lg:pl-10 lg:my-2 lg:w-[83vw]  lg:top-2 "
+        className="w-[95%] p-3 px-5 flex m-auto justify-between items-center text-2xl bg-[#32012F] fixed top-4 left-1/2 z-10 outline outline-3  rounded-2xl lg:outline-4 lg:p-2 lg:pl-10 lg:my-2 lg:w-[83vw]  lg:top-2 "
       >
         {/* Name */}
         <motion.span
@@ -67,7 +67,7 @@ function NavBar() {
         {/* for mobiles */}
         <>
           {window.innerWidth < 1024 && (
-            <div className=" flex items-center gap-3 text-3xl">
+            <div className=" flex items-center gap-4 text-3xl">
               {NavItems.map((item) => (
                 <NavLink
                   className={`flex  `}
@@ -100,7 +100,7 @@ function NavBar() {
                     {/* Navlink icon */}
                     <motion.span>
                       {item.path === "cart" && (
-                        <span className="absolute text-[#c606b9] -top-4 text-lg font-semibold">
+                        <span className="absolute text-[#c606b9] -top-3 text-sm font-semibold">
                           {cartProduct.length}
                         </span>
                       )}
@@ -217,7 +217,7 @@ function NavBar() {
                     className="text-xl relative"
                   >
                     {item.path === "cart" && (
-                      <span className="absolute  right-1 text-[#c606b9] bottom-4 text-sm font-bold ">
+                      <span className="absolute  right-1 text-[#c606b9] bottom-4 text-xs font-bold ">
                         {cartProduct.length}
                       </span>
                     )}

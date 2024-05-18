@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { color, motion } from "framer-motion";
+import {
+  color,
+  motion,
+  useAnimate,
+  useAnimation,
+  useInView,
+} from "framer-motion";
 import { fetchAllProductsCategories } from "../../../store/API";
 import { useUser } from "../../../store/contextApis";
 
@@ -51,8 +57,11 @@ const ImagesCollections = [
 
 function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
+  const ref = useRef();
   const [animateValue, setAnimateValue] = useState("smartphones");
   const { setCategory, current } = useUser();
+  const animationControl = useAnimation();
+  const isInView = useInView(ref, { amount: 0.55 });
   // const [randomColor, setRandomColor] = useState(0);
 
   useEffect(() => {
@@ -70,11 +79,15 @@ function AllCategoriesList() {
     }
   }, []);
 
-  //
+  useEffect(() => {
+    if (isInView) {
+      animationControl.start("final");
+    }
+  }, [isInView, animateValue]);
 
   // ----------------------------
   return (
-    <div className="h-fit lg:w-[90%]  m-auto mb-10 lg:p-2">
+    <div ref={ref} className="h-fit lg:w-[90%]  m-auto mb-10 lg:p-2">
       {/* -------- Heading ------------ */}
       <h3 className="text-center text-4xl font-semibold underline ">
         All categories
@@ -88,26 +101,20 @@ function AllCategoriesList() {
             <div key={item}>
               {/*  for mobile devices */}
               {window.innerWidth < 1024 && (
-                <button
-                  style={{
-                    backgroundColor: `rgb(
-                      ${Math.round(Math.random() * (255 - 0)) + 0},
-                      ${Math.round(Math.random() * (255 - 0)) + 0},
-                      ${Math.round(Math.random() * (255 - 0)) + 0})`,
-                  }}
-                  className={`px-3 py-2 text-base font-medium rounded-xl`}
-                  onClick={() => {
-                    setCategory(item);
-                  }}
+                <Link
+                  to={current ? "/category" : "/login"}
+                  className=" list-none p-1"
+                  key={item}
                 >
-                  <Link
-                    to={current ? "/category" : "/login"}
-                    className=" list-none p-1"
-                    key={item}
+                  <button
+                    className={`px-3 py-2 text-base font-medium bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl `}
+                    onClick={() => {
+                      setCategory(item);
+                    }}
                   >
                     {item.toUpperCase()}
-                  </Link>
-                </button>
+                  </button>
+                </Link>
               )}
               {/* ------------------------- */}
 
@@ -126,20 +133,18 @@ function AllCategoriesList() {
                   </motion.button>
 
                   {/* view all button */}
-                  <button
-                    onClick={() => {
-                      setCategory(item);
-                    }}
-                  >
-                    <Link to={current ? "/category" : "/Login"} className=" ">
-                      <motion.button
-                        whileTap={{ color: "blue" }}
-                        whileHover={{ color: "#722cff" }}
-                      >
-                        view all
-                      </motion.button>
-                    </Link>
-                  </button>
+
+                  <Link to={current ? "/category" : "/Login"} className=" ">
+                    <motion.button
+                      whileTap={{ color: "blue" }}
+                      whileHover={{ color: "#722cff" }}
+                      onClick={() => {
+                        setCategory(item);
+                      }}
+                    >
+                      view all
+                    </motion.button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -161,10 +166,10 @@ function AllCategoriesList() {
                         final: { x: 0, opacity: 1 },
                       }}
                       initial="initial"
-                      animate="final"
+                      animate={animationControl}
                       transition={{
                         delay: 0.2,
-                        duration: 1,
+                        duration: 0.8,
                         ease: "easeInOut",
                       }}
                     >

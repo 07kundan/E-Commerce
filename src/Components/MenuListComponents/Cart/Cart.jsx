@@ -65,7 +65,7 @@ function Cart() {
 
           <div className=" w-11/12 border border-[#c606b9] rounded-2xl p-3 text-center font-semibold fixed bottom-7 left-1/2 -translate-x-1/2 flex justify-around lg:w-1/2 text-sm lg:text-lg bg-transparent/50">
             <div>Total-: {total}$ </div>
-            <Link to={"/"}>
+            <Link to={"/delivery"}>
               <button>
                 {" "}
                 Proceed to Buy ({cartProduct.length}{" "}
