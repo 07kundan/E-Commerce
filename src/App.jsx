@@ -26,7 +26,7 @@ function Wrapper({ children }) {
   return (
     <div
       onScroll={handleScroll}
-      className="text-[#2e5dde] min-h-screen overflow-auto overflow-x-hidden scroll-smooth"
+      className="text-[#2e5dde] min-h-screen overflow-auto overflow-x-hidden scroll-smooth font-ubuntu font-bold"
     >
       {children}
     </div>

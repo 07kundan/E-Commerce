@@ -48,7 +48,7 @@ function NavBar() {
         initial={{ translateX: "-50%" }}
         animate={isNavbarHidden ? { rotateX: 90 } : { rotate: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}
-        className="w-[95%] p-3 px-5 flex m-auto justify-between items-center text-2xl bg-[#32012F] fixed top-4 left-1/2 z-10 outline outline-3  rounded-2xl lg:outline-4 lg:p-2 lg:pl-10 lg:my-2 lg:w-[83vw]  lg:top-2 "
+        className="w-[95%] p-2 px-5 flex m-auto justify-between items-center bg-[#32012F] fixed top-4 left-1/2 z-10 outline outline-2  rounded-2xl lg:outline-2 lg:p-2 lg:pl-10 lg:w-[90vw]  lg:top-5 "
       >
         {/* Name */}
         <motion.span
@@ -67,7 +67,7 @@ function NavBar() {
         {/* for mobiles */}
         <>
           {window.innerWidth < 1024 && (
-            <div className=" flex items-center gap-4 text-3xl">
+            <div className=" flex items-center gap-4 text-xl">
               {NavItems.map((item) => (
                 <NavLink
                   className={`flex  `}
@@ -75,7 +75,7 @@ function NavBar() {
                   key={item.name}
                 >
                   <motion.button
-                    className={`relative ${item.name == "Home" && "text-2xl"}`}
+                    className={`relative ${item.name == "Home" && "text-lg"}`}
                     onClick={() => {
                       if (item.path === "Login" && current) {
                         Logout();
@@ -100,7 +100,7 @@ function NavBar() {
                     {/* Navlink icon */}
                     <motion.span>
                       {item.path === "cart" && (
-                        <span className="absolute text-[#c606b9] -top-3 text-sm font-semibold">
+                        <span className="absolute text-[#c606b9] -top-3 text-sm ">
                           {cartProduct.length}
                         </span>
                       )}
@@ -136,7 +136,7 @@ function NavBar() {
 
         {/*  For Big Screen */}
         {window.innerWidth > 1024 && (
-          <div className="text-lg flex justify-around gap-10 p-1 px-3 pr-12">
+          <div className="text-xl flex justify-around gap-8 p-1 px-3 pr-12">
             {/* search icon and search input if searchIsActive is true */}
             <div className="flex gap-3 items-center">
               {searchIsActive && (
@@ -151,7 +151,7 @@ function NavBar() {
                     transition={{ duration: 0.5, ease: "linear" }}
                     type="text"
                     placeholder="Search for the products"
-                    className="w-[27vw] text-sm font-semibold p-1 px-3 rounded-lg bg-transparent outline outline-2 outline-[#0f000e] "
+                    className="w-[34vw] text-sm font-semibold p-1 px-3 rounded-lg bg-transparent outline outline-2 outline-[#0f000e] "
                   />
                 </>
               )}
@@ -166,7 +166,7 @@ function NavBar() {
                 whileTap={{ color: "#3665e5" }}
                 whileFocus={{ color: "red" }}
                 whileHover={{ color: "#5780f3" }}
-                className="text-2xl "
+                className=""
                 onClick={() => {
                   setSearchIsActive(!searchIsActive);
                   setIsNavbarActive(true);
@@ -214,18 +214,18 @@ function NavBar() {
                       duration: 0.6,
                       ease: "easeInOut",
                     }}
-                    className="text-xl relative"
+                    className="relative"
                   >
                     {item.path === "cart" && (
-                      <span className="absolute  right-1 text-[#c606b9] bottom-4 text-xs font-bold ">
+                      <span className="absolute  right-1 text-[#c606b9] bottom-3 text-xs font-bold ">
                         {cartProduct.length}
                       </span>
                     )}
                     {item.name !== "Home" && (
-                      <span className="text-2xl">{item.icon}</span>
+                      <span className="">{item.icon}</span>
                     )}
                     {item.name === "Home" && (
-                      <span className="text-2xl">{item.icon}</span>
+                      <span className="text-lg">{item.icon}</span>
                     )}
                   </motion.span>
 
@@ -238,12 +238,12 @@ function NavBar() {
                     initial="initial"
                     animate="end"
                     transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-                    className="text-xl"
+                    className=""
                   >
                     {item.name === "Login" && current ? (
-                      <span>Logout</span>
+                      <span className="text-lg">Logout</span>
                     ) : (
-                      <span>{item.name}</span>
+                      <span className="text-lg">{item.name}</span>
                     )}
                   </motion.span>
                 </motion.button>
@@ -263,7 +263,7 @@ function NavBar() {
               whileHover={{ color: "#5780f3" }}
               whileTap={{ color: "#3665e5" }}
               whileFocus={{ color: "red" }}
-              className="text-2xl "
+              className="text-xl "
               onClick={() => {
                 setMenuIsActive(!menuIsActive);
                 setIsNavbarActive(true);
@@ -298,14 +298,14 @@ function NavBar() {
                 <NavLink
                   key={item.name}
                   to={current ? item.path : "/Login"}
-                  className="flex gap-2  items-center p-4 hover:underline text-xl"
+                  className="flex gap-2  items-center p-3 hover:underline text-xl"
                   onClick={() => {
                     setMenuIsActive(false);
                     setIsNavbarActive(true);
                   }}
                 >
                   <li>{item.icon}</li>
-                  <li>{item.name}</li>
+                  <li className="text-lg">{item.name}</li>
                 </NavLink>
               ))}
             </ul>

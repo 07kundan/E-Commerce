@@ -29,7 +29,7 @@ export function UserProvider(props) {
     Email: "",
     Password: "",
   });
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState();
 
   // Navbar funcitonality
 
@@ -84,14 +84,6 @@ export function UserProvider(props) {
       if (filtered.length > 0) {
         setProfile(filtered[0]);
       }
-      // response.documents.forEach((document) => {
-      //   if (email === document.Email) {
-      //     console.log(response.documents);
-      //   }
-
-      //   // console.log("email", document.Email);
-      //   // console.log(email === document.Email);
-      // });
 
       // console.log("successful");
     } catch (err) {

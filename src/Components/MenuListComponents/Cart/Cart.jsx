@@ -51,6 +51,7 @@ function Cart() {
           <div className="w-[92%] m-auto flex flex-col gap-4 lg:flex-row lg:justify-center lg:flex-wrap">
             {cartProduct.map((product) => (
               <CartCard
+                key={product.name}
                 name={product.name}
                 price={product.price}
                 image={product.image}

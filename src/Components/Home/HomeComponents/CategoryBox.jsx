@@ -19,21 +19,21 @@ function CategoryBox({
   const { setCategory, current } = useUser();
   return (
     <div className="h-screen w-screen flex items-center">
-      <div className="w-[90%] h-[92vh] m-auto bg-purple-500/20 flex flex-col py-8 px-8 gap-2 rounded-3xl lg:py-4 lg:gap-0">
+      <div className="w-[90%] h-[92vh] m-auto bg-purple-500/30 flex flex-col py-4 px-3 rounded-3xl lg:px-8 lg:py-4">
         {/* heading */}
         <h3 className="h-[6vh] text-3xl font-semibold text-center underline">
           {category.toUpperCase()}
         </h3>
 
         {/* middle content */}
-        <div className="min-h-[75vh] flex flex-col-reverse justify-end w-full lg:flex-row ">
+        <div className="min-h-[75vh] flex flex-col-reverse justify-center w-full lg:flex-row ">
           {/* Left section / description */}
           <section className=" w-full text-center flex justify-center lg:pt-0 lg:w-3/5 lg:h-full lg:items-center lg:text-left lg:px-5 ">
             {description}
           </section>
 
           {/*Right section / images */}
-          <section className=" w-full h-1/2 flex items-center justify-center lg:w-2/5 lg:h-full">
+          <section className=" w-full h-[47%] flex items-center justify-center lg:w-2/5 lg:h-full">
             <Swiper
               className="w-4/5 h-[90%] rounded-2xl"
               style={{
@@ -78,7 +78,7 @@ function CategoryBox({
           onClick={() => {
             setCategory(category);
           }}
-          className=" font-semibold text-purple-700 text-lg flex items-end justify-end pr-4 lg:pr-8"
+          className=" font-semibold text-purple-700 text-sm flex items-end justify-end pr-4 lg:pr-8"
         >
           <Link to={current ? "/category" : "/Login"}>See all</Link>
         </button>

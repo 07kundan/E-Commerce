@@ -167,7 +167,7 @@ function ProductCard({
             {added ? "Go to Cart" : "Add to Cart"}
           </button>
           <Link
-            to={"./delivery"}
+            to={"/delivery"}
             className="py-1 px-3 bg-amber-600 rounded-lg text-xl font-semibold"
           >
             Buy Now

@@ -87,27 +87,27 @@ function AllCategoriesList() {
 
   // ----------------------------
   return (
-    <div ref={ref} className="h-fit lg:w-[90%]  m-auto mb-10 lg:p-2">
+    <div ref={ref} className="h-fit lg:w-[90%]  m-auto my-10 lg:p-2">
       {/* -------- Heading ------------ */}
-      <h3 className="text-center text-4xl font-semibold underline ">
+      <h3 className="text-center text-4xl mb-2 font-semibold underline ">
         All categories
       </h3>
 
       {/* -------content--------- */}
       <div className="h-fit w-full flex justify-between items-center">
         {/* Categories List */}
-        <div className="w-full py-6 flex flex-wrap space-x-1 gap-y-3 justify-center lg:block lg:px-10 lg:w-1/2 lg:space-x-0 lg:p-6 ">
+        <div className="w-full py-6 flex flex-wrap gap-y-2 justify-center lg:block lg:px-10 lg:w-1/2 lg:space-x-0 lg:p-6 ">
           {CategoryList.map((item) => (
             <div key={item}>
               {/*  for mobile devices */}
               {window.innerWidth < 1024 && (
                 <Link
                   to={current ? "/category" : "/login"}
-                  className=" list-none p-1"
+                  className="p-1"
                   key={item}
                 >
                   <button
-                    className={`px-3 py-2 text-base font-medium bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl `}
+                    className={`min-w-36 px-3 py-1 text-sm font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl `}
                     onClick={() => {
                       setCategory(item);
                     }}
@@ -120,11 +120,11 @@ function AllCategoriesList() {
 
               {/*  For bigger screen */}
               {window.innerWidth > 1024 && (
-                <div className="flex justify-between mb-1" key={item}>
+                <div className="flex justify-between mb-2" key={item}>
                   <motion.button
                     whileTap={{ color: "blue" }}
                     whileHover={{ color: "#722cff" }}
-                    className=" px-2 py-1 font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg"
+                    className="min-w-40 py-1 font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg"
                     onClick={() => {
                       setAnimateValue(item);
                     }}
@@ -134,7 +134,10 @@ function AllCategoriesList() {
 
                   {/* view all button */}
 
-                  <Link to={current ? "/category" : "/Login"} className=" ">
+                  <Link
+                    to={current ? "/category" : "/Login"}
+                    className=" text-sm"
+                  >
                     <motion.button
                       whileTap={{ color: "blue" }}
                       whileHover={{ color: "#722cff" }}

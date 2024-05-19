@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useUser } from "../../store/contextApis";
+import profilePic from "../../assets/Images/profilePic/profile.png";
 
 const Profile = () => {
   const { profile, setProfile } = useUser();
 
   const [profileData, setProfileData] = useState({
-    name: profile.Name.toUpperCase(),
-    profilePicture:
-      "https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg",
-    email: profile.Email,
-    phone: profile.PhoneNo,
+    name: profile ? profile.Name.toUpperCase() : "",
+    profilePicture: profilePic,
+    email: profile ? profile.Email : "",
+    phone: profile ? profile.PhoneNo : "",
     address: "",
     city: "",
     state: "",
@@ -49,7 +49,7 @@ const Profile = () => {
           <img
             src={profileData.profilePicture}
             alt="Profile"
-            className="rounded-full w-32 h-32 object-cover border-4 border-white"
+            className="rounded-full w-32 h-32 object-cover border-4 border-black"
           />
         </div>
 
@@ -78,9 +78,14 @@ const Profile = () => {
               {/* email */}
               <div className="flex items-center gap-2">
                 <label htmlFor="Email">Email-: </label>
-                <p name="Email" className="">
-                  {profileData.email}
-                </p>
+                <input
+                  readOnly
+                  type="email"
+                  value={profileData.email}
+                  placeholder="Email"
+                  name="Email"
+                  className="bg-transparent focus:outline-none"
+                ></input>
               </div>
 
               {/* Phone no */}
@@ -93,7 +98,7 @@ const Profile = () => {
                   value={editedData.phone}
                   onChange={handleChange}
                   placeholder="Phone no"
-                  className="bg-transparent w-full p-2 focus:outline-none focus:border-blue-500 border rounded-lg border-none"
+                  className="bg-transparent w-full p-2 focus:outline-none "
                 />
               </p>
             </div>

@@ -50,8 +50,8 @@ function SignupPage() {
 
   return (
     <div className="flex justify-center items-center min-h-screen text-[#2e5dde]">
-      <div className="flex flex-col   bg-gradient-to-br from-slate-300/30 via-slate-700/70 to-slate-900 border-2 border-black p-8 rounded-xl shadow-md max-w-lg lg:w-3/4 lg:mt-8">
-        <h2 className="text-3xl  font-bold text-center underline underline-offset-2 ">
+      <div className="flex flex-col bg-gradient-to-br from-transparent/20 via-transparent/10 to-transparent/60 border-2 border-black p-8 rounded-xl shadow-md max-w-lg lg:w-3/4 lg:mt-8">
+        <h2 className="text-3xl mb-4 font-bold text-center underline underline-offset-2 ">
           Create an Account
         </h2>
         <form

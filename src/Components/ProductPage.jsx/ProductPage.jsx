@@ -35,7 +35,7 @@ function ProductPage() {
             }}
             navigation={true}
             modules={[Navigation, Pagination]}
-            className="w-[95%] h-5/6 lg:h-[85%] lg:w-[87%]"
+            className="w-[95%] h-[90%] lg:h-[85%] lg:w-[87%]"
           >
             {categoryData.products.map((item) => (
               <SwiperSlide key={item.id} className="">

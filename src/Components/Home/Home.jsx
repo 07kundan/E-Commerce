@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import HeroSection from "./HomeComponents/HeroSection";
 import BGCarousel from "./HomeComponents/BGCarousel";
 import Emojis from "./HomeComponents/Emojis";
 import CategoryBox from "./HomeComponents/CategoryBox";
@@ -25,54 +24,43 @@ import { GiSonicShoes } from "react-icons/gi";
 import { IoShirtSharp } from "react-icons/io5";
 import { MdLocalGroceryStore } from "react-icons/md";
 import { PiSunglassesBold } from "react-icons/pi";
+import HeroSection from "./HomeComponents/HeroSection/HeroSection";
 
 // HOME page
 const emojis = [
-  { emoji: "🥶", Id: "cool", toPage: "mens-shoes", icon: <GiSonicShoes /> },
-  { emoji: "😍", Id: "top", toPage: "tops", icon: <IoShirtSharp /> },
-  {
-    emoji: "🔥",
-    Id: "hot",
-    toPage: "groceries",
-    icon: <MdLocalGroceryStore />,
-  },
+  { emoji: "🧊", Id: "cool", toPage: "mens-shoes", icon: <GiSonicShoes /> },
   {
     emoji: "😎",
     Id: "smart",
     toPage: "sunglasses",
     icon: <PiSunglassesBold />,
   },
+  { emoji: "😀", Id: "top", toPage: "tops", icon: <IoShirtSharp /> },
+  {
+    emoji: "🔥",
+    Id: "hot",
+    toPage: "groceries",
+    icon: <MdLocalGroceryStore />,
+  },
 ];
 
 const CategoryBoxImages = {
   smartphones: {
-    descriptionM: (
-      <>
-        <div className="leading-snug text-lg font-medium font-[]">
-          <p>
+    description: (
+      <div className=" flex flex-col items-center gap-4 lg:gap-8 ">
+        <div className="text-xl font-caveat font-semibold lg:w-[85%] lg:text-3xl">
+          <div className="text-3xl inline lg:text-5xl">{`< `}</div>
+          <p className="leading-tight inline">
             Discover the latest revolution in communication and connectivity
             with our extensive range of smartphones, meticulously curated for
             every need and preference. From sleek designs to cutting-edge
             technology, ZED-KART offers an unparalleled selection of smartphones
             to cater to every lifestyle and budget.
           </p>
+          <div className="text3xl inline lg:text-5xl">{` />`}</div>
         </div>
-      </>
-    ),
-    descriptionB: (
-      <div className=" flex flex-col items-center gap-8">
-        <div className=" w-[85%] text-xl font-semibold">
-          <div className="text-5xl">{`<`}</div>
-          <p className="leading-snug pl-4">
-            Discover the latest revolution in communication and connectivity
-            with our extensive range of smartphones, meticulously curated for
-            every need and preference. From sleek designs to cutting-edge
-            technology, ZED-KART offers an unparalleled selection of smartphones
-            to cater to every lifestyle and budget.
-          </p>
-          <div className="text-5xl">{`/>`}</div>
-        </div>
-        <p className="bg-purple-950 text-amber-400 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+
+        <p className="bg-purple-950 text-amber-400 text-xs p-2 px- lg:p-3 lg:px-5 rounded-xl font-jersey font-extrabold lg:text-lg">
           " Stay connected, stay empowered, and stay ahead of the curve with the
           latest smartphones available on ZED-KART. Elevate your digital
           experience today! "
@@ -85,10 +73,11 @@ const CategoryBoxImages = {
     phone4,
   },
   watches: {
-    descriptionM: (
-      <>
-        <div className="leading-snug text-lg font-medium">
-          <p>
+    description: (
+      <div className=" flex flex-col items-center gap-2 lg:gap-8">
+        <div className="text-xl font-caveat font-semibold lg:w-[85%] lg:text-3xl">
+          <div className="text-3xl inline lg:text-5xl">{`< `}</div>
+          <p className="leading-tight inline">
             Step into the realm of timeless elegance and precision engineering
             with our exquisite collection of watches, meticulously crafted to
             elevate your style and punctuate your every moment with
@@ -96,24 +85,9 @@ const CategoryBoxImages = {
             that seamlessly blend fashion-forward design with unparalleled
             functionality
           </p>
+          <div className="text3xl inline lg:text-5xl">{` />`}</div>
         </div>
-      </>
-    ),
-    descriptionB: (
-      <div className=" flex flex-col items-center gap-8">
-        <div className=" w-4/5 text-xl font-semibold">
-          <div className="text-5xl">{`<`}</div>
-          <p className="leading-snug pl-4">
-            Step into the realm of timeless elegance and precision engineering
-            with our exquisite collection of watches, meticulously crafted to
-            elevate your style and punctuate your every moment with
-            sophistication. ZED-KART presents an exclusive array of timepieces
-            that seamlessly blend fashion-forward design with unparalleled
-            functionality
-          </p>
-          <div className="text-5xl">{`/>`}</div>
-        </div>
-        <p className="bg-purple-950 text-amber-400 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-400 text-xs p-2 px- lg:p-3 lg:px-5 rounded-xl font-jersey font-extrabold lg:text-lg">
           " Elevate your style with precision and elegance. Discover the perfect
           timepiece for every moment. "
         </p>
@@ -125,33 +99,20 @@ const CategoryBoxImages = {
     watch4,
   },
   fragnance: {
-    descriptionM: (
-      <>
-        <div className="leading-snug text-lg font-medium">
-          <p>
+    description: (
+      <div className=" flex flex-col items-center gap-2 lg:gap-8 ">
+        <div className="text-xl font-caveat font-semibold lg:w-[85%] lg:text-3xl">
+          <div className="text-3xl inline lg:text-5xl">{`< `}</div>
+          <p className="leading-tight inline">
             Immerse yourself in a world of captivating aromas with our exclusive
             collection of fragrances, meticulously selected to cater to every
             personality and occasion. Our E-commerce platform offers a diverse
             array of perfumes and colognes, crafted by renowned brands and
             expert perfumers who understand the art of scent.
           </p>
+          <div className="text3xl inline lg:text-5xl">{` />`}</div>
         </div>
-      </>
-    ),
-    descriptionB: (
-      <div className=" flex flex-col items-center gap-8">
-        <div className=" w-4/5 text-xl font-semibold">
-          <div className="text-5xl">{`<`}</div>
-          <p className="leading-snug pl-4">
-            Immerse yourself in a world of captivating aromas with our exclusive
-            collection of fragrances, meticulously selected to cater to every
-            personality and occasion. Our E-commerce platform offers a diverse
-            array of perfumes and colognes, crafted by renowned brands and
-            expert perfumers who understand the art of scent.
-          </p>
-          <div className="text-5xl">{`/>`}</div>
-        </div>
-        <p className="bg-purple-950 text-amber-400 p-3 px-5 text-lg rounded-xl font-rubik font-extrabold">
+        <p className="bg-purple-950 text-amber-400 text-xs p-2 px- lg:p-3 lg:px-5 rounded-xl font-jersey font-extrabold lg:text-lg">
           " Discover your signature scent with our exquisite fragrances. Elevate
           every moment with a touch of elegance. "
         </p>
@@ -193,11 +154,7 @@ function Home() {
 
       <CategoryBox
         category={"smartphones"}
-        description={
-          window.innerWidth < 1024
-            ? CategoryBoxImages.smartphones.descriptionM
-            : CategoryBoxImages.smartphones.descriptionB
-        }
+        description={CategoryBoxImages.smartphones.description}
         Image1={CategoryBoxImages.smartphones.phone1}
         Image2={CategoryBoxImages.smartphones.phone2}
         Image3={CategoryBoxImages.smartphones.phone3}
@@ -205,11 +162,7 @@ function Home() {
       />
       <CategoryBox
         category={`mens-watches`}
-        description={
-          window.innerWidth < 1024
-            ? CategoryBoxImages.watches.descriptionM
-            : CategoryBoxImages.watches.descriptionB
-        }
+        description={CategoryBoxImages.watches.description}
         Image1={CategoryBoxImages.watches.watch1}
         Image2={CategoryBoxImages.watches.watch2}
         Image3={CategoryBoxImages.watches.watch3}
@@ -217,11 +170,7 @@ function Home() {
       />
       <CategoryBox
         category={"fragrances"}
-        description={
-          window.innerWidth < 1024
-            ? CategoryBoxImages.fragnance.descriptionM
-            : CategoryBoxImages.fragnance.descriptionB
-        }
+        description={CategoryBoxImages.fragnance.description}
         Image1={CategoryBoxImages.fragnance.fragnances1}
         Image2={CategoryBoxImages.fragnance.fragnances2}
         Image3={CategoryBoxImages.fragnance.fragnances3}

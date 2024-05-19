@@ -27,12 +27,12 @@ function Footer() {
               Contact Information
             </h5>
             <div className="text-lg px-2 ">
-              <a href="" className="flex items-center gap-2 ">
+              <span className="flex items-center gap-2 ">
                 <span>
                   <MdEmail />
                 </span>{" "}
                 <span>-: kundankumarratu@gmail.com</span>
-              </a>
+              </span>
               <a href="" className="flex items-center gap-2">
                 <span>
                   <MdPhone />

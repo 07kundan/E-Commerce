@@ -21,7 +21,7 @@ function LoginPage() {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen ">
-      <div className="flex flex-col border-2 text-[#2e5dde] bg-gradient-to-br from-slate-300/30 via-slate-700/70 to-slate-900 border-black p-8 rounded-xl shadow-md max-w-md lg:mt-8">
+      <div className="flex flex-col border-2 text-[#2e5dde] bg-gradient-to-br from-transparent/20 via-transparent/10 to-transparent/60 border-black p-8 rounded-xl shadow-md max-w-md lg:mt-8">
         <h2 className="text-4xl font-bold text-center mb-6">Login</h2>
         <form
           className="text-lg"
@@ -75,7 +75,7 @@ function LoginPage() {
             </button>
           </div>
           {/* forgot password and sign up section  */}
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex justify-between items-center text-sm mt-4">
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -85,9 +85,7 @@ function LoginPage() {
               />
               <label htmlFor="remember">Remember me</label>
             </div>
-            <Link to="/forgot" className="">
-              Forgot Password?
-            </Link>
+            <span className="">Forgot Password?</span>
           </div>
           <p className="text-center mt-4">
             Don't have an account?{" "}
