@@ -11,7 +11,7 @@ function PopUp() {
     setPopUp(true);
     const interval = setTimeout(() => {
       setPopUp(false);
-    }, 4000);
+    }, 1500);
     return () => clearInterval(interval);
   }, [authenticationState]);
 

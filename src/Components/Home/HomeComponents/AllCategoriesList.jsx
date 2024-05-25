@@ -33,35 +33,135 @@ import motorcycle from "../../../assets/Images/AllCategoriesImages/motorcycle.jp
 import lighting from "../../../assets/Images/AllCategoriesImages/lighting.jpg";
 
 const ImagesCollections = [
-  { id: "smartphones", Image: smartphones },
-  { id: "laptops", Image: laptops },
-  { id: "fragrances", Image: fragrances },
-  { id: "skincare", Image: skincare },
-  { id: "groceries", Image: groceries },
-  { id: "home-decoration", Image: homedecoration },
-  { id: "furniture", Image: furniture },
-  { id: "tops", Image: tops },
-  { id: "womens-dresses", Image: womensdresses },
-  { id: "womens-shoes", Image: womensshoes },
-  { id: "mens-shirts", Image: mensshirts },
-  { id: "mens-shoes", Image: mensshoes },
-  { id: "mens-watches", Image: menswatches },
-  { id: "womens-watches", Image: womenswatches },
-  { id: "womens-bags", Image: womensbags },
-  { id: "womens-jewellery", Image: womensjewellery },
-  { id: "sunglasses", Image: sunglasses },
-  { id: "automotive", Image: automotive },
-  { id: "motorcycle", Image: motorcycle },
-  { id: "lighting", Image: lighting },
+  {
+    slug: "beauty",
+    name: "Beauty",
+    Image: skincare,
+  },
+  {
+    slug: "fragrances",
+    name: "Fragrances",
+    Image: fragrances,
+  },
+  {
+    slug: "furniture",
+    name: "Furniture",
+    Image: furniture,
+  },
+  {
+    slug: "groceries",
+    name: "Groceries",
+    Image: groceries,
+  },
+  {
+    slug: "home-decoration",
+    name: "Home Decoration",
+    Image: homedecoration,
+  },
+  {
+    slug: "kitchen-accessories",
+    name: "Kitchen Accessories",
+    Image: lighting,
+  },
+  {
+    slug: "laptops",
+    name: "Laptops",
+    Image: laptops,
+  },
+  {
+    slug: "mens-shirts",
+    name: "Mens Shirts",
+    Image: mensshirts,
+  },
+  {
+    slug: "mens-shoes",
+    name: "Mens Shoes",
+    Image: mensshoes,
+  },
+  {
+    slug: "mens-watches",
+    name: "Mens Watches",
+    Image: menswatches,
+  },
+  {
+    slug: "mobile-accessories",
+    name: "Mobile Accessories",
+    Image: "not found",
+  },
+  {
+    slug: "motorcycle",
+    name: "Motorcycle",
+    Image: motorcycle,
+  },
+  {
+    slug: "skin-care",
+    name: "Skin Care",
+    Image: skincare,
+  },
+  {
+    slug: "smartphones",
+    name: "Smartphones",
+    Image: smartphones,
+  },
+  {
+    slug: "sports-accessories",
+    name: "Sports Accessories",
+    Image: "not found",
+  },
+  {
+    slug: "sunglasses",
+    name: "Sunglasses",
+    Image: sunglasses,
+  },
+  {
+    slug: "tablets",
+    name: "Tablets",
+    Image: "not found",
+  },
+  {
+    slug: "tops",
+    name: "Tops",
+    Image: tops,
+  },
+  {
+    slug: "vehicle",
+    name: "Vehicle",
+    Image: motorcycle,
+  },
+  {
+    slug: "womens-bags",
+    name: "Womens Bags",
+    Image: womensbags,
+  },
+  {
+    slug: "womens-dresses",
+    name: "Womens Dresses",
+    Image: womensdresses,
+  },
+  {
+    slug: "womens-jewellery",
+    name: "Womens Jewellery",
+    Image: womensjewellery,
+  },
+  {
+    slug: "womens-shoes",
+    name: "Womens Shoes",
+    Image: womensshoes,
+  },
+  {
+    slug: "womens-watches",
+    name: "Womens Watches",
+    Image: womenswatches,
+  },
 ];
 
 function AllCategoriesList() {
   const [CategoryList, setCategoryList] = useState([]);
   const ref = useRef();
-  const [animateValue, setAnimateValue] = useState("smartphones");
+  const [animateValue, setAnimateValue] = useState("beauty");
   const { setCategory, current } = useUser();
   const animationControl = useAnimation();
-  const isInView = useInView(ref, { amount: 0.55 });
+  const isInView = useInView(ref, { amount: 0.3 });
   // const [randomColor, setRandomColor] = useState(0);
 
   useEffect(() => {
@@ -98,21 +198,17 @@ function AllCategoriesList() {
         {/* Categories List */}
         <div className="w-full py-6 flex flex-wrap gap-y-2 justify-center lg:block lg:px-10 lg:w-1/2 lg:space-x-0 lg:p-6 ">
           {CategoryList.map((item) => (
-            <div key={item}>
+            <div key={item?.slug}>
               {/*  for mobile devices */}
               {window.innerWidth < 1024 && (
-                <Link
-                  to={current ? "/category" : "/login"}
-                  className="p-1"
-                  key={item}
-                >
+                <Link to={current ? "/category" : "/login"} className="p-1">
                   <button
-                    className={`min-w-36 px-3 py-1 text-sm font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl `}
+                    className={`min-w-40 tracking-tighter px-3 py-1 text-sm font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl `}
                     onClick={() => {
-                      setCategory(item);
+                      setCategory(item?.slug);
                     }}
                   >
-                    {item.toUpperCase()}
+                    {item?.name.toUpperCase()}
                   </button>
                 </Link>
               )}
@@ -122,27 +218,27 @@ function AllCategoriesList() {
               {window.innerWidth > 1024 && (
                 <div className="flex justify-between mb-2" key={item}>
                   <motion.button
-                    whileTap={{ color: "blue" }}
+                    whileTap={{ color: "#612cff" }}
                     whileHover={{ color: "#722cff" }}
-                    className="min-w-40 py-1 font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg"
+                    className="min-w-44 tracking-tighter px-2 py-1 font-bold bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg"
                     onClick={() => {
-                      setAnimateValue(item);
+                      setAnimateValue(item?.slug);
                     }}
                   >
-                    {item.toUpperCase()}
+                    {item?.name.toUpperCase()}
                   </motion.button>
 
                   {/* view all button */}
 
                   <Link
                     to={current ? "/category" : "/Login"}
-                    className=" text-sm"
+                    className=" text-sm "
                   >
                     <motion.button
-                      whileTap={{ color: "blue" }}
+                      whileTap={{ color: "#612cff" }}
                       whileHover={{ color: "#722cff" }}
                       onClick={() => {
-                        setCategory(item);
+                        setCategory(item?.slug);
                       }}
                     >
                       view all
@@ -160,10 +256,10 @@ function AllCategoriesList() {
             <div className=" w-2/5">
               {ImagesCollections.map(
                 (item) =>
-                  animateValue === item.id && (
+                  animateValue === item.slug && (
                     <motion.div
                       className="flex justify-center"
-                      key={item.id}
+                      key={item.slug}
                       variants={{
                         initial: { x: 500, opacity: 0 },
                         final: { x: 0, opacity: 1 },

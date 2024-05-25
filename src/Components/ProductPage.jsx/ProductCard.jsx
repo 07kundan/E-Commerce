@@ -77,9 +77,9 @@ function ProductCard({
   };
 
   return (
-    <div className="w-full h-full bg-transparent/40 rounded-2xl border-4 border-[#c606b9] flex flex-col-reverse justify-center lg:flex-row lg:gap-3 lg:pl-10 lg:border-2 lg:border-[#c606b9]">
+    <div className="w-full h-full bg-transparent/40 rounded-2xl border-4 border-[#c606b9] flex flex-col-reverse justify-center lg:flex-row lg:gap-3 lg:pl-10 lg:border-2 lg:border-[#c606b9] leading-tight tracking-tighter">
       {/* description / Left section*/}
-      <div className="w-full h-1/2 px-5 flex items-center lg:block lg:h-full lg:p-4 ">
+      <div className="w-full h-1/2 px-5 flex items-center lg:block lg:h-full  lg:p-4 ">
         <div className="">
           <div>
             <span className="font-bold text-2xl ">{title}</span> <br />
@@ -101,7 +101,7 @@ function ProductCard({
             </span>
           </div>
           {window.innerWidth > 1024 && (
-            <div className="leading-loose">
+            <div className="leading-relaxed">
               <div className="font-bold text-xl underline mt-6">
                 Available offers
               </div>

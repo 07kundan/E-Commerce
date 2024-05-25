@@ -68,7 +68,7 @@ export function UserProvider(props) {
   }, [scrollValue, isNavbarActive, categoryPageActive]);
   // --------------------
 
-  // function to get document
+  // function to get Appwritedocument
   const fetchUserDocuments = async (email) => {
     try {
       const response = await databases.listDocuments(

@@ -23,22 +23,6 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "about",
-        element: (
-          <div>
-            <h1>about</h1>
-          </div>
-        ),
-      },
-      {
-        path: "contact",
-        element: (
-          <div>
-            <h1>contact</h1>
-          </div>
-        ),
-      },
-      {
         path: "login",
         element: <LoginPage />,
       },

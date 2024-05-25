@@ -33,12 +33,12 @@ function Footer() {
                 </span>{" "}
                 <span>-: kundankumarratu@gmail.com</span>
               </span>
-              <a href="" className="flex items-center gap-2">
+              <span className="flex items-center gap-2">
                 <span>
                   <MdPhone />
                 </span>
                 <span>-: +91 7634881182</span>
-              </a>
+              </span>
             </div>
           </div>
           <div className=" flex items-center justify-center gap-3 p-3 py-8 lg:p-0">
